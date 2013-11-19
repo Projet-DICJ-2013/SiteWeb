@@ -31,3 +31,4 @@
 <%-- test kickass --%>
 <%-- test chouine --%>
 <%-- test lauzier --%>
+<%-- test Pascal --%>
