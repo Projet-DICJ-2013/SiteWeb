@@ -30,3 +30,4 @@
 <%-- test dany --%>
 <%-- test kickass --%>
 <%-- test chouine --%>
+<%-- test lauzier --%>
