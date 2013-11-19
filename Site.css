@@ -1,0 +1,611 @@
+﻿/*	Global classes	*/
+.DDMainHeader
+{
+	font: small-caps bold 1.6em Trebuchet MS, Arial, sans-serif;
+	color:#888;
+	padding-bottom: 12px;
+    border-bottom: 1px dotted #bbbbbb;
+}
+
+.DDSubHeader
+{
+	margin-bottom: 10px;
+    font:1.2em Trebuchet MS, Arial, sans-serif;
+    color: #888;
+}
+
+.DD 
+{
+	padding: 0px 8px;
+    font: .75em Tahoma, Arial, sans-serif;
+    color: #666;
+}
+
+.DDLightHeader
+{
+	font-weight: bold;
+	background-color: #F7F7FF;
+} 
+
+.DDTextBox, .DDDropDown
+{
+	color: #666;
+	font: .95em Tahoma, Arial, Sans-Serif;
+	border: solid 1px #dcdcdc;
+	background-color: #FEFEFE;
+}
+
+.DDDropDown
+{
+	padding:2px;
+}
+
+.DDFilter
+{
+	font: .95em Tahoma, Arial, Sans-serif;
+	color:#666;
+}
+
+.DDControl
+{
+    padding: 0px;
+    font: .95em Tahoma, Arial, Sans-Serif;
+    color: #666;
+}
+
+.DDFloatLeft
+{
+	float:left;
+}
+
+.DDFloatRight
+{
+	float:right;
+}
+
+.DDFooter
+{
+	background-color: #dbddff;
+}
+
+.DDSelected
+{
+	background-color: #fdffb8;
+}
+
+div.DDNoItem
+{
+	color:Red;
+	font-family:Trebuchet MS, Arial, sans-serif;
+}
+
+.DDValidator
+{
+	color:Red;
+	font-family:Trebuchet MS, Arial, sans-serif;
+}
+
+
+/*	Navigation	*/
+
+div.DDNavigation
+{
+	font:.75em Tahoma, Arial, Sans-Serif;
+	position: relative;
+    top: -28px;
+    margin-bottom: -10px;
+    padding: 0px 5px;
+}
+
+div.DDNavigation img
+{
+    position: relative;
+    margin-top: 0em;
+    padding: 0px 8px;
+    border: none;
+    background-color: #fff;
+}
+div.DDNavigation a
+{
+    color: #839ce7;
+    text-decoration: none;
+    background-color: #fff;
+    padding-right: 8px;
+    top: -.2em;
+    left: .25em;
+}
+div.DDNavigation a:hover
+{
+    color: #000099;
+    text-decoration: underline !important;
+}
+
+
+/*	Details VIEW/EDIT	*/
+table.DDDetailsTable
+{
+	color: #666;
+	background-color: #FCFDFE;
+	border: 1px solid #dbddff;
+	border-bottom-width: 3px;
+}
+
+table.DDDetailsTable a
+{
+	color:#718ABE;
+	text-decoration: none;
+	padding-right: 6px;
+}
+
+table.DDDetailsTable a:hover
+{
+    color: #000099;
+    text-decoration: underline !important;
+}
+
+table.DDDetailsTable .td
+{
+	padding: 3px 6px;
+	border: 1px solid #dbddff;
+	border-bottom-style: dotted;
+	font-size: .7em;
+	font-family:Tahoma, Arial, Sans-Serif;
+}
+
+
+/*	DDGridView/DDListView	*/
+table.DDGridView, table.DDListView
+{
+	width: 100%;
+	color: #666;
+	border:solid 1px #dbddff;
+	font: .7em Tahoma, Arial, Sans-Serif;
+}
+
+table.DDGridView .th, table.DDGridView .td, table.DDListView .th, table.DDListView .td
+{
+	white-space: nowrap;
+}
+
+table.DDGridView .th, table.DDListView .th
+{
+	background: url(DynamicData/Content/Images/header_back.gif) repeat-x;
+	line-height:1.3em;
+	text-align: left;
+	font-size: 1em;
+	border:solid 1px #dbddff;
+}
+
+table.DDGridView .th a, table.DDListView .th a
+{
+	color: #666;
+	text-decoration: none;
+}
+
+table.DDGridView .td, table.DDListView .td
+{
+	border: dotted 1px #dbddff;
+	border-left-width:0px;
+	border-right-width:0px;
+	padding: 6px;
+}
+
+table.DDGridView .td a, table.DDListView .td a
+{
+	color: #718ABE;
+    text-decoration: none;
+    margin-right: 6px;
+	
+}
+
+table.DDGridView .DDSelected a, table.DDListView .DDSelected a
+{
+	color: #718ABE;
+    text-decoration: none;
+    margin-right: 6px;
+	
+}
+
+table.DDGridView .DDSelected a:hover, table.DDListView .DDSelected a:hover
+{
+	color: #000099;
+	text-decoration: underline;
+}
+
+table.DDGridView .td a:hover, table.DDListView .td a:hover
+{
+	color: #000099;
+	text-decoration: underline;
+}
+
+/*	DataPager	*/
+div.DDPager
+{
+    padding: 0px 6px;
+}
+
+
+/* Bottom hyperlink design*/
+div.DDBottomHyperLink
+{	
+    font: .75em Tahoma, Arial, Sans-Serif;
+}
+div.DDBottomHyperLink a
+{
+    color: #839ce7;
+    text-decoration: none;
+}
+div.DDBottomHyperLink a:hover
+{
+    color: #000099;
+    text-decoration: underline !important;
+}
+div.DDBottomHyperLink img
+{
+    padding-right: 5px;
+    border: none;
+}
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+	position:relative;
+    min-height: 100%;
+	background: rgba(236,242,242,1);
+}
+
+/*En-tête du site */
+
+#content
+{
+	width:100%;
+}
+
+#entete
+{
+	position:relative;
+	min-height:100px;
+	max-height:125px;
+	vertical-align:top;
+	background: rgba(236,242,242,1);
+    
+}
+
+
+#btnLogin
+{
+    
+    float:right;
+    margin-top:25px;
+    margin-right:100px;
+
+    -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
+    box-shadow:inset 0px 1px 0px 0px #cf866c;
+        
+    background-color:#d0451b;
+        
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+        
+    border:1px solid #942911;
+        
+    display:inline-block;
+    color:#ffffff;
+    font-family:arial;
+    font-size:0.9em;
+    font-weight:normal;
+    padding:10px 30px;
+    text-decoration:none;
+        
+    text-shadow:0px 1px 0px #854629;
+}
+
+#btnLogin:hover  
+{
+        
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #cc5f2d), color-stop(1, #d0451b));
+    background:-moz-linear-gradient(top, #cc5f2d 5%, #d0451b 100%);
+    background:-webkit-linear-gradient(top, #cc5f2d 5%, #d0451b 100%);
+    background:-o-linear-gradient(top, #cc5f2d 5%, #d0451b 100%);
+    background:-ms-linear-gradient(top, #cc5f2d 5%, #d0451b 100%);
+    background:linear-gradient(to bottom, #cc5f2d 5%, #d0451b 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc5f2d', endColorstr='#d0451b',GradientType=0);
+        
+    background-color:#cc5f2d;
+}
+
+#btnLogin:active
+{
+    position:relative;
+    top:2px;
+}
+
+#top
+{
+	position:relative;
+	height:500px;
+	width:100%;
+	background: rgba(83, 172, 219, 1);
+	display:inline-block;
+	border-top:1px;
+	border-top-style:solid;
+	border-top-color:black;
+	border-bottom:1px;
+	border-bottom-style:solid;
+	border-bottom-color:black;
+}
+
+
+#menu_top
+{
+	position:absolute;
+	top:0%;bottom:80%;
+	width:100%;
+		z-index:4;
+	background-color: rgba(1, 52, 64, 0.5);
+	/* IE 5.5 - 7*/
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	/*  IE 8*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+
+#menu_top ul , #menu_top ul li
+{
+	position: relative;
+	margin: auto;
+	list-style: none;
+	float: left;
+	line-height:1.3em;
+	vertical-align:middle;
+	display:inline;
+}
+
+#menu_top ul 
+{
+	padding:auto;
+	left:50%;
+}
+
+#mon_menu  li
+{
+	padding-top:1.1em;
+	right:50%;
+	padding-right: 2.5em;
+	z-index:5;
+	font-size:1.6em;
+}
+
+#mon_menu  a
+{
+	text-decoration:none;
+	color:white;
+	transition: .5s ease;
+}
+
+#mon_menu li a:hover
+{
+	background: rgba(83, 172, 219, 0.8);
+	border-radius: 2px;
+	border:5px;
+	transition: .5s ease;
+	-webkit-box-shadow: 10px;
+	box-shadow: 10px;
+}
+
+li img
+{
+    max-width:150px;
+    max-height:150px;
+}
+
+@media (max-width:800px)
+{
+
+	#menu_top
+	{
+		position:absolute;
+		top:0%;bottom:60%;
+		
+	}
+
+	#menu_top ul , #menu_top ul li
+	{
+		display:block;
+	}
+
+}
+
+#contenu-top
+{
+	position:relative;
+	width:100%;
+	height:100%;
+}
+
+#ContenuTitre, #TitreTop
+{
+	position: relative;
+	top:35%;
+	margin: auto;
+	float: left;
+	vertical-align:middle;
+	line-height:1.3em;
+	display:inline;
+}
+
+#ContenuTitre
+{
+	left:50%;
+}
+
+#TitreTop
+{
+	right:50%;
+}
+
+#SousTitre
+{
+	float:left;
+	padding-right: 1.2em;
+}
+
+#SousTitre p
+{
+	
+	color: white;
+	font-family: Arial Black;
+	font-size: 1.8em;
+}
+
+#ImgTop 
+{
+	padding-left: 1.2em;
+	float:right;
+}
+
+#ImgTop img 
+{
+    max-height:300px;
+    max-width:300px;
+}
+
+
+/* Contenu de l'accueil */
+
+#contenu-middle
+{
+	position:relative;
+	height:800px;
+	width:100%;
+	background: rgba(216,229,242);
+}
+
+#Mes-News
+{
+	position:absolute;
+	top:10%; bottom:10%;
+	left:20%;right:20%;
+}
+
+#Mes-News ul li
+{
+     position:relative;
+	 float:left;
+	 list-style:none;
+	 width:300px; height:300px;
+	 padding: 5px;
+	 overflow:hidden;
+}
+
+#Mes-News ul li:nth-child(4n)
+{
+	clear:left;
+} 
+          
+#Mes-News ul li a
+{
+     display:block;
+     margin-top:0px;
+	 margin-left:0px;
+     border:0px solid rgba(0,0,0,0.7);
+	 font-style:normal;
+	 font-size:1.2em;
+	 color:black;
+	 text-decoration:none;
+	 overflow:hidden;
+	 padding:10px;
+}
+      
+#Mes-News ul li a img
+{
+     position:absolute;
+     z-index:20;
+     text-decoration: none;
+     border-style:solid;
+	 border-color: black;
+	 border: 3px;
+	 border-radius: 5px;
+}
+       
+#Mes-News ul li a p
+{
+	position:relative; 
+	z-index:21;
+}
+
+/* Contenu du site de la page news.php */
+
+
+#MaNew
+{
+	position: relative;
+	top:10%;
+	margin: auto;
+	float: left;
+	left:50%;
+}
+
+#MaNew #SectInfos , #MaNew #SectTitre
+{
+	position:relative;
+	display:block;
+	right:50%;
+}
+
+
+#SectInfos 
+{
+	padding-top: 1em;
+	vertical-align: middle;
+}
+
+#SectTitre
+{
+	border-bottom: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: light-grey;
+	padding-bottom: 1em;
+	vertical-align: top;
+}
+
+#SectText
+{
+	min-width:400px;
+	float:left;
+	padding-right: 1.2em;
+}
+
+#SectImg
+{
+	min-width:400px;
+	float:right;
+	padding-left: 1.2em;
+	border-left: 1px;
+	border-left-style: dotted;
+	border-left-color: light-grey;
+}
+
+#TitreNew
+{
+	position:relative;
+	color:rgba(83, 172, 219, 1);
+	font-size: 1.6em;
+	vertical-align:top;
+}
+
+#ImgNew
+{
+	float:right;
+}
+
+#SectBtn
+{
+	display:block;
+}
+
