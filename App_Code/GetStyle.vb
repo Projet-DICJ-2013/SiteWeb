@@ -38,7 +38,7 @@
             Where TypeRapport.IdTypeRapport = IdStyle
             Select TypeRapport.NomFichierRapport
 
-            Return Modele.First
+            Return "C:\Users\etu420\Google Drive\Technique Informatique\5eme session\Projet de session\PresenceWeb\Bin\" + Modele.First
 
         End Function
 

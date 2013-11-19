@@ -18,7 +18,7 @@ Public Module ModRapport
         Private MonRapport As P2013_CreateDoc.CreateReport
         Private MonStyle As ModeleStyle
         Private MonPDF As P2013_CreateDoc.GenerePdf
-        Private Path As String = Server.MapPath("~/")
+        Private Path As String = "C:\Users\etu420\Google Drive\Technique Informatique\5eme session\Projet de session\PresenceWeb\Bin\"
         Private Temp As String = Guid.NewGuid().ToString
         Private File As String
 
