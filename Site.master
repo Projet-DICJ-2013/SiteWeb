@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="VB" CodeFile="Site.master.vb" Inherits="Site" %>
-
+<%@ Import Namespace="System.Data.Entity.Infrastructure" %>
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -10,12 +10,40 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
+
+<script runat="server">
+
+    
+    Sub Login_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Dim BD As New PresenceModelEntities
+        Dim IsConnect = (From MonLogin In BD.tblLogin
+                        Where MonLogin.IdLogin = txtUserName.Text And MonLogin.MotDePasseLogin = txtPWD.Text
+                        Select MonLogin).Count
+        
+        If IsConnect > 0 Then
+            Response.Redirect("Details.aspx")
+        Else
+            MsgBox("Usager ou mot de passe incorrect!")
+        End If
+    End Sub
+    
+     
+</script>
+
+
 <body>
+ <form id="form1" runat="server">
     <div id="entete">
-        <input type="button"  id="btnLogin"  value="Se Connecter"/> 
+        <section id="Login">
+            <asp:TextBox ID="txtUserName" runat="server"/>
+            <asp:RequiredFieldValidator ID="rfvUser" ErrorMessage="Please enter Username" ControlToValidate="txtUserName" runat="server" />
+            <asp:TextBox ID="txtPWD" runat="server" TextMode="Password"/>
+            <asp:RequiredFieldValidator ID="rfvPWD" runat="server" ControlToValidate="txtPWD" ErrorMessage="Please enter Password"/>
+            <asp:Button  id="btnLogin" onclick="Login_Click" text="Se Connecter" runat="server" /> 
+        </section>
     </div>
 
-<div id ="top">
+    <div id ="top">
 	
 	<div id="menu_top">
 	
@@ -61,7 +89,7 @@
 		
 			<div id="Mes-News">
 				
-				<form id="form1" runat="server">
+				
                 <div>
 
                     <asp:ContentPlaceHolder id="ContenuCorps" runat="server">
@@ -69,7 +97,7 @@
                      </asp:ContentPlaceHolder>
       
                 </div>
-                </form>
+               
 		
 			</div>
 		
@@ -80,7 +108,7 @@
     <div id="pied">
 		
     </div>
-
+     </form>
 </body>
 </html>
 

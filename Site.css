@@ -275,12 +275,18 @@ body {
     
 }
 
+#Login {
+    float:right;
+}
+
+#btnLogin, #txtUserName, #txtPWD {
+    margin-top:25px;
+    padding:10px 30px;
+    display:inline;
+}
 
 #btnLogin
 {
-    
-    float:right;
-    margin-top:25px;
     margin-right:100px;
 
     -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
@@ -300,7 +306,7 @@ body {
     font-family:arial;
     font-size:0.9em;
     font-weight:normal;
-    padding:10px 30px;
+    
     text-decoration:none;
         
     text-shadow:0px 1px 0px #854629;
