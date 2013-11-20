@@ -4,12 +4,12 @@ Partial Class Reunion
 
     Private Rapport As GenereRapport
 
-    Private Sub Form_Load() Handles Me.Load
+    Public Function GetMyPDF(ByVal PdfId As Integer) As String
 
         Rapport = New GenereRapport
-        Rapport.CreerRapportOrd("1149")
+        Rapport.CreerRapportOrd(PdfId)
 
-        DirectCast(Me.FindControl("FramePdf"), HtmlControl).Attributes("src") = Rapport.TempFile
+        Return Rapport.TempFile
 
-    End Sub
+    End Function
 End Class

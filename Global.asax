@@ -4,6 +4,7 @@
 <%@ Import Namespace="System.Web.Routing" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
 <%@ Import Namespace="System.Web.UI" %>
+<%@ Import Namespace="System.IO" %>
 
 <script RunAt="server">
 Private Shared s_defaultModel As New MetaModel
@@ -63,9 +64,15 @@ Private Shared Sub RegisterScripts()
     })
 End Sub
 
-Private Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
-    RegisterRoutes(RouteTable.Routes)
-    RegisterScripts()
-End Sub
+    Public Sub Session_OnEnd()
+        Application.Lock()
+        File.Delete(Me.Context.Session("Rapport"))
+        Application.UnLock()
+    End Sub
+    
+    Private Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
+        RegisterRoutes(RouteTable.Routes)
+        RegisterScripts()
+    End Sub
 
 </script>

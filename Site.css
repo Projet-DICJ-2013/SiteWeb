@@ -478,6 +478,12 @@ li img
 
 /* Contenu de l'accueil */
 
+#framePDF 
+{
+   width:1000px;
+   height:1000px;
+}
+
 #contenu-middle
 {
 	position:relative;
