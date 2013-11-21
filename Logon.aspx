@@ -20,7 +20,7 @@
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" 
         ControlToValidate="UserID"
         Display="Dynamic" 
-        BorderColor="Red" 
+        ErrorMessage="*"
         runat="server" />
 
         <p>Mot de passe:</p> 
@@ -30,7 +30,7 @@
 
         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" 
         ControlToValidate="UserPass"
-        BorderColor="Red" 
+        ErrorMessage="*"
         runat="server" />
 
         <p class="Souvenir">Se souvenir de moi? 

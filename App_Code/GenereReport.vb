@@ -20,14 +20,15 @@ Public Module ModRapport
         Private MonPDF As P2013_CreateDoc.GenerePdf
         Private Path As String = Server.MapPath("~/") + "bin\"
         Private Temp As String = Guid.NewGuid().ToString
-        Private File As String
+        Private FilePDF As String
+        Private FileWord As String
 
-        Public Property TempFile As String
+        Public Property TempFilePDF As String
             Get
-                Return File
+                Return FilePDF
             End Get
             Set(value As String)
-                File = value
+                FilePDF = value
             End Set
         End Property
 
@@ -50,8 +51,8 @@ Public Module ModRapport
             MonPDF = New P2013_CreateDoc.GenerePdf(Temp, Path)
             mon_msg = MonPDF.ConvertToPDF()
 
-
-            TempFile = Path + Temp + ".pdf"
+            File.Delete(Path + Temp + ".docx")
+            TempFilePDF = Path + Temp + ".pdf"
         End Sub
 
         Public Sub CreerRapportMat(ByVal Id As String)
@@ -74,7 +75,8 @@ Public Module ModRapport
             mon_msg = MonPDF.ConvertToPDF()
             MsgBox(mon_msg)
 
-            TempFile = Path + Temp + ".pdf"
+            File.Delete(Path + Temp + ".docx")
+            TempFilePDF = Path + Temp + ".pdf"
         End Sub
 
         Public Sub CreerRapportCours(ByVal Id As String)
@@ -97,7 +99,8 @@ Public Module ModRapport
             mon_msg = MonPDF.ConvertToPDF()
             MsgBox(mon_msg)
 
-            TempFile = Path + Temp + ".pdf"
+            File.Delete(Path + Temp + ".docx")
+            TempFilePDF = Path + Temp + ".pdf"
         End Sub
     End Class
 

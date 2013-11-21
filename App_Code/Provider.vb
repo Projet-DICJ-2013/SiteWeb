@@ -5,10 +5,19 @@ Public Module ModProvider
     Public Class Provider
         Inherits MembershipProvider
 
+        Private Username
         Private BD As New PresenceModelEntities
 
         Public Overrides Property ApplicationName As String
 
+        Public Property GetUserName
+            Get
+
+            End Get
+            Set(value)
+
+            End Set
+        End Property
         Public Overrides Function ChangePassword(username As String, oldPassword As String, newPassword As String) As Boolean
 
         End Function
@@ -130,6 +139,7 @@ Public Module ModProvider
         End Sub
 
         Public Overrides Function ValidateUser(username As String, password As String) As Boolean
+
             Dim IsConnect = (From MonLogin In BD.tblLogin
                     Where MonLogin.IdLogin = username And MonLogin.MotDePasseLogin = password
                     Select MonLogin).Count

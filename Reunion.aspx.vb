@@ -9,7 +9,7 @@ Partial Class Reunion
         Rapport = New GenereRapport
         Rapport.CreerRapportOrd(PdfId)
 
-        Return Rapport.TempFile
+        Return Rapport.TempFilePDF
 
     End Function
 End Class
