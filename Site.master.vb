@@ -2,8 +2,13 @@
 Class Site
     Inherits MasterPage
 
-    Private Sub Site_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
-
+    Sub Page_Load(ByVal Src As Object, ByVal e As EventArgs)
+        lblBienvenue.Text = "Bienvenue sur le site du département, " & Context.User.Identity.Name
     End Sub
 
+    Sub Signout_Click(ByVal sender As Object, ByVal e As EventArgs)
+        FormsAuthentication.SignOut()
+        Response.Redirect("Logon.aspx")
+    End Sub
 End Class
+

@@ -11,36 +11,11 @@
     </asp:ContentPlaceHolder>
 </head>
 
-<script runat="server">
-
-    
-    Sub Login_Click(ByVal sender As Object, ByVal e As EventArgs)
-        Dim BD As New PresenceModelEntities
-        Dim IsConnect = (From MonLogin In BD.tblLogin
-                        Where MonLogin.IdLogin = txtUserName.Text And MonLogin.MotDePasseLogin = txtPWD.Text
-                        Select MonLogin).Count
-        
-        If IsConnect > 0 Then
-            Response.Redirect("Details.aspx")
-        Else
-            MsgBox("Usager ou mot de passe incorrect!")
-        End If
-    End Sub
-    
-     
-</script>
-
-
 <body>
  <form id="form1" runat="server">
     <div id="entete">
-        <section id="Login">
-            <asp:TextBox ID="txtUserName" runat="server"/>
-            <asp:RequiredFieldValidator ID="rfvUser" ErrorMessage="Please enter Username" ControlToValidate="txtUserName" runat="server" />
-            <asp:TextBox ID="txtPWD" runat="server" TextMode="Password"/>
-            <asp:RequiredFieldValidator ID="rfvPWD" runat="server" ControlToValidate="txtPWD" ErrorMessage="Please enter Password"/>
-            <asp:Button  id="btnLogin" onclick="Login_Click" text="Se Connecter" runat="server" /> 
-        </section>
+            <asp:Label ID="lblBienvenue" runat="server" />
+            <asp:Button  id="btnLogin" onclick="Signout_Click" text="Se déconnecter" runat="server" /> 
     </div>
 
     <div id ="top">

@@ -258,6 +258,10 @@ body {
 	background: rgba(236,242,242,1);
 }
 
+
+/*Page de login*/
+
+
 /*En-tête du site */
 
 #content
@@ -275,20 +279,16 @@ body {
     
 }
 
-#Login {
-    float:right;
-}
-
-#btnLogin, #txtUserName, #txtPWD {
-    margin-top:25px;
-    padding:10px 30px;
-    display:inline;
+#lblBienvenue {
+   float:left ;
 }
 
 #btnLogin
 {
-    margin-right:100px;
+     float:right;
 
+    margin-right:100px;
+    margin-top:25px;
     -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
     -webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
     box-shadow:inset 0px 1px 0px 0px #cf866c;
@@ -308,11 +308,11 @@ body {
     font-weight:normal;
     
     text-decoration:none;
-        
+     padding:10px 30px;  
     text-shadow:0px 1px 0px #854629;
 }
 
-#btnLogin:hover  
+#btnLogin:hover
 {
         
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #cc5f2d), color-stop(1, #d0451b));
