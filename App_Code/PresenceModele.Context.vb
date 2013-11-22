@@ -14,11 +14,11 @@ Imports System.Data.Objects
 Imports System.Data.Objects.DataClasses
 Imports System.Linq
 
-Partial Public Class PresenceModelEntities
+Partial Public Class PresenceMod
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=PresenceModelEntities")
+        MyBase.New("name=PresenceMod")
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
@@ -71,21 +71,22 @@ Partial Public Class PresenceModelEntities
     Public Property tblPretExemplaire() As DbSet(Of tblPretExemplaire)
     Public Property tblReparation() As DbSet(Of tblReparation)
     Public Property tblSysteme() As DbSet(Of tblSysteme)
+    Public Property tblActualite() As DbSet(Of tblActualite)
     Public Property tblElement() As DbSet(Of tblElement)
     Public Property tblTypeRapport() As DbSet(Of tblTypeRapport)
 
-    <EdmFunction("PresenceModelEntities", "SelOrdreJour")>
+    <EdmFunction("PresenceMod", "SelOrdreJour")>
     Public Overridable Function SelOrdreJour(noOrdre As Nullable(Of Integer)) As IQueryable(Of SelOrdreJour_Result)
         Dim noOrdreParameter As ObjectParameter = If(noOrdre.HasValue, New ObjectParameter("NoOrdre", noOrdre), New ObjectParameter("NoOrdre", GetType(Integer)))
 
-         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelOrdreJour_Result)("[PresenceModelEntities].[SelOrdreJour](@NoOrdre)", noOrdreParameter)
+         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelOrdreJour_Result)("[PresenceMod].[SelOrdreJour](@NoOrdre)", noOrdreParameter)
     End Function
 
-    <EdmFunction("PresenceModelEntities", "SelrdJour")>
+    <EdmFunction("PresenceMod", "SelrdJour")>
     Public Overridable Function SelrdJour(noOrdre As Nullable(Of Integer)) As IQueryable(Of SelrdJour_Result)
         Dim noOrdreParameter As ObjectParameter = If(noOrdre.HasValue, New ObjectParameter("NoOrdre", noOrdre), New ObjectParameter("NoOrdre", GetType(Integer)))
 
-         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelrdJour_Result)("[PresenceModelEntities].[SelrdJour](@NoOrdre)", noOrdreParameter)
+         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelrdJour_Result)("[PresenceMod].[SelrdJour](@NoOrdre)", noOrdreParameter)
     End Function
 
     Public Overridable Function GetCompoModele(monMod As String) As ObjectResult(Of GetCompoModele_Result)
@@ -98,6 +99,12 @@ Partial Public Class PresenceModelEntities
         Dim noOrdreParameter As ObjectParameter = If(noOrdre.HasValue, New ObjectParameter("NoOrdre", noOrdre), New ObjectParameter("NoOrdre", GetType(Integer)))
 
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelOrdJour_Result)("SelOrdJour", noOrdreParameter)
+    End Function
+
+    Public Overridable Function SelPointById(noPoint As Nullable(Of Integer)) As ObjectResult(Of SelPointById_Result)
+        Dim noPointParameter As ObjectParameter = If(noPoint.HasValue, New ObjectParameter("NoPoint", noPoint), New ObjectParameter("NoPoint", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelPointById_Result)("SelPointById", noPointParameter)
     End Function
 
     Public Overridable Function sp_alterdiagram(diagramname As String, owner_id As Nullable(Of Integer), version As Nullable(Of Integer), definition As Byte()) As Integer

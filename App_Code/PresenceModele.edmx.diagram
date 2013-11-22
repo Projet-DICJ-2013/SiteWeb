@@ -4,53 +4,54 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="97fe393c92fd4fd6973061bb08d435c3" Name="Diagramme1">
+      <Diagram DiagramId="36664c2b19324289a16b5118bcada5c3" Name="Diagramme1">
         <EntityTypeShape EntityType="PresenceModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PresenceModel.tblConstant" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblCours" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblCoursSessionGroupe" Width="1.5" PointX="7.5" PointY="19.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblEtudiant" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblGroupe" Width="1.5" PointX="5.25" PointY="19.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblGroupeLocal" Width="1.5" PointX="7.5" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblLocal" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblLogin" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblMembre" Width="1.5" PointX="0.75" PointY="19.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblMembreAssociation" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblMembreAssociationEtudiant" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblMembreParticipantReunion" Width="1.5" PointX="3" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblMembreStatutMembre" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblMessage" Width="1.5" PointX="3" PointY="28.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblParticipant" Width="1.5" PointX="0.75" PointY="25.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblProfesseur" Width="1.5" PointX="7.5" PointY="23.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblProfesseurStatutProfesseur" Width="1.5" PointX="9.75" PointY="24.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblProgramme" Width="1.5" PointX="5.25" PointY="22.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblSession" Width="1.5" PointX="5.25" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblStatutCours" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblStatutCoursCours" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblStatutMembre" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblStatutProfesseur" Width="1.5" PointX="7.5" PointY="31.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblListePoint" Width="1.5" PointX="3.75" PointY="31.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblOrdreDuJour" Width="1.5" PointX="1.5" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblCours" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblCoursSessionGroupe" Width="1.5" PointX="7.5" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblEtudiant" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblGroupe" Width="1.5" PointX="5.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblGroupeLocal" Width="1.5" PointX="7.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblLocal" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblLogin" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblMembre" Width="1.5" PointX="0.75" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblMembreAssociation" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblMembreAssociationEtudiant" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblMembreParticipantReunion" Width="1.5" PointX="3" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblMembreStatutMembre" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblMessage" Width="1.5" PointX="3" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblParticipant" Width="1.5" PointX="0.75" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblProfesseur" Width="1.5" PointX="7.5" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblProfesseurStatutProfesseur" Width="1.5" PointX="12.75" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblProgramme" Width="1.5" PointX="5.25" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblSession" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblStatutCours" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblStatutCoursCours" Width="1.5" PointX="7.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblStatutMembre" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblStatutProfesseur" Width="1.5" PointX="10.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblListePoint" Width="1.5" PointX="3.75" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblOrdreDuJour" Width="1.5" PointX="1.5" PointY="34.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PresenceModel.tblOrdreDuJourStatut" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblPieceJointe" Width="1.5" PointX="7.75" PointY="40.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblPoints" Width="1.5" PointX="10" PointY="37" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblProcesVerbaux" Width="1.5" PointX="3.75" PointY="39.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblReunion" Width="1.5" PointX="0.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblPieceJointe" Width="1.5" PointX="7.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblPoints" Width="1.5" PointX="10" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblProcesVerbaux" Width="1.5" PointX="3.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblReunion" Width="1.5" PointX="0.75" PointY="29.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PresenceModel.tblStatut" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblTypePoint" Width="1.5" PointX="7.75" PointY="43.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblBesoin" Width="1.5" PointX="7.5" PointY="28.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblCompoModele" Width="1.5" PointX="5.25" PointY="36.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblDemande" Width="1.5" PointX="10" PointY="20.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblEtatDemande" Width="1.5" PointX="7.75" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblEtatExemplaire" Width="1.5" PointX="7.5" PointY="34.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblEtatPret" Width="1.5" PointX="7.75" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblExemplaire" Width="1.5" PointX="9.75" PointY="27.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblHistoriquePret" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblModele" Width="1.5" PointX="7.5" PointY="36.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblPret" Width="1.5" PointX="10" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblPretExemplaire" Width="1.5" PointX="12.25" PointY="23.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblReparation" Width="1.5" PointX="12" PointY="30.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModel.tblSysteme" Width="1.5" PointX="12" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblTypePoint" Width="1.5" PointX="7.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblBesoin" Width="1.5" PointX="7.5" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblCompoModele" Width="1.5" PointX="5.25" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblDemande" Width="1.5" PointX="10" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblEtatDemande" Width="1.5" PointX="7.75" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblEtatExemplaire" Width="1.5" PointX="7.5" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblEtatPret" Width="1.5" PointX="7.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblExemplaire" Width="1.5" PointX="9.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblHistoriquePret" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblModele" Width="1.5" PointX="7.5" PointY="38.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblPret" Width="1.5" PointX="10" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblPretExemplaire" Width="1.5" PointX="12.25" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblReparation" Width="1.5" PointX="12" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblSysteme" Width="1.5" PointX="12" PointY="33.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModel.tblActualite" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PresenceModel.tblElement" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PresenceModel.tblTypeRapport" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="PresenceModel.fk_Cours_CoursSessionGroupe" ManuallyRouted="false" />
@@ -62,6 +63,7 @@
         <AssociationConnector Association="PresenceModel.fk_Groupe_Besoin" ManuallyRouted="false" />
         <AssociationConnector Association="PresenceModel.fk_Groupe_GroupeLocal" ManuallyRouted="false" />
         <AssociationConnector Association="PresenceModel.fk_Local_GroupeLocal" ManuallyRouted="false" />
+        <AssociationConnector Association="PresenceModel.FK_tblLogin_tblMembre" ManuallyRouted="false" />
         <AssociationConnector Association="PresenceModel.fk_Membre_Demande" ManuallyRouted="false" />
         <AssociationConnector Association="PresenceModel.fk_Membre_MembreParticipantReunion" ManuallyRouted="false" />
         <AssociationConnector Association="PresenceModel.fk_Membre_MembreStatutMembre" ManuallyRouted="false" />

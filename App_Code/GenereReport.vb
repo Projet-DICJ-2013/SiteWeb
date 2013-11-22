@@ -18,8 +18,8 @@ Public Module ModRapport
         Private MonRapport As P2013_CreateDoc.CreateReport
         Private MonStyle As ModeleStyle
         Private MonPDF As P2013_CreateDoc.GenerePdf
-        Private Path As String = Server.MapPath("~/") + "bin\"
-        Private Temp As String = Guid.NewGuid().ToString
+        Private Path As String
+        Private Temp As String
         Private FilePDF As String
         Private FileWord As String
 
@@ -32,6 +32,11 @@ Public Module ModRapport
             End Set
         End Property
 
+        Public Sub New()
+            Path = Server.MapPath("~/") + "bin/"
+            Temp = Guid.NewGuid().ToString
+        End Sub
+
         Public Sub CreerRapportOrd(ByVal Id As Integer)
 
             Dim mon_msg As String
@@ -42,7 +47,7 @@ Public Module ModRapport
 
             MonRapport = New P2013_CreateDoc.CreateReport(ModeleRapport.GetContenuDoc, Temp, Path, False)
 
-            MonRapport.DefineStyle(MonStyle.GetStyle(), MonStyle.GetModele())
+            MonRapport.DefineStyle(MonStyle.GetStyle(), Path + MonStyle.GetModele())
 
             MonRapport.CreerWorld()
             mon_msg = MonRapport.IsGenere()
@@ -107,7 +112,7 @@ Public Module ModRapport
     Public Class RaportOrd
         Inherits P2013_CreateDoc.ModeleInfos
 
-        Private _Bd_Presence As New PresenceModelEntities
+        Private _Bd_Presence As New PresenceMod
 
         Public Sub New(ByVal IdOrdre As String)
             MyBase.New(IdOrdre)
@@ -116,26 +121,26 @@ Public Module ModRapport
 
         Protected Overloads Sub GetData()
 
-            _ContenuDoc = New XElement("Root",
-            (From List In _Bd_Presence.tblListePoint
-               Join Point In _Bd_Presence.tblPoints
-               On Point.tblListePoint1.FirstOrDefault Equals List
-                Where List.NoOrdreDuJour = _IdElem
-                Select New With {
-                                  Point.TitrePoint,
-                                 Point.NumeroPoint,
-                                 Point.InformationPoint}).ToList.Select(
-                      Function(x) New XElement("Point", New XElement("Conteneur",
-                               New XElement("Nom",
-                                   New XAttribute("id", "Pts001"),
-                                   x.NumeroPoint),
-                                New XElement("No",
-                                       New XAttribute("id", "Pts002"),
-                                       x.TitrePoint),
-                               New XElement("Infos",
-                                   New XAttribute("id", "Pts002"),
-                                   x.InformationPoint)))))
+            Dim NoOrdre = (From Ordre In _Bd_Presence.SelOrdJour(_IdElem)
+                          Select Ordre.TitreOrdreJour).FirstOrDefault.ToString
 
+            _ContenuDoc = New XElement("Root", New XElement("Header", New XElement("head", New XAttribute("id", "Pts003"), NoOrdre & " - " & Date.Today)),
+            (From Point In _Bd_Presence.SelOrdJour(_IdElem)
+                Select New With {Point.TitrePoint,
+                                 Point.ChiffrePoint}).ToList.Select(
+                      Function(x) New XElement("Point",
+                                New XElement("Conteneur",
+                                New XElement("Infos", New XAttribute("niv", x.ChiffrePoint),
+                                    x.ChiffrePoint & "  " & x.TitrePoint)
+                                       ))))
+
+            For Each el In _ContenuDoc...<Infos>
+                If el.@niv.Length > 2 Then
+                    el.Add(New XAttribute("id", "Pts002"))
+                Else
+                    el.Add(New XAttribute("id", "Pts001"))
+                End If
+            Next
 
         End Sub
 
@@ -150,7 +155,7 @@ Public Module ModRapport
     Public Class RaportModele
         Inherits P2013_CreateDoc.ModeleInfos
 
-        Private _Bd_Presence As New PresenceModelEntities
+        Private _Bd_Presence As New PresenceMod
 
         Public Sub New(ByVal IdOrdre As String)
             MyBase.New(IdOrdre)
@@ -168,7 +173,7 @@ Public Module ModRapport
                                      Modele.NbAnneeGarantie,
                                      Modele.TypeMachine,
                                      Exemp.CodeBarre,
-                                     Exemp.TypeEtat}).ToList.Select(
+                                     Exemp.tblEtatExemplaire.TypeEtat}).ToList.Select(
                           Function(x) New XElement("Modele", New XElement("Conteneur", New XAttribute("id", "Mat004"),
                                    New XElement("NoModele",
                                        New XAttribute("id", "Mat001"),
@@ -204,7 +209,7 @@ Public Module ModRapport
     Public Class RaportCours
         Inherits P2013_CreateDoc.ModeleInfos
 
-        Private _Bd_Presence As New PresenceModelEntities
+        Private _Bd_Presence As New PresenceMod
 
         Public Sub New(ByVal IdOrdre As String)
             MyBase.New(IdOrdre)
@@ -220,7 +225,7 @@ Public Module ModRapport
                  Join Etu In _Bd_Presence.tblEtudiant
                 On Etu.tblProgramme.FirstOrDefault Equals Prog
                  Join Membre In _Bd_Presence.tblMembre
-                 On Membre.IdMembre Equals Etu.IdMembre
+                 On Membre.IdMembre Equals Etu.tblMembre.IdMembre
             Where Cours.CodeCours = _IdElem
                     Select New With {Cours.NomCours,
                                      Cours.PonderationCours,

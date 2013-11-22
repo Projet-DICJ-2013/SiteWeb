@@ -25,7 +25,7 @@ Public Shared Sub RegisterRoutes(ByVal routes As RouteCollection)
     ' class in your application.
     ' See http://go.microsoft.com/fwlink/?LinkId=257395 for more information on how to register Entity Data Model with Dynamic Data
         DefaultModel.RegisterContext( _
-           New System.Func(Of Object)(Function() DirectCast(New PresenceModelEntities, IObjectContextAdapter).ObjectContext), _
+           New System.Func(Of Object)(Function() DirectCast(New PresenceMod, IObjectContextAdapter).ObjectContext), _
           New ContextConfiguration() With {.ScaffoldAllTables = True} _
          )
 
@@ -64,6 +64,13 @@ Private Shared Sub RegisterScripts()
     })
 End Sub
 
+    Public Sub Session_OnStart()
+        Application.Lock()
+        Session.Timeout = 10
+        Application.UnLock()
+    End Sub
+ 
+    
     Public Sub Session_OnEnd()
         Application.Lock()
         File.Delete(Me.Context.Session("Rapport"))

@@ -5,19 +5,10 @@ Public Module ModProvider
     Public Class Provider
         Inherits MembershipProvider
 
-        Private Username
-        Private BD As New PresenceModelEntities
+        Private BD As New PresenceMod
 
         Public Overrides Property ApplicationName As String
 
-        Public Property GetUserName
-            Get
-
-            End Get
-            Set(value)
-
-            End Set
-        End Property
         Public Overrides Function ChangePassword(username As String, oldPassword As String, newPassword As String) As Boolean
 
         End Function
