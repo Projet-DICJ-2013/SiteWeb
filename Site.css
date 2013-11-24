@@ -609,3 +609,75 @@ li img
 	display:block;
 }
 
+Contenu de la section Reunion
+
+#PrincipalReunion {display:block; font-family:arial black; 
+}
+#TitreRecherche {margin-left:10%;margin-right:10%;
+}
+#SectionCritere {display:inline-block;  margin:2%; margin-bottom:5%;font-family:arial black; font-size:18px;Padding:2%; position:relative;border:10px;border-style:solid;
+border-color:rgba(83, 172, 219, 1);width:100%;
+}
+
+#SectionCritGauche {display:block; margin:3%;font-family:arial black; font-size:18px; Padding:2%; position:relative;float:left;border:5px;border-style:solid;
+border-color:rgba(83, 172, 219, 1);
+}
+
+#SectionCritDroit {display:block;  margin:3%;font-family:arial black; font-size:18px; Padding:2%; width:38%; position:relative; float:left;border:5px;border-style:solid;
+border-color:rgba(83, 172, 219, 1);
+}
+
+#SectionResultats {margin-left:50%;margin-right:50%;
+}
+
+#ListeResultat {width:100%;
+}
+
+.ReuRech {
+-moz-box-shadow:inset 0px 1px 0px 0px #cae3fc;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #cae3fc;
+	box-shadow:inset 0px 1px 0px 0px #cae3fc;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #4197ee) );
+	background:-moz-linear-gradient( center top, #79bbff 5%, #4197ee 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#4197ee');
+	background-color:#79bbff;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0;
+	border:2px solid #469df5;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial Black;
+	font-size:18px;
+	font-weight:bold;
+	font-style:normal;
+	height:47px;
+	line-height:47px;
+	
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #287ace;
+}
+.ReuRech:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4197ee), color-stop(1, #79bbff) );
+	background:-moz-linear-gradient( center top, #4197ee 5%, #79bbff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4197ee', endColorstr='#79bbff');
+	background-color:#4197ee;
+}
+    .ReuRech:active {
+        position: relative;
+        
+    }
+
+#BoutonReu {display:inline; float:right;
+}
