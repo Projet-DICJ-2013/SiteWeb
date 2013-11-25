@@ -9,7 +9,7 @@ Partial Class Demande_Pret
 
 
     Sub Page_Load() Handles MyBase.Load
-        Dim BD As New PresenceModelEntities
+        Dim BD As New PresenceMod
         req = (From r In BD.tblExemplaire
         Where r.TypeEtat <> "Supprimé"
        Select r)
