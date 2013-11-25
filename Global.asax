@@ -4,6 +4,7 @@
 <%@ Import Namespace="System.Web.Routing" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
 <%@ Import Namespace="System.Web.UI" %>
+<%@ Import Namespace="System.IO" %>
 
 <script RunAt="server">
 Private Shared s_defaultModel As New MetaModel
@@ -24,7 +25,7 @@ Public Shared Sub RegisterRoutes(ByVal routes As RouteCollection)
     ' class in your application.
     ' See http://go.microsoft.com/fwlink/?LinkId=257395 for more information on how to register Entity Data Model with Dynamic Data
         DefaultModel.RegisterContext( _
-           New System.Func(Of Object)(Function() DirectCast(New PresenceModelEntities, IObjectContextAdapter).ObjectContext), _
+           New System.Func(Of Object)(Function() DirectCast(New PresenceMod, IObjectContextAdapter).ObjectContext), _
           New ContextConfiguration() With {.ScaffoldAllTables = True} _
          )
 
@@ -63,9 +64,22 @@ Private Shared Sub RegisterScripts()
     })
 End Sub
 
-Private Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
-    RegisterRoutes(RouteTable.Routes)
-    RegisterScripts()
-End Sub
+    Public Sub Session_OnStart()
+        Application.Lock()
+        Session.Timeout = 10
+        Application.UnLock()
+    End Sub
+ 
+    
+    Public Sub Session_OnEnd()
+        Application.Lock()
+        File.Delete(Me.Context.Session("Rapport"))
+        Application.UnLock()
+    End Sub
+    
+    Private Sub Application_Start(ByVal sender As Object, ByVal e As EventArgs)
+        RegisterRoutes(RouteTable.Routes)
+        RegisterScripts()
+    End Sub
 
 </script>

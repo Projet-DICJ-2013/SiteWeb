@@ -62,6 +62,7 @@
           <EntitySet Name="tblPretExemplaire" EntityType="PresenceModel.Store.tblPretExemplaire" store:Type="Tables" Schema="S_ParcInformatique" />
           <EntitySet Name="tblReparation" EntityType="PresenceModel.Store.tblReparation" store:Type="Tables" Schema="S_ParcInformatique" />
           <EntitySet Name="tblSysteme" EntityType="PresenceModel.Store.tblSysteme" store:Type="Tables" Schema="S_ParcInformatique" />
+          <EntitySet Name="tblActualite" EntityType="PresenceModel.Store.tblActualite" store:Type="Tables" Schema="S_Rapport" />
           <EntitySet Name="tblElement" EntityType="PresenceModel.Store.tblElement" store:Type="Tables" Schema="S_Rapport" />
           <EntitySet Name="tblTypeRapport" EntityType="PresenceModel.Store.tblTypeRapport" store:Type="Tables" Schema="S_Rapport" />
           <AssociationSet Name="fk_Besoin_BesoinExemplaire" Association="PresenceModel.Store.fk_Besoin_BesoinExemplaire">
@@ -280,6 +281,10 @@
             <End Role="tblOrdreDuJour" EntitySet="tblOrdreDuJour" />
             <End Role="tblListePoint" EntitySet="tblListePoint" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblLogin_tblMembre" Association="PresenceModel.Store.FK_tblLogin_tblMembre">
+            <End Role="tblMembre" EntitySet="tblMembre" />
+            <End Role="tblLogin" EntitySet="tblLogin" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblReunion_tblOrdreDuJour" Association="PresenceModel.Store.FK_tblReunion_tblOrdreDuJour">
             <End Role="tblOrdreDuJour" EntitySet="tblOrdreDuJour" />
             <End Role="tblReunion" EntitySet="tblReunion" />
@@ -384,8 +389,9 @@
             <PropertyRef Name="IdLogin" />
           </Key>
           <Property Name="IdLogin" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="MotDePasseLogin" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="EstAutorise" Type="bit" Nullable="false" />
+          <Property Name="MotDePasseLogin" Type="varchar" MaxLength="50" />
+          <Property Name="EstAutorise" Type="bit" />
+          <Property Name="IdMembre" Type="smallint" />
         </EntityType>
         <EntityType Name="tblMembre">
           <Key>
@@ -601,6 +607,7 @@
           <Property Name="InformationPoint" Type="ntext" />
           <Property Name="PieceJointeOrdre" Type="int" />
           <Property Name="NomPoint" Type="varchar" MaxLength="100" />
+          <Property Name="ChiffrePoint" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblPointsListePoints">
           <Key>
@@ -626,7 +633,7 @@
           <Property Name="DateReunion" Type="smalldatetime" Nullable="false" />
           <Property Name="EndroitReunion" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="NoOrdreDuJour" Type="int" Nullable="false" />
-          <Property Name="NoLocal" Type="varchar" Nullable="false" MaxLength="6" />
+          <Property Name="NoLocal" Type="varchar" MaxLength="6" />
         </EntityType>
         <EntityType Name="tblStatut">
           <Key>
@@ -735,6 +742,7 @@
           <Property Name="TypeMachine" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="NoteModele" Type="varchar" MaxLength="200" />
           <Property Name="PhotoModele" Type="image" />
+          <Property Name="PrixModele" Type="smallmoney" />
         </EntityType>
         <EntityType Name="tblModeleCompoModele">
           <Key>
@@ -783,6 +791,16 @@
           <Property Name="ServiceTag" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="NomReseau" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="CodeBarre" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblActualite">
+          <Key>
+            <PropertyRef Name="IDActualite" />
+          </Key>
+          <Property Name="IDActualite" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TexteActu" Type="text" Nullable="false" />
+          <Property Name="TitreActu" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="AuteurActu" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="ImangeActu" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="tblElement">
           <Key>
@@ -1450,6 +1468,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblLogin_tblMembre">
+          <End Role="tblMembre" Type="PresenceModel.Store.tblMembre" Multiplicity="0..1" />
+          <End Role="tblLogin" Type="PresenceModel.Store.tblLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembre">
+              <PropertyRef Name="IdMembre" />
+            </Principal>
+            <Dependent Role="tblLogin">
+              <PropertyRef Name="IdMembre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblReunion_tblOrdreDuJour">
           <End Role="tblOrdreDuJour" Type="PresenceModel.Store.tblOrdreDuJour" Multiplicity="1" />
           <End Role="tblReunion" Type="PresenceModel.Store.tblReunion" Multiplicity="*" />
@@ -1505,6 +1535,9 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="SelPointById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NoPoint" Type="int" Mode="In" />
+        </Function>
         <Function Name="SelrdJour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NoOrdre" Type="int" Mode="In" />
           <ReturnType>
@@ -1552,7 +1585,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PresenceModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="PresenceModelEntities" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="PresenceMod" p1:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="PresenceModel.sysdiagrams" />
           <EntitySet Name="tblConstant" EntityType="PresenceModel.tblConstant" />
           <EntitySet Name="tblCours" EntityType="PresenceModel.tblCours" />
@@ -1599,6 +1632,7 @@
           <EntitySet Name="tblPretExemplaire" EntityType="PresenceModel.tblPretExemplaire" />
           <EntitySet Name="tblReparation" EntityType="PresenceModel.tblReparation" />
           <EntitySet Name="tblSysteme" EntityType="PresenceModel.tblSysteme" />
+          <EntitySet Name="tblActualite" EntityType="PresenceModel.tblActualite" />
           <EntitySet Name="tblElement" EntityType="PresenceModel.tblElement" />
           <EntitySet Name="tblTypeRapport" EntityType="PresenceModel.tblTypeRapport" />
           <AssociationSet Name="fk_Cours_CoursSessionGroupe" Association="PresenceModel.fk_Cours_CoursSessionGroupe">
@@ -1636,6 +1670,10 @@
           <AssociationSet Name="fk_Local_GroupeLocal" Association="PresenceModel.fk_Local_GroupeLocal">
             <End Role="tblLocal" EntitySet="tblLocal" />
             <End Role="tblGroupeLocal" EntitySet="tblGroupeLocal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLogin_tblMembre" Association="PresenceModel.FK_tblLogin_tblMembre">
+            <End Role="tblMembre" EntitySet="tblMembre" />
+            <End Role="tblLogin" EntitySet="tblLogin" />
           </AssociationSet>
           <AssociationSet Name="fk_Membre_Demande" Association="PresenceModel.fk_Membre_Demande">
             <End Role="tblMembre" EntitySet="tblMembre" />
@@ -1801,6 +1839,9 @@
           <FunctionImport Name="SelOrdJour" ReturnType="Collection(PresenceModel.SelOrdJour_Result)">
             <Parameter Name="NoOrdre" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SelPointById" ReturnType="Collection(PresenceModel.SelPointById_Result)">
+            <Parameter Name="NoPoint" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -1935,8 +1976,10 @@
             <PropertyRef Name="IdLogin" />
           </Key>
           <Property Name="IdLogin" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="MotDePasseLogin" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="EstAutorise" Type="Boolean" Nullable="false" />
+          <Property Name="MotDePasseLogin" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EstAutorise" Type="Boolean" />
+          <Property Name="IdMembre" Type="Int16" />
+          <NavigationProperty Name="tblMembre" Relationship="PresenceModel.FK_tblLogin_tblMembre" FromRole="tblLogin" ToRole="tblMembre" />
         </EntityType>
         <EntityType Name="tblMembre">
           <Key>
@@ -1951,6 +1994,7 @@
           <Property Name="AdresseMembre" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="VilleMembre" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="tblEtudiant" Relationship="PresenceModel.fk_Membre_Etudiant" FromRole="tblMembre" ToRole="tblEtudiant" />
+          <NavigationProperty Name="tblLogin" Relationship="PresenceModel.FK_tblLogin_tblMembre" FromRole="tblMembre" ToRole="tblLogin" />
           <NavigationProperty Name="tblDemande" Relationship="PresenceModel.fk_Membre_Demande" FromRole="tblMembre" ToRole="tblDemande" />
           <NavigationProperty Name="tblMembreParticipantReunion" Relationship="PresenceModel.fk_Membre_MembreParticipantReunion" FromRole="tblMembre" ToRole="tblMembreParticipantReunion" />
           <NavigationProperty Name="tblMembreStatutMembre" Relationship="PresenceModel.fk_Membre_MembreStatutMembre" FromRole="tblMembre" ToRole="tblMembreStatutMembre" />
@@ -2158,6 +2202,7 @@
           <Property Name="InformationPoint" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="PieceJointeOrdre" Type="Int32" />
           <Property Name="NomPoint" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ChiffrePoint" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="tblListePoint" Relationship="PresenceModel.fk_Points_ListesPoints" FromRole="tblPoints" ToRole="tblListePoint" />
           <NavigationProperty Name="tblTypePoint" Relationship="PresenceModel.fk_TypePoint_Points" FromRole="tblPoints" ToRole="tblTypePoint" />
           <NavigationProperty Name="tblPieceJointe" Relationship="PresenceModel.tblPieceJointePoints" FromRole="tblPoints" ToRole="tblPieceJointe" />
@@ -2182,7 +2227,7 @@
           <Property Name="DateReunion" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndroitReunion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="NoOrdreDuJour" Type="Int32" Nullable="false" />
-          <Property Name="NoLocal" Type="String" Nullable="false" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="NoLocal" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="tblMembreParticipantReunion" Relationship="PresenceModel.fk_Reunion_MembreParticipantReunion" FromRole="tblReunion" ToRole="tblMembreParticipantReunion" />
           <NavigationProperty Name="tblOrdreDuJour" Relationship="PresenceModel.FK_tblReunion_tblOrdreDuJour" FromRole="tblReunion" ToRole="tblOrdreDuJour" />
         </EntityType>
@@ -2295,6 +2340,7 @@
           <Property Name="TypeMachine" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="NoteModele" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
           <Property Name="PhotoModele" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PrixModele" Type="Decimal" Precision="10" Scale="4" />
           <NavigationProperty Name="tblExemplaire" Relationship="PresenceModel.fk_ExemplaireModele" FromRole="tblModele" ToRole="tblExemplaire" />
           <NavigationProperty Name="tblCompoModele" Relationship="PresenceModel.tblModeleCompoModele" FromRole="tblModele" ToRole="tblCompoModele" />
         </EntityType>
@@ -2344,6 +2390,16 @@
           <Property Name="NomReseau" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="CodeBarre" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tblExemplaire" Relationship="PresenceModel.fk_SystemeExemplaire" FromRole="tblSysteme" ToRole="tblExemplaire" />
+        </EntityType>
+        <EntityType Name="tblActualite">
+          <Key>
+            <PropertyRef Name="IDActualite" />
+          </Key>
+          <Property Name="IDActualite" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TexteActu" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="TitreActu" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AuteurActu" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="ImangeActu" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="tblElement">
           <Key>
@@ -2470,6 +2526,18 @@
             </Principal>
             <Dependent Role="tblGroupeLocal">
               <PropertyRef Name="NoLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLogin_tblMembre">
+          <End Role="tblMembre" Type="PresenceModel.tblMembre" Multiplicity="0..1" />
+          <End Role="tblLogin" Type="PresenceModel.tblLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMembre">
+              <PropertyRef Name="IdMembre" />
+            </Principal>
+            <Dependent Role="tblLogin">
+              <PropertyRef Name="IdMembre" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2859,6 +2927,17 @@
           <Property Type="String" Name="NomPoint" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="TitreOrdreJour" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Notes" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="ChiffrePoint" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelPointById_Result">
+          <Property Type="Int32" Name="IDPoint" Nullable="false" />
+          <Property Type="String" Name="InformationPoint" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="ListeEnfants" Nullable="true" />
+          <Property Type="String" Name="NomPoint" Nullable="true" MaxLength="100" />
+          <Property Type="Double" Name="NumeroPoint" Nullable="true" />
+          <Property Type="Int32" Name="PieceJointeOrdre" Nullable="true" />
+          <Property Type="String" Name="TitrePoint" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ChiffrePoint" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2876,7 +2955,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PresenceModelStoreContainer" CdmEntityContainer="PresenceModelEntities">
+        <EntityContainerMapping StorageEntityContainer="PresenceModelStoreContainer" CdmEntityContainer="PresenceMod">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="PresenceModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -2958,6 +3037,7 @@
                 <ScalarProperty Name="IdLogin" ColumnName="IdLogin" />
                 <ScalarProperty Name="MotDePasseLogin" ColumnName="MotDePasseLogin" />
                 <ScalarProperty Name="EstAutorise" ColumnName="EstAutorise" />
+                <ScalarProperty Name="IdMembre" ColumnName="IdMembre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3153,6 +3233,7 @@
                 <ScalarProperty Name="InformationPoint" ColumnName="InformationPoint" />
                 <ScalarProperty Name="PieceJointeOrdre" ColumnName="PieceJointeOrdre" />
                 <ScalarProperty Name="NomPoint" ColumnName="NomPoint" />
+                <ScalarProperty Name="ChiffrePoint" ColumnName="ChiffrePoint" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3276,6 +3357,7 @@
                 <ScalarProperty Name="TypeMachine" ColumnName="TypeMachine" />
                 <ScalarProperty Name="NoteModele" ColumnName="NoteModele" />
                 <ScalarProperty Name="PhotoModele" ColumnName="PhotoModele" />
+                <ScalarProperty Name="PrixModele" ColumnName="PrixModele" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3319,6 +3401,17 @@
                 <ScalarProperty Name="ServiceTag" ColumnName="ServiceTag" />
                 <ScalarProperty Name="NomReseau" ColumnName="NomReseau" />
                 <ScalarProperty Name="CodeBarre" ColumnName="CodeBarre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblActualite">
+            <EntityTypeMapping TypeName="PresenceModel.tblActualite">
+              <MappingFragment StoreEntitySet="tblActualite">
+                <ScalarProperty Name="IDActualite" ColumnName="IDActualite" />
+                <ScalarProperty Name="TexteActu" ColumnName="TexteActu" />
+                <ScalarProperty Name="TitreActu" ColumnName="TitreActu" />
+                <ScalarProperty Name="AuteurActu" ColumnName="AuteurActu" />
+                <ScalarProperty Name="ImangeActu" ColumnName="ImangeActu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3456,6 +3549,21 @@
                 <ScalarProperty Name="NomPoint" ColumnName="NomPoint" />
                 <ScalarProperty Name="TitreOrdreJour" ColumnName="TitreOrdreJour" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ChiffrePoint" ColumnName="ChiffrePoint" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelPointById" FunctionName="PresenceModel.Store.SelPointById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PresenceModel.SelPointById_Result">
+                <ScalarProperty Name="IDPoint" ColumnName="IDPoint" />
+                <ScalarProperty Name="InformationPoint" ColumnName="InformationPoint" />
+                <ScalarProperty Name="ListeEnfants" ColumnName="ListeEnfants" />
+                <ScalarProperty Name="NomPoint" ColumnName="NomPoint" />
+                <ScalarProperty Name="NumeroPoint" ColumnName="NumeroPoint" />
+                <ScalarProperty Name="PieceJointeOrdre" ColumnName="PieceJointeOrdre" />
+                <ScalarProperty Name="TitrePoint" ColumnName="TitrePoint" />
+                <ScalarProperty Name="ChiffrePoint" ColumnName="ChiffrePoint" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

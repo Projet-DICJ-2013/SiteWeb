@@ -3,7 +3,7 @@
     Public Class ModeleStyle
 
         Private IdStyle As String
-        Private Bd_Gest_Film As New PresenceModelEntities
+        Private Bd_Gest_Film As New PresenceMod
 
         Public Sub New(ByVal _MonId As String)
 
@@ -16,7 +16,7 @@
             Dim StyleDefinition As XElement = New XElement("Root", _
                 (From TypeRapport In Bd_Gest_Film.tblTypeRapport
                     Join Elem In Bd_Gest_Film.tblElement
-                    On Elem.IdTypeRapport Equals TypeRapport.IdTypeRapport
+                    On Elem.tblTypeRapport.IdTypeRapport Equals TypeRapport.IdTypeRapport
                     Where TypeRapport.IdTypeRapport = IdStyle
                     Select New With {Elem.IdTypeElement,
                                      Elem.TypeElement,
@@ -38,7 +38,7 @@
             Where TypeRapport.IdTypeRapport = IdStyle
             Select TypeRapport.NomFichierRapport
 
-            Return "C:\Users\etu420\Google Drive\Technique Informatique\5eme session\Projet de session\PresenceWeb\Bin\" + Modele.First
+            Return Modele.First
 
         End Function
 

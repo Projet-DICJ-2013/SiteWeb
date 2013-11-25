@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="VB" CodeFile="Site.master.vb" Inherits="Site" %>
-
+<%@ Import Namespace="System.Data.Entity.Infrastructure" %>
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -10,12 +10,14 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
+
 <body>
+ <form id="form1" runat="server">
     <div id="entete">
-        <input type="button"  id="btnLogin"  value="Se Connecter"/> 
+            <asp:Button  id="btnLogin" onclick="Signout_Click" text="Se déconnecter" runat="server" /> 
     </div>
 
-<div id ="top">
+    <div id ="top">
 	
 	<div id="menu_top">
 	
@@ -61,7 +63,7 @@
 		
 			<div id="Mes-News">
 				
-				<form id="form1" runat="server">
+				
                 <div>
 
                     <asp:ContentPlaceHolder id="ContenuCorps" runat="server">
@@ -69,7 +71,7 @@
                      </asp:ContentPlaceHolder>
       
                 </div>
-                </form>
+               
 		
 			</div>
 		
@@ -80,7 +82,7 @@
     <div id="pied">
 		
     </div>
-
+     </form>
 </body>
 </html>
 
