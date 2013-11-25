@@ -124,7 +124,8 @@ Public Module ModRapport
             Dim NoOrdre = (From Ordre In _Bd_Presence.SelOrdJour(_IdElem)
                           Select Ordre.TitreOrdreJour).FirstOrDefault.ToString
 
-            _ContenuDoc = New XElement("Root", New XElement("Header", New XElement("head", New XAttribute("id", "Pts003"), NoOrdre & " - " & Date.Today)),
+            _ContenuDoc = New XElement("Root", New XElement("Header", New XElement("head", New XAttribute("id", "Pts003"), NoOrdre) _
+                                        ),
             (From Point In _Bd_Presence.SelOrdJour(_IdElem)
                 Select New With {Point.TitrePoint,
                                  Point.ChiffrePoint}).ToList.Select(
@@ -132,12 +133,14 @@ Public Module ModRapport
                                 New XElement("Conteneur",
                                 New XElement("Infos", New XAttribute("niv", x.ChiffrePoint),
                                     x.ChiffrePoint & "  " & x.TitrePoint)
-                                       ))))
+                                       ))), New XElement("Footer", New XElement("Foot", New XAttribute("id", "Pts006"), "Departement d'informatique" & "  -  " & Date.Today)))
 
             For Each el In _ContenuDoc...<Infos>
-                If el.@niv.Length > 2 Then
+                If el.@niv.Length >= 6 Then
+                    el.Add(New XAttribute("id", "Pts004"))
+                ElseIf el.@niv.Length >= 4 And el.@niv.Length < 6 Then
                     el.Add(New XAttribute("id", "Pts002"))
-                Else
+                ElseIf el.@niv.Length >= 2 And el.@niv.Length < 4 Then
                     el.Add(New XAttribute("id", "Pts001"))
                 End If
             Next
