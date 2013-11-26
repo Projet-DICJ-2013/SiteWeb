@@ -20,7 +20,7 @@ Partial Class Reunion
         ListeResultat.DataTextField = "TitreOrdreJour"
         ListeResultat.DataSource = foncRech.odjtypememb(Me.Context.User.Identity.Name)
         ListeResultat.DataBind()
-        If lstTypeParticipant.SelectedIndex <> 4 Then
+        If lstTypeParticipant.SelectedIndex <> 0 Then
             lstParticipant.DataTextField = "PrenomMembre"
             lstParticipant.DataSource = ChargerParticipant(lstTypeParticipant.SelectedIndex)
             lstParticipant.DataBind()
@@ -55,13 +55,13 @@ Public Class Reunion
     Public Function ChargerParticipant(ByVal TypeRech As Int16) As List(Of tblMembre)
         
         Select Case TypeRech
-            Case 0
-                _lstmembres = (From membre In BD.tblMembre Join prof In BD.tblProfesseur On prof.IdMembre Equals membre.IdMembre Select membre).ToList()
             Case 1
-                _lstmembres = (From membre In BD.tblMembre Join etudiant In BD.tblEtudiant On etudiant.IdMembre Equals membre.IdMembre Where etudiant.Annee = 1 Select membre).ToList()
+                _lstmembres = (From membre In BD.tblMembre Join prof In BD.tblProfesseur On prof.IdMembre Equals membre.IdMembre Select membre).ToList()
             Case 2
-                _lstmembres = (From membre In BD.tblMembre Join etudiant In BD.tblEtudiant On etudiant.IdMembre Equals membre.IdMembre Where etudiant.Annee = 2 Select membre).ToList()
+                _lstmembres = (From membre In BD.tblMembre Join etudiant In BD.tblEtudiant On etudiant.IdMembre Equals membre.IdMembre Where etudiant.Annee = 1 Select membre).ToList()
             Case 3
+                _lstmembres = (From membre In BD.tblMembre Join etudiant In BD.tblEtudiant On etudiant.IdMembre Equals membre.IdMembre Where etudiant.Annee = 2 Select membre).ToList()
+            Case 4
                 _lstmembres = (From membre In BD.tblMembre Join etudiant In BD.tblEtudiant On etudiant.IdMembre Equals membre.IdMembre Where etudiant.Annee = 3 Select membre).ToList()
 
         End Select
