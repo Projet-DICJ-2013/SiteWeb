@@ -53,7 +53,7 @@ End Class
 
 Public Class Reunion
     Public Function ChargerParticipant(ByVal TypeRech As Int16) As List(Of tblMembre)
-        
+
         Select Case TypeRech
             Case 1
                 _lstmembres = (From membre In BD.tblMembre Join prof In BD.tblProfesseur On prof.IdMembre Equals membre.IdMembre Select membre).ToList()
