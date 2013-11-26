@@ -4,7 +4,7 @@ Partial Class Reunion
     Private foncRech As objRech
     Private Rapport As GenereRapport
     Private _lstmembres As List(Of tblMembre)
-    Private BD As New PresenceMod
+    Private BD As New PresenceModel
     Private ListeOrdreDuJour As List(Of tblOrdreDuJour)
     Private TempsFile As String
     Private MonPdf As New GetPdf
@@ -67,7 +67,7 @@ Partial Class Reunion
 End Class
 
 Public Class Reunion
-    Public Function ChargerParticipant(ByVal TypeRech As Int16) As List(Of tblMembre)       
+    Public Function ChargerParticipant(ByVal TypeRech As Int16) As List(Of tblMembre)
         If TypeRech = 1 Then
             _lstmembres = (From membre In BD.tblMembre Join prof In BD.tblProfesseur On prof.IdMembre Equals membre.IdMembre Select membre).ToList()
         ElseIf (TypeRech = 2 Or TypeRech = 3 Or TypeRech = 4) Then

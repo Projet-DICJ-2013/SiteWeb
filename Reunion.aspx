@@ -45,7 +45,6 @@
   </script>
   
     
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div id="PrincipalReunion">
         <div id="TitreRecherche">Consultation des ordres du jour et des procès-verbaux</div>
         
