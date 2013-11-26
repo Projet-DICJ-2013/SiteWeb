@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="Reunion.aspx.vb" Inherits="Reunion" %>
 
-<%--<script runat="server">
+<script runat="server">
 
     Sub GetPdf_Click(ByVal sender As Object, ByVal e As EventArgs)
         
@@ -13,7 +13,7 @@
         MonPdf.ProcessRequest(Me.Context)
     End Sub
 
-</script>--%>
+</script>
 
 <asp:Content ID="ContenuTopReu" ContentPlaceHolderID="ContenuTop" Runat="Server">
 
@@ -33,7 +33,7 @@
 
 <asp:Content ID="ContenuCorpsReu" ContentPlaceHolderID="ContenuCorps" Runat="Server">
 
-<%--    <div>
+  <div>
         <asp:TextBox ID="txtPDF"
             runat="server" />
 
@@ -42,7 +42,7 @@
            OnClick="GetPdf_Click" 
            runat="server"/>
         
-    </div>--%>
+    </div>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -99,6 +99,7 @@
             </asp:DropDownList>
         <asp:DropDownList ID="lstParticipant" runat="server" Enabled="True"/>
             
+
   
         </div> 
         </div>
