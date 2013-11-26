@@ -1,10 +1,10 @@
 ﻿
 Partial Class Reunion
     Inherits System.Web.UI.Page
-    'Private foncRech As objRech
+    Private foncRech As objRech
     Private Rapport As GenereRapport
     Private _lstmembres As List(Of tblMembre)
-    Private BD As New PresenceModel
+    Private BD As New PresenceMod
 
     Public Function GetMyPDF(ByVal PdfId As Integer) As String
 
@@ -16,10 +16,10 @@ Partial Class Reunion
     End Function
 
     Private Sub onload(sender As Object, e As EventArgs) Handles Me.Load
-        'foncRech = New objRech
-        'ListeResultat.DataTextField = "TitreOrdreJour"
-        'ListeResultat.DataSource = foncRech.odjtypememb(Me.Context.User.Identity.Name)
-        'ListeResultat.DataBind()
+        foncRech = New objRech
+        ListeResultat.DataTextField = "TitreOrdreJour"
+        ListeResultat.DataSource = foncRech.odjtypememb(Me.Context.User.Identity.Name)
+        ListeResultat.DataBind()
         If lstTypeParticipant.SelectedIndex <> 0 Then
             lstParticipant.DataTextField = "PrenomMembre"
             lstParticipant.DataSource = ChargerParticipant(lstTypeParticipant.SelectedIndex)
