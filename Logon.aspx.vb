@@ -3,6 +3,7 @@ Imports System.Text
 Imports System.Data
 Imports System.Configuration
 Imports System.Security.Cryptography
+Imports System.Data.SqlClient
 
 Partial Class _Logon
     Inherits Page
@@ -12,7 +13,7 @@ Partial Class _Logon
 
         Dim Authentificate As New Provider
 
-        If Authentificate.ValidateUser(UserID.Text, UserPass.Text) Then
+        If Authentificate.ValidateUser(UserID.Text, StringToMd5(UserPass.Text)) Then
             FormsAuthentication.RedirectFromLoginPage _
                  (UserID.Text, Persist.Checked)
         Else
@@ -21,24 +22,17 @@ Partial Class _Logon
 
     End Sub
 
-    Private Function Encrypt(clearText As String) As String
-        Dim EncryptionKey As String = "MAKV2SPBNI99212"
-        Dim clearBytes As Byte() = Encoding.Unicode.GetBytes(clearText)
-        Using encryptor As Aes = Aes.Create()
-            Dim pdb As New Rfc2898DeriveBytes(EncryptionKey, New Byte() {&H49, &H76, &H61, &H6E, &H20, &H4D, _
-             &H65, &H64, &H76, &H65, &H64, &H65, _
-             &H76})
-            encryptor.Key = pdb.GetBytes(32)
-            encryptor.IV = pdb.GetBytes(16)
-            Using ms As New MemoryStream()
-                Using cs As New CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write)
-                    cs.Write(clearBytes, 0, clearBytes.Length)
-                    cs.Close()
-                End Using
-                clearText = Convert.ToBase64String(ms.ToArray())
-            End Using
-        End Using
-        Return clearText
+    Private Function StringToMd5(ByRef Content As String) As String
+        Dim M5 As New System.Security.Cryptography.MD5CryptoServiceProvider
+        Dim ByteString() As Byte = System.Text.Encoding.ASCII.GetBytes(Content)
+        ByteString = M5.ComputeHash(ByteString)
+        Dim FinalString As String = Nothing
+
+        For Each byt As Byte In ByteString
+            FinalString &= byt.ToString("x2")
+
+        Next
+        Return FinalString.ToUpper()
     End Function
 
 End Class

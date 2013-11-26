@@ -112,7 +112,7 @@ Public Module ModRapport
     Public Class RaportOrd
         Inherits P2013_CreateDoc.ModeleInfos
 
-        Private _Bd_Presence As New PresenceMod
+        Private _Bd_Presence As New PresenceModel
 
         Public Sub New(ByVal IdOrdre As String)
             MyBase.New(IdOrdre)
@@ -158,7 +158,7 @@ Public Module ModRapport
     Public Class RaportModele
         Inherits P2013_CreateDoc.ModeleInfos
 
-        Private _Bd_Presence As New PresenceMod
+        Private _Bd_Presence As New PresenceModel
 
         Public Sub New(ByVal IdOrdre As String)
             MyBase.New(IdOrdre)
@@ -212,7 +212,7 @@ Public Module ModRapport
     Public Class RaportCours
         Inherits P2013_CreateDoc.ModeleInfos
 
-        Private _Bd_Presence As New PresenceMod
+        Private _Bd_Presence As New PresenceModel
 
         Public Sub New(ByVal IdOrdre As String)
             MyBase.New(IdOrdre)

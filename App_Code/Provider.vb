@@ -5,7 +5,7 @@ Public Module ModProvider
     Public Class Provider
         Inherits MembershipProvider
 
-        Private BD As New PresenceMod
+        Private BD As New PresenceModel
 
         Public Overrides Property ApplicationName As String
 
@@ -132,7 +132,7 @@ Public Module ModProvider
         Public Overrides Function ValidateUser(username As String, password As String) As Boolean
 
             Dim IsConnect = (From MonLogin In BD.tblLogin
-                    Where MonLogin.IdLogin = username And MonLogin.MotDePasseLogin = password
+                    Where MonLogin.IdLogin = username And MonLogin.Hash = password
                     Select MonLogin).Count
 
             If IsConnect > 0 Then

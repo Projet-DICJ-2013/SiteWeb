@@ -14,11 +14,11 @@ Imports System.Data.Objects
 Imports System.Data.Objects.DataClasses
 Imports System.Linq
 
-Partial Public Class PresenceMod
+Partial Public Class PresenceModel
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=PresenceMod")
+        MyBase.New("name=PresenceModel")
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
@@ -75,18 +75,18 @@ Partial Public Class PresenceMod
     Public Property tblElement() As DbSet(Of tblElement)
     Public Property tblTypeRapport() As DbSet(Of tblTypeRapport)
 
-    <EdmFunction("PresenceMod", "SelOrdreJour")>
+    <EdmFunction("PresenceModel", "SelOrdreJour")>
     Public Overridable Function SelOrdreJour(noOrdre As Nullable(Of Integer)) As IQueryable(Of SelOrdreJour_Result)
         Dim noOrdreParameter As ObjectParameter = If(noOrdre.HasValue, New ObjectParameter("NoOrdre", noOrdre), New ObjectParameter("NoOrdre", GetType(Integer)))
 
-         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelOrdreJour_Result)("[PresenceMod].[SelOrdreJour](@NoOrdre)", noOrdreParameter)
+         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelOrdreJour_Result)("[PresenceModel].[SelOrdreJour](@NoOrdre)", noOrdreParameter)
     End Function
 
-    <EdmFunction("PresenceMod", "SelrdJour")>
+    <EdmFunction("PresenceModel", "SelrdJour")>
     Public Overridable Function SelrdJour(noOrdre As Nullable(Of Integer)) As IQueryable(Of SelrdJour_Result)
         Dim noOrdreParameter As ObjectParameter = If(noOrdre.HasValue, New ObjectParameter("NoOrdre", noOrdre), New ObjectParameter("NoOrdre", GetType(Integer)))
 
-         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelrdJour_Result)("[PresenceMod].[SelrdJour](@NoOrdre)", noOrdreParameter)
+         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelrdJour_Result)("[PresenceModel].[SelrdJour](@NoOrdre)", noOrdreParameter)
     End Function
 
     Public Overridable Function GetCompoModele(monMod As String) As ObjectResult(Of GetCompoModele_Result)

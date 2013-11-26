@@ -2,9 +2,6 @@
 
 <asp:Content ID="ContenuTopPrets" ContentPlaceHolderID="ContenuTop" Runat="Server">
 
-
-				
-
             <asp:Table ID="Table1" runat="server">
             <asp:TableRow ID="TableRow1" runat="server">
                 <asp:TableCell ID="TableCell1" VerticalAlign="Top" runat="server">    	
