@@ -61,16 +61,16 @@
   width: 640px;
 }
 
-#Login {
-  position: relative;
-  vertical-align:middle;
-  margin: 0 auto;
-  padding: 20px 20px 20px;
-  width: 310px;
-  background: white;
-  border-radius: 3px;
-  @include box-shadow(0 0 200px rgba(white, .5), 0 1px 2px rgba(black, .3));
-
+    #Login {
+        position: relative;
+        vertical-align: middle;
+        margin: 0 auto;
+        padding: 20px 20px 20px;
+        width: 310px;
+        background: white;
+        border-radius: 3px;
+        @include box-shadow(0 0 200px rgba(white, .5), 0 1px 2px rgba(black, .3));
+    }
   &:before {
     content: '';
     position: absolute;
@@ -151,6 +151,7 @@ input[type=text], input[type=password] {
 #btnLogon
 {
     margin-left:80px;
+    margin-top:20px;
 
     -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
     -webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
