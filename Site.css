@@ -628,10 +628,20 @@ body {
 {
     margin: 2%;font-size:34px;
 }
-#SectionCritere 
+#SectionCritere
 {
     display:inline-block;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:18px;Padding:2%; position:relative;border:2px;border-style:solid;
 border-color:#023550;width:100%; 
+}
+#DivPret
+{
+display:inline-block;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:18px;Padding:2%; position:relative;border:2px;border-style:solid;
+border-color:#023550; padding:14px
+}
+#TablePret 
+{
+ border:1px;border-style:solid;
+border-color:#028A9E;
 }
 #SectionCritGauche
  {
