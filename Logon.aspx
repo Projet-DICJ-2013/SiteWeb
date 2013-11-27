@@ -59,7 +59,7 @@
     body {
   font: 13px/20px 'Lucida Grande', Tahoma, Verdana, sans-serif;
   color: #404040;
-  background: rgba(83, 172, 219, 1);
+  background: rgba(239, 239, 239, 1);
 }
 
 #form1 {
@@ -74,9 +74,10 @@
         text-align:center;
         margin: 0 auto;
         padding: 20px 20px 20px;
-        width: 410px;
-        min-height:400px;
+        width: 390px;
+        min-height:470px;
         background: white;
+        border:2px solid #cfcfcf;
         border-radius: 3px;
         @include box-shadow(0 0 200px rgba(white, .5), 0 1px 2px rgba(black, .3));
     }
@@ -93,11 +94,11 @@
     margin: -20px -20px 21px;
     line-height: 40px;
     font-size: 1.6em;
-    font-weight: bold;
-    color: #555;
+    padding:10px;
+    color: white;
     text-align: center;
     text-shadow: 0 1px white;
-    background: #f3f3f3;
+    background: rgb(4, 172, 209);
     border-bottom: 1px solid #cfcfcf;
     border-radius: 3px 3px 0 0;
     @include linear-gradient(top, whiteffd, #eef2f5);
@@ -106,22 +107,27 @@
 
     #UserName, #PassWord {
         position:relative;
-        padding:10px;
+        padding:15px;
     }
 
   p { font-size:1.3em;}
 
     #UserName p {
         margin: 20px 120px 0 0; 
+        padding-bottom:10px;
     }
 
     #PassWord p {
         margin: 20px 150px 0 0; 
+        padding-bottom:10px;
     }
 
   input[type=text], input[type=password] { width: 278px; padding-top:30px; }
 
   .Souvenir {
+
+    margin-right:80px;
+    padding:15px;
 
     label {
       font-size: 36px;
@@ -214,4 +220,8 @@ input[type=text], input[type=password] {
     position:relative;
     top:2px;
 }
+
+    #msg {
+        padding:15px;
+    }
 </style>
