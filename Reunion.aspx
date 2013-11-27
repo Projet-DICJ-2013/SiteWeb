@@ -21,27 +21,31 @@
 
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"> </script>
+    
   <script>
       $(function () {
           $("#from").datepicker({
+              dateFormat: "yy-mm-dd",
               defaultDate: "+1w",
               changeMonth: true,
-              numberOfMonths: 3,
+              numberOfMonths: 1,
               onClose: function (selectedDate) {
                   $("#to").datepicker("option", "minDate", selectedDate);
               }
           });
           $("#to").datepicker({
+              dateFormat: "yy-mm-dd",
               defaultDate: "+1w",
               changeMonth: true,
-              numberOfMonths: 3,
+              numberOfMonths: 1,
               onClose: function (selectedDate) {
                   $("#from").datepicker("option", "maxDate", selectedDate);
               }
           });
+
       });
+     
   </script>
   
     
