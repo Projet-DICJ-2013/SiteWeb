@@ -187,9 +187,9 @@ Partial Public Class tblLocal
 End Class
 Partial Public Class tblLogin
     Public Property IdLogin As String
-    Public Property MotDePasseLogin As String
-    Public Property EstAutorise As Nullable(Of Boolean)
+    Public Property Administrateur As Boolean
     Public Property IdMembre As Nullable(Of Short)
+    Public Property Hash As String
 
     Public Overridable Property tblMembre As tblMembre
 

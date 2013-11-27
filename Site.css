@@ -255,7 +255,7 @@ html, body {
 body {
 	position:relative;
     min-height: 100%;
-	background: rgba(236,242,242,1);
+	background: rgb(239,239,239);
 }
 
 
@@ -285,7 +285,7 @@ body {
    margin-top:25px;
 }
 
-#btnLogin, .ReuRech
+#btnLogin
 {
      float:right;
 
@@ -339,7 +339,7 @@ body {
 	position:relative;
 	height:500px;
 	width:100%;
-	background: rgba(83, 172, 219, 1);
+	background: rgb(2, 138, 158);
 	display:inline-block;
 	border-top:1px;
 	border-top-style:solid;
@@ -356,11 +356,7 @@ body {
 	top:0%;bottom:80%;
 	width:100%;
 		z-index:4;
-	background-color: rgba(1, 52, 64, 0.5);
-	/* IE 5.5 - 7*/
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-	/*  IE 8*/
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	background-color: rgb(2, 53, 80);
 }
 
 #menu_top ul , #menu_top ul li
@@ -382,7 +378,7 @@ body {
 
 #mon_menu  li
 {
-	padding-top:1.1em;
+    padding-top:1.1em;
 	right:50%;
 	padding-right: 2.5em;
 	z-index:5;
@@ -398,7 +394,7 @@ body {
 
 #mon_menu li a:hover
 {
-	background: rgba(83, 172, 219, 0.8);
+	background: rgba(4, 191, 191, 0.8);
 	border-radius: 2px;
 	border:5px;
 	transition: .5s ease;
@@ -406,11 +402,10 @@ body {
 	box-shadow: 10px;
 }
 
-li img
+#mon_menu li img
 {
     max-width:150px;
     max-height:150px;
-    vertical-align:middle;
 }
 
 @media (max-width:800px)
@@ -631,22 +626,31 @@ li img
 }
 #TitreRecherche 
 {
-    margin-left:10%;margin-right:10%;
+    margin: 2%;font-size:30px;
 }
 #SectionCritere 
 {
     display:inline-block;  margin:2%; margin-bottom:5%;font-family:arial black; font-size:18px;Padding:2%; position:relative;border:10px;border-style:solid;
-border-color:rgba(83, 172, 219, 1);width:100%;
+border-color:rgba(83, 172, 219, 1);width:100%; 
 }
 #SectionCritGauche
  {
-    display:block; margin:3%;font-family:arial black; font-size:18px; Padding:2%; position:relative;float:left;border:5px;border-style:solid;
-border-color:rgba(83, 172, 219, 1);
+    display:block; margin:2%;font-family:arial black; width:42%;font-size:14px; Padding:1%; position:relative;float:left;border:5px;border-style:solid;
+border-color:rgba(83, 172, 219, 1); height:40%;
+}
+#CritDate {display:inline-block;position:relative;
+}
+#CritDate1, #CritDate2 {display:inline;position:relative;
+}
+#CritDate1.wrapper, #CritDate2.wrapper {
+  min-width: 50px; /* Minimum width of your wrapper element */
+  overflow: hidden;
+  display: inline;
 }
 #SectionCritDroit
  {
-    display:block;  margin:3%;font-family:arial black; font-size:18px; Padding:2%; width:38%; position:relative; float:left;border:5px;border-style:solid;
-border-color:rgba(83, 172, 219, 1);
+    display:block;  margin:2%;font-family:arial black; font-size:14px; Padding:1%; width:42%; position:relative; float:left;border:5px;border-style:solid;
+border-color:rgba(83, 172, 219, 1); height:40%;
 }
 #SectionResultats 
 {
@@ -658,5 +662,42 @@ border-color:rgba(83, 172, 219, 1);
 }
 #BoutonReu 
 {
-    display:inline; float:right;
+    display:inline; float:right; width:40%;
+}
+.ReuRech
+{   
+    -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
+    box-shadow:inset 0px 1px 0px 0px #cf866c;
+        
+    background-color:#d0451b;
+        
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+        
+    border:1px solid #942911;
+        
+    display:inline-block;
+    color:#ffffff;
+    font-family:arial;
+    font-size:0.9em;
+    font-weight:normal;
+    
+    text-decoration:none;
+     padding:10px 30px;  
+    text-shadow:0px 1px 0px #854629;
+}
+
+.ReuRech:hover
+{
+        
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #cc5f2d), color-stop(1, #d0451b));
+    background:-moz-linear-gradient(top, #cc5f2d 5%, #d0451b 100%);
+    background:-webkit-linear-gradient(top, #cc5f2d 5%, #d0451b 100%);
+    background:-o-linear-gradient(top, #cc5f2d 5%, #d0451b 100%);
+    background:-ms-linear-gradient(top, #cc5f2d 5%, #d0451b 100%);
+    background:linear-gradient(to bottom, #cc5f2d 5%, #d0451b 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc5f2d', endColorstr='#d0451b',GradientType=0);
+    background-color:#cc5f2d;
 }
