@@ -78,6 +78,6 @@
         Return listbypart
 
     End Function
-    
+
 
 End Class

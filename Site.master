@@ -27,7 +27,7 @@
 		    <li id="Propos"><a href="./Cours.aspx"> Cours </a></li>
 		    <li id="Produits"><a href="./Prets.aspx"> Emprunts </a></li>
 		    <li id="Nous_Contacter"><a href="./Reunion.aspx"> Réunion </a></li>
-
+            <li id="AGEECJ"><a href="AGEECJ.aspx"> AGEECJ </a></li>
             <li id="Logo"> <img src="./images/logo.png" alt=""/> </li>
 	    </ul>
 	    

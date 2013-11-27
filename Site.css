@@ -255,7 +255,7 @@ html, body {
 body {
 	position:relative;
     min-height: 100%;
-	background: rgba(236,242,242,1);
+	background: rgb(239,239,239);
 }
 
 
@@ -339,7 +339,7 @@ body {
 	position:relative;
 	height:500px;
 	width:100%;
-	background: rgba(83, 172, 219, 1);
+	background: rgb(2, 138, 158);
 	display:inline-block;
 	border-top:1px;
 	border-top-style:solid;
@@ -356,11 +356,7 @@ body {
 	top:0%;bottom:80%;
 	width:100%;
 		z-index:4;
-	background-color: rgba(1, 52, 64, 0.5);
-	/* IE 5.5 - 7*/
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-	/*  IE 8*/
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	background-color: rgb(2, 53, 80);
 }
 
 #menu_top ul , #menu_top ul li
@@ -382,7 +378,7 @@ body {
 
 #mon_menu  li
 {
-	padding-top:1.1em;
+    padding-top:1.1em;
 	right:50%;
 	padding-right: 2.5em;
 	z-index:5;
@@ -398,7 +394,7 @@ body {
 
 #mon_menu li a:hover
 {
-	background: rgba(83, 172, 219, 0.8);
+	background: rgba(4, 191, 191, 0.8);
 	border-radius: 2px;
 	border:5px;
 	transition: .5s ease;
@@ -406,11 +402,10 @@ body {
 	box-shadow: 10px;
 }
 
-li img
+#mon_menu li img
 {
     max-width:150px;
     max-height:150px;
-    vertical-align:middle;
 }
 
 @media (max-width:800px)
