@@ -21,27 +21,31 @@
 
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"> </script>
+    
   <script>
       $(function () {
           $("#from").datepicker({
+              dateFormat: "yy-mm-dd",
               defaultDate: "+1w",
               changeMonth: true,
-              numberOfMonths: 3,
+              numberOfMonths: 1,
               onClose: function (selectedDate) {
                   $("#to").datepicker("option", "minDate", selectedDate);
               }
           });
           $("#to").datepicker({
+              dateFormat: "yy-mm-dd",
               defaultDate: "+1w",
               changeMonth: true,
-              numberOfMonths: 3,
+              numberOfMonths: 1,
               onClose: function (selectedDate) {
                   $("#from").datepicker("option", "maxDate", selectedDate);
               }
           });
+
       });
+     
   </script>
   
     
@@ -102,8 +106,15 @@
             </div>        
         </div>
         <div id="SectionResultats">
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
             <asp:ListBox ID="ListeResultat" runat="server" OnSelectedIndexChanged="ListeResultat_SelectedIndexChanged" AutoPostBack="true" >
             </asp:ListBox> 
+            </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="ListeResultat" EventName="SelectedIndexChanged" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
                         
             <asp:Button ID="btnPDF" text="Ouvrir"  OnClick="GetPdf_Click" runat="server" class="ReuRech"/>          
         </div>

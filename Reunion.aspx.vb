@@ -20,13 +20,14 @@ Partial Class Reunion
     End Function
 
     Private Sub onload(sender As Object, e As EventArgs) Handles Me.Load
-
         foncRech = New objRech
         ListeOrdreDuJour = foncRech.odjtypememb(Me.Context.User.Identity.Name)
-        ListeResultat.DataTextField = "TitreOrdreJour"
-        ListeResultat.DataSource = ListeOrdreDuJour
-        ListeResultat.DataBind()
-        RadOdj.Checked = True
+        If Me.IsPostBack = False Then
+            ListeResultat.DataTextField = "TitreOrdreJour"
+            ListeResultat.DataSource = ListeOrdreDuJour
+            ListeResultat.DataBind()
+            RadOdj.Checked = True
+        End If
 
     End Sub
 
