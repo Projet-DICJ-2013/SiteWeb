@@ -7,7 +7,7 @@ Partial Class Reunion
     Private BD As New PresenceModel
     Private ListeOrdreDuJour As List(Of tblOrdreDuJour)
     Private TempsFile As String
-    Private MonPdf As GetPDF
+    Private MonPdf As New GetPDF
 
 
     Public Function GetMyPDF(ByVal PdfId As Integer) As String

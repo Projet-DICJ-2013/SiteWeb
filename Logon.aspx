@@ -14,24 +14,30 @@
   <form id="form1" runat="server">
       <div id="Login">
         <h3> Formulaire de connexion</h3>
-        <p> Nom d'utilisateur:</p>
-        <asp:TextBox ID="UserID" runat="server" />
-      
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" 
-        ControlToValidate="UserID"
-        Display="Dynamic" 
-        ErrorMessage="*"
-        runat="server" />
 
-        <p>Mot de passe:</p> 
+        <div id="UserName">
+            <p> Nom d'utilisateur:</p>
+            <asp:TextBox ID="UserID" runat="server" />
+
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" 
+            ControlToValidate="UserID"
+            Display="Dynamic" 
+            ErrorMessage="*"
+            runat="server" />
+         </div>
+
+        <div id="PassWord">
+            <p>Mot de passe:</p> 
        
-        <asp:TextBox ID="UserPass" TextMode="Password" 
-        runat="server" />
+            <asp:TextBox ID="UserPass" TextMode="Password" 
+            runat="server" />
 
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" 
-        ControlToValidate="UserPass"
-        ErrorMessage="*"
-        runat="server" />
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" 
+            ControlToValidate="UserPass"
+            ErrorMessage="*"
+            runat="server" />
+
+         </div>
 
         <p class="Souvenir">Se souvenir de moi? 
             <asp:CheckBox ID="Persist" runat="server" />
@@ -53,7 +59,7 @@
     body {
   font: 13px/20px 'Lucida Grande', Tahoma, Verdana, sans-serif;
   color: #404040;
-  background: rgba(83, 172, 219, 1);
+  background: rgba(239, 239, 239, 1);
 }
 
 #form1 {
@@ -62,12 +68,16 @@
 }
 
     #Login {
+        display:block;
         position: relative;
         vertical-align: middle;
+        text-align:center;
         margin: 0 auto;
         padding: 20px 20px 20px;
-        width: 310px;
+        width: 390px;
+        min-height:470px;
         background: white;
+        border:2px solid #cfcfcf;
         border-radius: 3px;
         @include box-shadow(0 0 200px rgba(white, .5), 0 1px 2px rgba(black, .3));
     }
@@ -83,28 +93,44 @@
   h3 {
     margin: -20px -20px 21px;
     line-height: 40px;
-    font-size: 15px;
-    font-weight: bold;
-    color: #555;
+    font-size: 1.6em;
+    padding:10px;
+    color: white;
     text-align: center;
     text-shadow: 0 1px white;
-    background: #f3f3f3;
+    background: rgb(4, 172, 209);
     border-bottom: 1px solid #cfcfcf;
     border-radius: 3px 3px 0 0;
     @include linear-gradient(top, whiteffd, #eef2f5);
     @include box-shadow(0 1px #f5f5f5);
   }
 
-  p { margin: 20px 0 0; }
-  p:first-child { margin-top: 0; }
+    #UserName, #PassWord {
+        position:relative;
+        padding:15px;
+    }
 
-  input[type=text], input[type=password] { width: 278px; }
+  p { font-size:1.3em;}
+
+    #UserName p {
+        margin: 20px 120px 0 0; 
+        padding-bottom:10px;
+    }
+
+    #PassWord p {
+        margin: 20px 150px 0 0; 
+        padding-bottom:10px;
+    }
+
+  input[type=text], input[type=password] { width: 278px; padding-top:30px; }
 
   .Souvenir {
-    float: left;
+
+    margin-right:80px;
+    padding:15px;
 
     label {
-      font-size: 12px;
+      font-size: 36px;
       color: #777;
       cursor: pointer;
     }
@@ -130,8 +156,8 @@
 input[type=text], input[type=password] {
   margin: 5px;
   padding: 0 10px;
-  width: 200px;
-  height: 34px;
+  width: 250px;
+  height: 36px;
   color: #404040;
   background: white;
   border: 1px solid;
@@ -150,7 +176,6 @@ input[type=text], input[type=password] {
 
 #btnLogon
 {
-    margin-left:80px;
     margin-top:20px;
 
     -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
@@ -168,11 +193,11 @@ input[type=text], input[type=password] {
     display:inline-block;
     color:#ffffff;
     font-family:arial;
-    font-size:0.9em;
+    font-size:1.4em;
     font-weight:normal;
     
     text-decoration:none;
-     padding:10px 30px;  
+     padding:15px 40px;  
     text-shadow:0px 1px 0px #854629;
 }
 
@@ -195,4 +220,8 @@ input[type=text], input[type=password] {
     position:relative;
     top:2px;
 }
+
+    #msg {
+        padding:15px;
+    }
 </style>
