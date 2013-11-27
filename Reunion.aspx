@@ -77,7 +77,7 @@
                     <div id="CritTypeParticipant">
                         
                         
-                            <asp:DropDownList ID="lstTypeParticipant" runat="server" OnSelectedIndexChanged="lstTypeParticipant_SelectedIndexChanged">
+                            <asp:DropDownList ID="lstTypeParticipant" runat="server" OnSelectedIndexChanged="lstTypeParticipant_SelectedIndexChanged" AutoPostBack="true">
                             <asp:ListItem>Aucun</asp:ListItem>
                             <asp:ListItem>Professeur</asp:ListItem>
                             <asp:ListItem>Etudiant - 1er</asp:ListItem>

@@ -71,7 +71,7 @@ Public Class Reunion
         If TypeRech = 1 Then
             _lstmembres = (From membre In BD.tblMembre Join prof In BD.tblProfesseur On prof.IdMembre Equals membre.IdMembre Select membre).ToList()
         ElseIf (TypeRech = 2 Or TypeRech = 3 Or TypeRech = 4) Then
-            _lstmembres = (From membre In BD.tblMembre Join etudiant In BD.tblEtudiant On etudiant.IdMembre Equals membre.IdMembre Where etudiant.Annee = TypeRech Select membre).ToList()
+            _lstmembres = (From membre In BD.tblMembre Join etudiant In BD.tblEtudiant On etudiant.IdMembre Equals membre.IdMembre Where etudiant.Annee = TypeRech - 1 Select membre).ToList()
         End If
         Return _lstmembres
     End Function
