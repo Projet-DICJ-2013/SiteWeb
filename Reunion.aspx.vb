@@ -10,14 +10,7 @@ Partial Class Reunion
     Private MonPdf As New GetPDF
 
 
-    Public Function GetMyPDF(ByVal PdfId As Integer) As String
-
-        Rapport = New GenereRapport
-        Rapport.CreerRapportOrd(PdfId)
-
-        Return Rapport.TempFilePDF
-
-    End Function
+   
 
     Private Sub onload(sender As Object, e As EventArgs) Handles Me.Load
         foncRech = New objRech
@@ -75,5 +68,13 @@ Public Class Reunion
             _lstmembres = (From membre In BD.tblMembre Join etudiant In BD.tblEtudiant On etudiant.IdMembre Equals membre.IdMembre Where etudiant.Annee = TypeRech - 1 Select membre).ToList()
         End If
         Return _lstmembres
+    End Function
+    Public Function GetMyPDF(ByVal PdfId As Integer) As String
+
+        Rapport = New GenereRapport
+        Rapport.CreerRapportOrd(PdfId)
+
+        Return Rapport.TempFilePDF
+
     End Function
 End Class
