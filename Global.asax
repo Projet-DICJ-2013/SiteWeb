@@ -73,7 +73,7 @@ End Sub
     
     Public Sub Session_OnEnd()
         Application.Lock()
-        File.Delete(Me.Context.Session("Rapport"))
+        MsgBox("Session expiré")
         Application.UnLock()
     End Sub
     

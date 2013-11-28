@@ -8,7 +8,7 @@
 	    </div>
 				
 	    <div id="ImgTop">
-            <img src="./images/AGEECJ_test.png" />
+            <img src="./images/AGEECJ_sans.png" />
 	    </div>
 
     <asp:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server" />
