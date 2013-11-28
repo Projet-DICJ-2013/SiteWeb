@@ -17,6 +17,7 @@
 </asp:Content>
 
 <asp:Content ID="ContenuCorpsAGEECJ" ContentPlaceHolderID="ContenuCorps" Runat="Server">  
+    <div id="divAGEECJ">
     <asp:Panel ID="panRadio" runat="server" GroupingText="Destinataires: " Width="30%">
         <Table runat="server">
             <tr>
@@ -48,4 +49,5 @@
 
     <asp:Button ID="btnEnvoyer" runat="server" Height="30px" Width="100px" Text="Envoyer" OnClick="btnEnvoyer_Click1"/>
     <asp:Label ID="lblCommentaire" runat="server" Visible="false"/>
+</div>
 </asp:Content>
