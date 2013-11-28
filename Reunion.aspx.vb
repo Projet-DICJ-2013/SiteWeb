@@ -13,13 +13,13 @@ Partial Class Reunion
 
 
     Private Sub onload(sender As Object, e As EventArgs) Handles Me.Load
-        foncRech = New objRech
-        ListeOrdreDuJour = foncRech.odjtypememb(Me.Context.User.Identity.Name)
+        
         If Me.IsPostBack = False Then
-            ListeResultat.DataTextField = "TitreOrdreJour"
-            ListeResultat.DataSource = ListeOrdreDuJour
-            ListeResultat.DataBind()
+            ReloadListeResultat()
             RadOdj.Checked = True
+        Else
+            foncRech = New objRech
+            ListeOrdreDuJour = foncRech.odjtypememb(Me.Context.User.Identity.Name)
         End If
 
     End Sub
@@ -57,6 +57,20 @@ Partial Class Reunion
     End Sub
     Protected Sub ListeResultat_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListeResultat.SelectedIndexChanged
 
+    End Sub
+    Private Sub ReloadListeResultat()
+        ListeResultat.Items.Clear()
+        foncRech = New objRech
+        ListeOrdreDuJour = foncRech.odjtypememb(Me.Context.User.Identity.Name)
+        ListeResultat.DataTextField = "TitreOrdreJour"
+        ListeResultat.DataSource = ListeOrdreDuJour
+        ListeResultat.DataBind()
+    End Sub
+
+    Protected Sub boutonNouv_Click(sender As Object, e As EventArgs)
+        ReloadListeResultat()
+        RadOdj.Checked = True
+        Dim sada As Int16 = ListeResultat.SelectedIndex
     End Sub
 End Class
 

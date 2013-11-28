@@ -51,7 +51,8 @@
     
     <div id="PrincipalReunion">
         <div id="TitreRecherche">Consultation des ordres du jour et des procès-verbaux</div>
-        
+         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
         <div id="SectionCritere">
             <div id="TypeRercherche">
                 <asp:RadioButton ID="RadOdj" runat="server" Text="Ordres du jours" GroupName="TypRech"/>
@@ -65,7 +66,7 @@
                     <div id="CritDate1">
                                 
                         <label for="from">Du</label>
-                        <input type="text" id="from" name="from">
+                        <input type="text" id="from" name="from"/>
                           
                     </div>
                     <div id="CritDate2">
@@ -101,22 +102,23 @@
                 </div>
            </div>
             <div id="BoutonReu">
-                <input  type="submit" value="Nouvelle Recherche" class="ReuRech">
-                <input  type="submit" value="Rechercher" class="ReuRech">
+                <asp:Button  id="boutonNouv" text="Nouvelle Recherche" runat="server" class="ReuRech" OnClick="boutonNouv_Click"/>
+                <asp:Button  id="boutonRech" text="Rechercher" runat="server" class="ReuRech"/>
             </div>        
         </div>
         <div id="SectionResultats">
-            <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
-                            <ContentTemplate>
+           
             <asp:ListBox ID="ListeResultat" runat="server" OnSelectedIndexChanged="ListeResultat_SelectedIndexChanged" AutoPostBack="true" >
             </asp:ListBox> 
-            </ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="ListeResultat" EventName="SelectedIndexChanged" />
-                                    </Triggers>
-                                </asp:UpdatePanel>
+            
                         
             <asp:Button ID="btnPDF" text="Ouvrir"  OnClick="GetPdf_Click" runat="server" class="ReuRech"/>          
         </div>
+                                </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="ListeResultat" EventName="SelectedIndexChanged" />
+                                        <asp:AsyncPostBackTrigger ControlID="boutonNouv" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
     </div>
 </asp:Content>
