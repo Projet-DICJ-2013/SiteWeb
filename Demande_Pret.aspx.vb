@@ -30,12 +30,16 @@ Partial Class Demande_Pret
 
     End Sub
 
+
+
     Sub OnType_Modified() Handles DropDownList1.SelectedIndexChanged
 
         req = req.Where(Function(r) CType(r.TypeMachine, String).Contains(DropDownList1.SelectedItem.Text))
         'TablePret.Rows.Clear()
-
+        Dim nbModele As Integer
+        nbModele = 0
         For Each modele As tblModele In req
+
             Dim NouvelleLigne As New TableRow
             Dim NouvelleCell As New TableCell
             Dim marquecell As TableCell = New TableCell With {.Text = modele.Marque}
@@ -46,14 +50,20 @@ Partial Class Demande_Pret
             NouvelleLigne.Cells.Add(notecell)
             notecell.Width = 100
             Dim chkcell As TableCell = New TableCell
+            chkcell.ID = nbModele
             NouvelleLigne.Cells.Add(chkcell)
             Dim rdobox As New RadioButton
             chkcell.Controls.Add(rdobox)
             rdobox.GroupName = "pret"
             ' rdobox.Controls.Add(rdobox)
             TablePret.Rows.Add(NouvelleLigne)
+            nbModele = nbModele + 1
         Next
+        Dim LigneEnvoyer As New TableRow
+        Dim CellEnvoyer As New TableCell
 
+        LigneEnvoyer.Cells.Add(CellEnvoyer)
+        TablePret.Rows.Add(LigneEnvoyer)
 
         'If req.ToList.Count > 0 Then
         '    drpModele.DataSource = req.ToList
@@ -65,6 +75,8 @@ Partial Class Demande_Pret
         'End If
 
     End Sub
+    Sub BoutonEnvoyer_Click()
 
+    End Sub
 
 End Class
