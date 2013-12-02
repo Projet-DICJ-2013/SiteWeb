@@ -13,7 +13,7 @@ Partial Class Reunion
 
 
     Private Sub onload(sender As Object, e As EventArgs) Handles Me.Load
-        
+
         If Me.IsPostBack = False Then
             ReloadListeResultat()
             RadOdj.Checked = True
