@@ -55,7 +55,7 @@
                             <ContentTemplate>
         <div id="SectionCritere">
             <div id="TypeRercherche">
-                <asp:RadioButton ID="RadOdj" runat="server" Text="Ordres du jours" GroupName="TypRech"/>
+                <asp:RadioButton ID="RadOdj" runat="server" Text="Ordres du jours" GroupName="TypRech" AutoPostBack="true"/>
                 <asp:RadioButton ID="RadPv" runat="server" Text="Procès-verbaux" GroupName="TypRech"/>
             </div>
 
@@ -103,7 +103,7 @@
            </div>
             <div id="BoutonReu">
                 <asp:Button  id="boutonNouv" text="Nouvelle Recherche" runat="server" class="ReuRech" OnClick="boutonNouv_Click"/>
-                <asp:Button  id="boutonRech" text="Rechercher" runat="server" class="ReuRech"/>
+                <asp:Button  id="boutonRech" text="Rechercher" runat="server" class="ReuRech" OnClick="boutonRech_Click"/>
             </div>        
         </div>
         <div id="SectionResultats">
