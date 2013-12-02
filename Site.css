@@ -570,21 +570,21 @@ border-color:#028A9E;width:74%;
 /*Contenu de la section Reunion*/
 #PrincipalReunion{display:block; font-family:Tahoma;}
 #TitreRecherche{margin: 2%;font-size:34px;}
-#CritTypeParticipant {display:inline-block;}
-#SectionResultats{margin-left:50%;margin-right:50%;}
-#ListeResultat {width: 100%;}
+#CritTypeParticipant {display:inline-block;width:100%;}
+#SectionResultats{margin-left:40%;margin-right:30%;}
+#ListeResultat {width: 100%; font-size:20px;}
 #BoutonReu{display:inline; float:right; width:40%;}
 #CritDate,#CritDate1, #CritDate2, #lstParticipant, #lstTypeParticipant {display:inline-block;position:relative;}
-#UpdatePanel1 {position:relative; float:left;
+#listepart {float:right; margin-right:230px; width:40px; 
 }
 #SectionCritere
 {
-    display:inline-block;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:18px;Padding:2%; position:relative;border:2px;border-style:solid;
+    display:inline-block;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:20px;Padding:2%; position:relative;border:2px;border-style:solid;
 border-color:#023550;width:100%; 
 }
 #SectionCritGauche
  {
-    display:block; margin:2%;font-family:Tahoma; width:42%;font-size:14px; Padding:1%; position:relative;float:left;border:1px;border-style:solid;
+    display:block; margin:2%;font-family:Tahoma; width:42%;font-size:20px; Padding:1%; position:relative;float:left;border:1px;border-style:solid;
 border-color:#028A9E; height:40%;
 }
 #CritDate1.wrapper, #CritDate2.wrapper 
@@ -595,7 +595,7 @@ border-color:#028A9E; height:40%;
 }
 #SectionCritDroit
 {
-    display:block;  margin:2%;font-family:Tahoma; font-size:14px; Padding:1%; width:42%; float:left; position:relative; border:1px;border-style:solid;
+    display:block;  margin:2%;font-family:Tahoma; font-size:20px; Padding:1%; width:42%; float:left; position:relative; border:1px;border-style:solid;
 border-color:#028A9E; height:40%;
 }
 .ReuRech
