@@ -50,11 +50,11 @@
             <div id="divTexte">
             <textarea ID="txtArMessage" runat="server" rows="5" cols ="60">Votre Message Ici!</textarea><br />
             </div>
-            <div id="divEnvoyer">
+            
+        </div>
+        <div id="divEnvoyer">
             <asp:Button ID="btnEnvoyer" class="ReuRech" runat="server" Text="Envoyer" OnClick="btnEnvoyer_Click1"/>
             <asp:Label ID="lblCommentaire" runat="server" Visible="false"/>
             </div>
-        </div>
-        
         </div>
 </asp:Content>
