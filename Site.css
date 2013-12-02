@@ -554,12 +554,12 @@ body {
 }
 #divAGEECJ
 {
-    display:block;  margin:2%; font-family:Tahoma; font-size:18px;padding:2%; padding-left:16%; border:2px;border-style:solid;
-border-color:#023550;width:750px; height:300px; 
+    display:block;  margin:2%; font-family:Tahoma; font-size:20px;padding:2%; padding-left:16%; border:2px;border-style:solid;
+border-color:#023550;width:750px; height:360px; 
 }
 #CritereMessage, #ContenuMessage
  {
-    display:block; margin:2%; font-family:Tahoma; font-size:14px; Padding:1%; position:relative;border:1px;border-style:solid;
+    display:block; margin:2%; font-family:Tahoma; font-size:20px; Padding:1%; position:relative;border:1px;border-style:solid;
 border-color:#028A9E;width:74%;
 }
 #divObjet #divMessage, .lblMessage{position:relative;
