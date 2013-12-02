@@ -54,10 +54,7 @@
          <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
         <div id="SectionCritere">
-            <div id="TypeRercherche">
-                <asp:RadioButton ID="RadOdj" runat="server" Text="Ordres du jours" GroupName="TypRech"/>
-                <asp:RadioButton ID="RadPv" runat="server" Text="Procès-verbaux" GroupName="TypRech"/>
-            </div>
+            
 
             <div id="SectionCritereLigne">        
                 <div id="SectionCritGauche">
@@ -89,7 +86,7 @@
                             <asp:ListItem>Etudiant - 2e</asp:ListItem>
                             <asp:ListItem>Etudiant - 3e</asp:ListItem>            
                         </asp:DropDownList>
-                               
+                             <div id="listepart">  
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
                         <asp:DropDownList ID="lstParticipant" runat="server" Enabled="True"/>
@@ -98,6 +95,7 @@
                                         <asp:AsyncPostBackTrigger ControlID="lstTypeParticipant" EventName="SelectedIndexChanged" />
                                     </Triggers>
                                 </asp:UpdatePanel>
+                                 </div>
                     </div> 
                 </div>
            </div>
@@ -108,6 +106,11 @@
         </div>
         <div id="SectionResultats">
            
+            <div id="TypeRercherche">
+                <asp:RadioButton ID="RadOdj" runat="server" Text="Ordres du jours" GroupName="TypRech"/>
+                <asp:RadioButton ID="RadPv" runat="server" Text="Procès-verbaux" GroupName="TypRech"/>
+            </div>
+
             <asp:ListBox ID="ListeResultat" runat="server" OnSelectedIndexChanged="ListeResultat_SelectedIndexChanged" AutoPostBack="true" >
             </asp:ListBox> 
             
