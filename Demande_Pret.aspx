@@ -1,9 +1,8 @@
 ﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="Demande_Pret.aspx.vb" Inherits="Demande_Pret" %>
 
 <asp:Content ID="ContenuCorpsDemandePret" ContentPlaceHolderID="ContenuCorps" runat="Server">
-
-
-    <asp:Table ID="TablePret" runat="server">
+    <div id="DivPret">
+    <asp:Table id="TablePret" runat="server">
         <asp:TableRow runat="server">
             <asp:TableCell ID="TableCell3" runat="server">Type de matériel : </asp:TableCell>
             <asp:TableCell ID="TableCell4" runat="server">
@@ -22,8 +21,10 @@
             <asp:TableCell runat="server">Marque</asp:TableCell>
             <asp:TableCell runat="server">No. Modèle</asp:TableCell>
             <asp:TableCell runat="server">Note</asp:TableCell>
+            <asp:TableCell runat="server"></asp:TableCell>
         </asp:TableRow>
-
+        
     </asp:Table>
 
+        </div>
 </asp:Content>

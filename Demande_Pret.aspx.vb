@@ -34,6 +34,7 @@ Partial Class Demande_Pret
 
         req = req.Where(Function(r) CType(r.TypeMachine, String).Contains(DropDownList1.SelectedItem.Text))
         'TablePret.Rows.Clear()
+
         For Each modele As tblModele In req
             Dim NouvelleLigne As New TableRow
             Dim NouvelleCell As New TableCell
@@ -43,8 +44,13 @@ Partial Class Demande_Pret
             NouvelleLigne.Cells.Add(modelecell)
             Dim notecell As TableCell = New TableCell With {.Text = modele.NoteModele}
             NouvelleLigne.Cells.Add(notecell)
-            Dim garantiecell As TableCell = New TableCell With {.Text = modele.NbAnneeGarantie}
-            NouvelleLigne.Cells.Add(garantiecell)
+            notecell.Width = 100
+            Dim chkcell As TableCell = New TableCell
+            NouvelleLigne.Cells.Add(chkcell)
+            Dim rdobox As New RadioButton
+            chkcell.Controls.Add(rdobox)
+            rdobox.GroupName = "pret"
+            ' rdobox.Controls.Add(rdobox)
             TablePret.Rows.Add(NouvelleLigne)
         Next
 
