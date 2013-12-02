@@ -39,15 +39,7 @@ Partial Class Reunion
         RadOdj.Checked = False
     End Sub
 
-    Protected Sub lstTypeParticipant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstTypeParticipant.SelectedIndexChanged
-        If lstTypeParticipant.SelectedIndex <> 0 Then
-            lstParticipant.DataTextField = "PrenomMembre"
-            lstParticipant.DataSource = ChargerParticipant(lstTypeParticipant.SelectedIndex)
-            lstParticipant.DataBind()
-        Else
-            lstParticipant.Items.Clear()
-        End If
-    End Sub
+
 
     Sub GetPdf_Click(ByVal sender As Object, ByVal e As EventArgs)
         TempsFile = GetMyPDF(ListeOrdreDuJour.Item(ListeResultat.SelectedIndex).NoOrdreDuJour)
@@ -71,6 +63,16 @@ Partial Class Reunion
         ReloadListeResultat()
         RadOdj.Checked = True
         Dim sada As Int16 = ListeResultat.SelectedIndex
+    End Sub
+
+    Protected Sub lstTypeParticipant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstTypeParticipant.SelectedIndexChanged
+        If lstTypeParticipant.SelectedIndex <> 0 Then
+            lstParticipant.DataTextField = "PrenomMembre"
+            lstParticipant.DataSource = ChargerParticipant(lstTypeParticipant.SelectedIndex)
+            lstParticipant.DataBind()
+        Else
+            lstParticipant.Items.Clear()
+        End If
     End Sub
 End Class
 
