@@ -16,30 +16,13 @@ Partial Class Reunion
 
         If Me.IsPostBack = False Then
             ReloadListeResultat()
-            RadOdj.Checked = True
+            TypeRecherche.SelectedIndex = 0
         Else
             foncRech = New objRech
             ListeOrdreDuJour = foncRech.odjtypememb(Me.Context.User.Identity.Name)
         End If
 
     End Sub
-
-
-    Protected Sub RadOdj_CheckedChanged(sender As Object, e As EventArgs) Handles RadOdj.CheckedChanged
-        If RadOdj.Checked = False Then
-            RadOdj.Checked = True
-        End If
-        RadPv.Checked = False
-    End Sub
-
-    Protected Sub RadPv_CheckedChanged(sender As Object, e As EventArgs) Handles RadPv.CheckedChanged
-        If RadPv.Checked = False Then
-            RadPv.Checked = True
-        End If
-        RadOdj.Checked = False
-    End Sub
-
-
 
     Sub GetPdf_Click(ByVal sender As Object, ByVal e As EventArgs)
         TempsFile = GetMyPDF(ListeOrdreDuJour.Item(ListeResultat.SelectedIndex).NoOrdreDuJour)
@@ -59,10 +42,12 @@ Partial Class Reunion
         ListeResultat.DataBind()
     End Sub
 
-    Protected Sub boutonNouv_Click(sender As Object, e As EventArgs)
+    Protected Sub boutonNouv_Click(sender As Object, e As EventArgs) Handles boutonNouv.Click
         ReloadListeResultat()
-        RadOdj.Checked = True
-        Dim sada As Int16 = ListeResultat.SelectedIndex
+        TypeRecherche.SelectedIndex = 0
+        lstParticipant.Items.Clear()
+        lstTypeParticipant.SelectedIndex = 0
+
     End Sub
 
     Protected Sub lstTypeParticipant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstTypeParticipant.SelectedIndexChanged
@@ -73,6 +58,10 @@ Partial Class Reunion
         Else
             lstParticipant.Items.Clear()
         End If
+    End Sub
+
+    Protected Sub boutonRech_Click(sender As Object, e As EventArgs) Handles boutonRech.Click
+        ListeResultat.ClearSelection()
     End Sub
 End Class
 

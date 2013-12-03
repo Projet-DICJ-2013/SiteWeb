@@ -50,11 +50,11 @@
   
     
     <div id="PrincipalReunion">
-        <div id="TitreRecherche">Consultation des ordres du jour et des procès-verbaux</div>
-        <%-- <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
-                            <ContentTemplate>--%>
+        
+         <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
         <div id="SectionCritere">
-            
+            <div id="TitreRecherche">Consultation des ordres du jour et des procès-verbaux</div>
 
             <div id="SectionCritereLigne">        
                 <div id="SectionCritGauche">
@@ -101,34 +101,35 @@
            </div>
                 </div>
             <div id="BoutonReu">
-                <asp:Button  id="boutonNouv" text="Nouvelle Recherche" runat="server" class="ReuRech" OnClick="boutonNouv_Click"/>
+                <asp:Button  id="boutonNouv" text="Nouvelle Recherche" runat="server" class="ReuRech" OnClick="boutonNouv_Click" autopostback="true"/>
                 <asp:Button  id="boutonRech" text="Rechercher" runat="server" class="ReuRech"/>
             </div>        
         
            
         <div id="SectionResultats">
+           <div id="SectionRes">
+            
+                <asp:RadioButtonList ID="TypeRecherche" runat="server">
+                    <asp:ListItem Text="Ordres du jours"></asp:ListItem>
+                    <asp:ListItem Text="Procès-verbaux"></asp:ListItem>
+                </asp:RadioButtonList>
+                
            
-            <div id="TypeRercherche">
-                <asp:RadioButton ID="RadOdj" runat="server" Text="Ordres du jours" GroupName="TypRech"/>
-                <asp:RadioButton ID="RadPv" runat="server" Text="Procès-verbaux" GroupName="TypRech"/>
-            </div>
+               <div id="partieRes">
              <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
-
+                 <Triggers><asp:AsyncPostBackTrigger ControlID="boutonRech" EventName="Click" /></Triggers>
                             <ContentTemplate>
             <asp:ListBox ID="ListeResultat" runat="server" OnSelectedIndexChanged="ListeResultat_SelectedIndexChanged" AutoPostBack="true" >
             </asp:ListBox> 
             </ContentTemplate>
                                 </asp:UpdatePanel>
-                        
-            <asp:Button ID="btnPDF" text="Ouvrir"  OnClick="GetPdf_Click" runat="server" class="ReuRech"/>          
+                   </div>
+               </div>
+                                     <asp:Button ID="btnPDF" text="Ouvrir"  OnClick="GetPdf_Click" runat="server" class="ReuRech"/>         
         </div>
-                                <%--</ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="ListeResultat" EventName="SelectedIndexChanged" />
-                                        <asp:AsyncPostBackTrigger ControlID="boutonNouv" EventName="Click" />
-                                    </Triggers>
-                                </asp:UpdatePanel>--%>
-
-     </div>
+               
+        </div>
+                </ContentTemplate>
+             </asp:UpdatePanel>
                 </div>
 </asp:Content>
