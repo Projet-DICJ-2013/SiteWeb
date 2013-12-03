@@ -16,7 +16,7 @@
         <EntityTypeShape EntityType="PresenceModele.tblLogin" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PresenceModele.tblMembre" Width="1.5" PointX="0.75" PointY="21.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PresenceModele.tblMembreAssociation" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PresenceModele.tblMembreAssociationEtudiant" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PresenceModele.tblMembreAssociationEtudiant" Width="1.5" PointX="5.625" PointY="16.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PresenceModele.tblMembreParticipantReunion" Width="1.5" PointX="3" PointY="25.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PresenceModele.tblMembreStatutMembre" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PresenceModele.tblMessage" Width="1.5" PointX="3" PointY="31.125" IsExpanded="true" />

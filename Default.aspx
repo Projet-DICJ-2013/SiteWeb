@@ -1,7 +1,13 @@
 ﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" CodeFile="Default.aspx.vb" Inherits="_Default" %>
 
+
+
 <script runat="server" >
 
+    <System.Web.Services.WebMethod()> _
+    Public Shared Function GetNews(ByVal index As Integer) As String
+        Return "Hello World"
+    End Function
 
 </script>
 
@@ -42,30 +48,60 @@
 
         <div id="New">
 
-            <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Conditional">
-	          <ContentTemplate>
-
-                    <asp:Button id="btnPrec" runat="server" onclick="btnPrec_Click" />
+            <asp:Button  id="btnPrec" runat="server" OnClick="btnPrec_Click" />
                 
-                    <div id="txtNew">
+            <div id="txtNew">
 
-                        <asp:Label id="lblNew" runat="server"  />
+                <asp:Label id="txtMail" runat="server" />
 
-                    </div>
+            </div>
 
-                     <asp:Button id="btnNext" runat="server" OnClick="btnNext_Click" />
+            <asp:Button  id="btnNext" runat="server" />
 
-                </ContentTemplate>
-                 <Triggers>
-                     <asp:AsyncPostBackTrigger ControlID="btnPrec" EventName="Click" />
-                     <asp:AsyncPostBackTrigger ControlID="btnNext" EventName="Click" />
-                 </Triggers>
-            </asp:UpdatePanel>
         </div>
 
     </div>
  
+    <script src="scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
 
+        $(function () {
+
+            var ActuIndex = 0;
+
+            function GetPDF() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'Default.aspx/GetNews',
+                    data: "index=" + ActuIndex,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                    },
+                    success: function (resp) {
+                        $("#txtNew").append(resp);
+                    }
+                });
+            };
+
+
+            $("#btnPrec").click(function () {
+
+            });
+
+            $("#btnNext").click(function () {
+
+            });
+
+            $(document).ready(function () {
+                GetPDF();
+            });
+
+
+        });
+
+    </script>
 
 
 </asp:Content>
