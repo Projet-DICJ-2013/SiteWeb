@@ -6,7 +6,7 @@ Imports System.ServiceModel.Web
 <AspNetCompatibilityRequirements(RequirementsMode:=AspNetCompatibilityRequirementsMode.Allowed)>
 Public Class Service_Reunion
 
-    Private Modele As PresenceModel
+    Private Modele As PresenceModelEntitie
     ' Pour utiliser HTTP GET, ajoutez l'attribut <WebGet()>. (ResponseFormat par défaut=WebMessageFormat.Json)
     ' Pour créer une opération qui renvoie du code XML,
     '     ajoutez <WebGet(ResponseFormat:=WebMessageFormat.Xml)>,
