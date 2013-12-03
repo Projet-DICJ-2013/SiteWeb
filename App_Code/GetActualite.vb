@@ -23,7 +23,7 @@ End Class
 Class MesNews
 
     Private MesNews As ListCollectionView
-    Private BD As New PresenceModelEntitie
+    Private BD As New PresenceModEntity
 
     Public Property lstActu As ListCollectionView
 

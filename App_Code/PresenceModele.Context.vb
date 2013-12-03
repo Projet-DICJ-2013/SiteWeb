@@ -14,11 +14,11 @@ Imports System.Data.Objects
 Imports System.Data.Objects.DataClasses
 Imports System.Linq
 
-Partial Public Class PresenceModelEntitie
+Partial Public Class PresenceModEntity
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=PresenceModelEntitie")
+        MyBase.New("name=PresenceModEntity")
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
@@ -75,18 +75,18 @@ Partial Public Class PresenceModelEntitie
     Public Property tblElement() As DbSet(Of tblElement)
     Public Property tblTypeRapport() As DbSet(Of tblTypeRapport)
 
-    <EdmFunction("PresenceModelEntitie", "SelOrdreJour")>
+    <EdmFunction("PresenceModEntity", "SelOrdreJour")>
     Public Overridable Function SelOrdreJour(noOrdre As Nullable(Of Integer)) As IQueryable(Of SelOrdreJour_Result)
         Dim noOrdreParameter As ObjectParameter = If(noOrdre.HasValue, New ObjectParameter("NoOrdre", noOrdre), New ObjectParameter("NoOrdre", GetType(Integer)))
 
-         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelOrdreJour_Result)("[PresenceModelEntitie].[SelOrdreJour](@NoOrdre)", noOrdreParameter)
+         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelOrdreJour_Result)("[PresenceModEntity].[SelOrdreJour](@NoOrdre)", noOrdreParameter)
     End Function
 
-    <EdmFunction("PresenceModelEntitie", "SelrdJour")>
+    <EdmFunction("PresenceModEntity", "SelrdJour")>
     Public Overridable Function SelrdJour(noOrdre As Nullable(Of Integer)) As IQueryable(Of SelrdJour_Result)
         Dim noOrdreParameter As ObjectParameter = If(noOrdre.HasValue, New ObjectParameter("NoOrdre", noOrdre), New ObjectParameter("NoOrdre", GetType(Integer)))
 
-         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelrdJour_Result)("[PresenceModelEntitie].[SelrdJour](@NoOrdre)", noOrdreParameter)
+         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelrdJour_Result)("[PresenceModEntity].[SelrdJour](@NoOrdre)", noOrdreParameter)
     End Function
 
     Public Overridable Function GetCompoModele(monMod As String) As ObjectResult(Of GetCompoModele_Result)
