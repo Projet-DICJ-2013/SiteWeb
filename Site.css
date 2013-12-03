@@ -571,16 +571,18 @@ border-color:#028A9E;width:74%;
 #PrincipalReunion{display:block; font-family:Tahoma;}
 #TitreRecherche{margin: 2%;font-size:34px;}
 #CritTypeParticipant {display:inline-block;width:100%;}
-#SectionResultats{margin-left:40%;margin-right:30%;}
+#SectionResultats{margin-left:40%;margin-right:30%;margin-top:250px;display:block; margin:2%;font-family:Tahoma; width:42%;font-size:20px; Padding:1%; position:relative;float:left;border:1px;border-style:solid;
+border-color:#028A9E; height:40%;}
 #ListeResultat {width: 100%; font-size:20px;}
-#BoutonReu{display:inline; float:right; width:40%;}
+#BoutonReu{display:block; float:right; width:40%;}
 #CritDate,#CritDate1, #CritDate2, #lstParticipant, #lstTypeParticipant {display:inline-block;position:relative;}
-#listepart {float:right; margin-right:230px; width:40px; 
-}
+#btnPDF {margin-top:20px;margin-left:12px;}
+#boutonRech {margin-left:12px;}
+#listepart {float:right; width:40px;}
 #SectionCritere
 {
     display:inline-block;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:20px;Padding:2%; position:relative;border:2px;border-style:solid;
-border-color:#023550;width:100%; 
+border-color:#023550;width:100%;height:100%; 
 }
 #SectionCritGauche
  {
