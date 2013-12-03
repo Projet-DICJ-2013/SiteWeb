@@ -61,6 +61,14 @@ Partial Class Reunion
     End Sub
 
     Protected Sub boutonRech_Click(sender As Object, e As EventArgs) Handles boutonRech.Click
+
+        If (Request.Form("from") IsNot Nothing) And (Request.Form("to") IsNot Nothing) Then
+
+        End If
+
+        If (lstParticipant.SelectedValue IsNot Nothing) Then
+
+        End If
         ListeResultat.ClearSelection()
     End Sub
 End Class

@@ -102,7 +102,7 @@
                 </div>
             <div id="BoutonReu">
                 <asp:Button  id="boutonNouv" text="Nouvelle Recherche" runat="server" class="ReuRech" OnClick="boutonNouv_Click" autopostback="true"/>
-                <asp:Button  id="boutonRech" text="Rechercher" runat="server" class="ReuRech"/>
+                <asp:Button  id="boutonRech" text="Rechercher" runat="server" class="ReuRech" OnClick="boutonRech_Click"/>
             </div>        
         
            
