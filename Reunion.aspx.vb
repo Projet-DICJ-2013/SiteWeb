@@ -63,7 +63,7 @@ Partial Class Reunion
     Protected Sub boutonRech_Click(sender As Object, e As EventArgs) Handles boutonRech.Click
         Dim impfrom = Request.Form("from")
         Dim impto = Request.Form("to")
-        ListeOrdreDuJour.clear()
+
         If (impfrom IsNot "" And impto IsNot "") Then
             ListeOrdreDuJour = foncRech.odjbydate(ListeOrdreDuJour, impfrom, impto)
         End If
@@ -72,7 +72,7 @@ Partial Class Reunion
             ListeOrdreDuJour = foncRech.odjbyparticipant(ListeOrdreDuJour, lstParticipant.SelectedValue)
         End If
         ListeResultat.ClearSelection()
-        ListeResultat.DataSource = ListeOrdreDuJour
+        ListeResultat.DataSource = ListeOrdreDuJour.Distinct
         ListeResultat.DataBind()
     End Sub
 End Class
