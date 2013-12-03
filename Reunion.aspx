@@ -51,8 +51,8 @@
     
     <div id="PrincipalReunion">
         <div id="TitreRecherche">Consultation des ordres du jour et des procès-verbaux</div>
-         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
-                            <ContentTemplate>
+        <%-- <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>--%>
         <div id="SectionCritere">
             
 
@@ -77,51 +77,58 @@
                 <div id="SectionCritDroit">
                     <p>Par Participant</p>
                     <div id="CritTypeParticipant">
-                        
-                        
-                            <asp:DropDownList ID="lstTypeParticipant" runat="server" OnSelectedIndexChanged="lstTypeParticipant_SelectedIndexChanged" AutoPostBack="true">
+                                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+
+                            <ContentTemplate>
+                        <asp:DropDownList ID="lstTypeParticipant" runat="server" OnSelectedIndexChanged="lstTypeParticipant_SelectedIndexChanged" AutoPostBack="true">
                             <asp:ListItem>Aucun</asp:ListItem>
                             <asp:ListItem>Professeur</asp:ListItem>
                             <asp:ListItem>Etudiant - 1er</asp:ListItem>
                             <asp:ListItem>Etudiant - 2e</asp:ListItem>
                             <asp:ListItem>Etudiant - 3e</asp:ListItem>            
-                        </asp:DropDownList>
-                             <div id="listepart">  
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-                            <ContentTemplate>
-                        <asp:DropDownList ID="lstParticipant" runat="server" Enabled="True"/>
-                                 </ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="lstTypeParticipant" EventName="SelectedIndexChanged" />
-                                    </Triggers>
+                            </asp:DropDownList>
+
+                            
+                              
+                                                   
+                                 <asp:DropDownList ID="lstParticipant" runat="server"/>
+                                 
+                             </ContentTemplate>
                                 </asp:UpdatePanel>
-                                 </div>
-                    </div> 
+                                 
+
                 </div>
            </div>
+                </div>
             <div id="BoutonReu">
                 <asp:Button  id="boutonNouv" text="Nouvelle Recherche" runat="server" class="ReuRech" OnClick="boutonNouv_Click"/>
                 <asp:Button  id="boutonRech" text="Rechercher" runat="server" class="ReuRech"/>
             </div>        
-        </div>
+        
+           
         <div id="SectionResultats">
            
             <div id="TypeRercherche">
                 <asp:RadioButton ID="RadOdj" runat="server" Text="Ordres du jours" GroupName="TypRech"/>
                 <asp:RadioButton ID="RadPv" runat="server" Text="Procès-verbaux" GroupName="TypRech"/>
             </div>
+             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
 
+                            <ContentTemplate>
             <asp:ListBox ID="ListeResultat" runat="server" OnSelectedIndexChanged="ListeResultat_SelectedIndexChanged" AutoPostBack="true" >
             </asp:ListBox> 
-            
+            </ContentTemplate>
+                                </asp:UpdatePanel>
                         
             <asp:Button ID="btnPDF" text="Ouvrir"  OnClick="GetPdf_Click" runat="server" class="ReuRech"/>          
         </div>
-                                </ContentTemplate>
+                                <%--</ContentTemplate>
                                     <Triggers>
                                         <asp:AsyncPostBackTrigger ControlID="ListeResultat" EventName="SelectedIndexChanged" />
                                         <asp:AsyncPostBackTrigger ControlID="boutonNouv" EventName="Click" />
                                     </Triggers>
-                                </asp:UpdatePanel>
-    </div>
+                                </asp:UpdatePanel>--%>
+
+     </div>
+                </div>
 </asp:Content>
