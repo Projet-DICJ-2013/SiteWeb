@@ -2,10 +2,10 @@
 
 Partial Class AGEECJ
     Inherits System.Web.UI.Page
-    Dim BD As PresenceModel
+    Dim BD As PresenceModEntity
 
     Private Sub ONLoad(ByVal sender As Object, e As EventArgs) Handles Me.Load
-        BD = New PresenceModel
+        BD = New PresenceModEntity
     End Sub
 
     Protected Sub btnEnvoyer_Click1(sender As Object, e As EventArgs)
@@ -20,7 +20,7 @@ Partial Class AGEECJ
         ElseIf rbTous.Checked = True Then
             choix = 4
         End If
-        'Envoie du message (voir procedure messageAnnée(choix as int16))
+        'Envoie du message (voir procedure messageAnnée(choix as int16)
         messageAnnée(choix)
     End Sub
 

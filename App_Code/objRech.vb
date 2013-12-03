@@ -1,11 +1,11 @@
 ﻿Public Class objRech
 
-    Private entBd As PresenceModel
+    Private entBd As PresenceModEntity
     Private typemembre As Int16
 
     Public Sub New()
 
-        entBd = New PresenceModel
+        entBd = New PresenceModEntity
 
     End Sub
 
@@ -71,9 +71,11 @@
         Return listbydate
 
     End Function
-    Public Function odjbyparticipant(listOdj As IList(Of tblOrdreDuJour), idmembre As Integer)
+    Public Function odjbyparticipant(listOdj As IList(Of tblOrdreDuJour), nommembre As String)
 
-        Dim listbypart = (From tblodj In listOdj Join tblren In entBd.tblReunion On tblren.NoOrdreDuJour Equals tblodj.NoOrdreDuJour Join tblpart In entBd.tblMembreParticipantReunion On tblren.NoReunion Equals tblpart.NoReunion Where idmembre = tblpart.IdMembre Select tblodj).ToList
+        Dim idmem = (From tblmem In entBd.tblMembre Where tblmem.PrenomMembre = nommembre Select tblmem.IdMembre).First
+
+        Dim listbypart = (From tblodj In listOdj Join tblren In entBd.tblReunion On tblren.NoOrdreDuJour Equals tblodj.NoOrdreDuJour Join tblpart In entBd.tblMembreParticipantReunion On tblren.NoReunion Equals tblpart.NoReunion Where idmem = tblpart.IdMembre Select tblodj).ToList
 
         Return listbypart
 

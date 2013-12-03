@@ -5,7 +5,7 @@ Public Module ModProvider
     Public Class Provider
         Inherits MembershipProvider
 
-        Private BD As New PresenceModel
+        Private BD As New PresenceModEntity
 
         Public Overrides Property ApplicationName As String
 

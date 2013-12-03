@@ -544,78 +544,70 @@ body {
 }
 
 
-/*Contenu de la section Reunion*/
-#PrincipalReunion, #TitreAsso
+
+
+/*Contenu de la section AGEECJ*/
+
+#TitreAsso
 {
-    display:block; font-family:Tahoma; 
-}
-#TitreRecherche, #TitreAsso 
-{
-    margin: 2%;font-size:34px;
-}
-#SectionCritere
-{
-    display:inline-block;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:18px;Padding:2%; position:relative;border:2px;border-style:solid;
-border-color:#023550;width:100%; 
+    display:block; font-family:Tahoma; margin: 2%;font-size:34px;
 }
 #divAGEECJ
 {
-    display:block;  margin:2%; font-family:Tahoma; font-size:18px;padding:2%; padding-left:16%; border:2px;border-style:solid;
-border-color:#023550;width:750px; height:300px; 
-}
-
-#DivPret
-{
-display:inline-block;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:18px;Padding:2%; position:relative;border:2px;border-style:solid;
-border-color:#023550; padding:14px
-}
-#TablePret 
-{
- border:1px;border-style:solid;
-border-color:#028A9E;
-}
-#SectionCritGauche
- {
-    display:block; margin:2%;font-family:Tahoma; width:42%;font-size:14px; Padding:1%; position:relative;float:left;border:1px;border-style:solid;
-border-color:#028A9E; height:40%;
+    display:block;  margin:2%; font-family:Tahoma; font-size:20px;padding:2%; padding-left:16%; border:2px;border-style:solid;
+border-color:#023550;width:750px; height:360px; 
 }
 #CritereMessage, #ContenuMessage
  {
-    display:block; margin:2%; font-family:Tahoma; font-size:14px; Padding:1%; position:relative;border:1px;border-style:solid;
+    display:block; margin:2%; font-family:Tahoma; font-size:20px; Padding:1%; position:relative;border:1px;border-style:solid;
 border-color:#028A9E;width:74%;
 }
 #divObjet #divMessage, .lblMessage{position:relative;
 }
 #divEnvoyer{position:relative; margin-top:10px; margin-left:220px;
 }
-#CritDate {display:inline-block;position:relative;
+
+/*Contenu de la section Reunion*/
+
+#TitreRecherche{margin: 2%;font-size:34px;}
+#CritTypeParticipant {display:inline-block;width:100%;}
+#TypeRecherche {display:block;padding:10px;float:right;position:relative;}
+#ListeResultat {width: 100%; font-size:20px;margin:100px;}
+#BoutonReu{display:block;  width:40%;float:right;}
+#CritDate,#CritDate1, #CritDate2, #lstParticipant, #lstTypeParticipant {display:inline-block;}
+#btnPDF {float: right;}
+#partieRes {float:left;margin-left:15px;width:220px;position:relative;}
+#listepart {float:right; width:40px;}
+#SectionCritere
+{
+    background-color:white;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:20px;Padding:2%; border:2px;border-style:solid;
+border-color:#023550;width:100%;height:800px; 
 }
-#CritDate1, #CritDate2 {display:inline;position:relative;
+#SectionCritGauche
+ {
+    background-color:#EFEFEF; display:block; margin:2%;font-family:Tahoma; width:42%;font-size:20px; Padding:1%; position:relative;float:left;border:1px;border-style:solid;
+border-color:#028A9E; height:40%;
 }
-#CritDate1.wrapper, #CritDate2.wrapper {
+#CritDate1.wrapper, #CritDate2.wrapper 
+{
   min-width: 50px; /* Minimum width of your wrapper element */
   overflow: hidden;
   display: inline;
 }
 #SectionCritDroit
- {
-    display:block;  margin:2%;font-family:Tahoma; font-size:14px; Padding:1%; width:42%; position:relative; float:left;border:1px;border-style:solid;
+{
+    background-color:#EFEFEF; display:block;  margin:2%;font-family:Tahoma; font-size:20px; Padding:1%; width:42%; float:left; position:relative; border:1px;border-style:solid;
 border-color:#028A9E; height:40%;
 }
-#SectionResultats 
-{
-    margin-left:50%;margin-right:50%;
+#SectionRes {border:1px;border-style:solid;
+border-color:#028A9E;height:150px; background-color:#EFEFEF;margin-bottom:20px;display:block;
 }
-#ListeResultat 
+#SectionResultats
 {
-    width:100%;
-}
-#BoutonReu 
-{
-    display:inline; float:right; width:40%;
+    margin-top:400px;display:block; margin:2%;width:850px; Padding:1%; float:left; height:300px;
 }
 .ReuRech
-{   
+{ 
     -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
     -webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
     box-shadow:inset 0px 1px 0px 0px #cf866c;
@@ -638,7 +630,6 @@ border-color:#028A9E; height:40%;
      padding:10px 30px;  
     text-shadow:0px 1px 0px #854629;
 }
-
 .ReuRech:hover
 {
         
