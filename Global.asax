@@ -25,7 +25,7 @@ Public Shared Sub RegisterRoutes(ByVal routes As RouteCollection)
     ' class in your application.
     ' See http://go.microsoft.com/fwlink/?LinkId=257395 for more information on how to register Entity Data Model with Dynamic Data
         DefaultModel.RegisterContext( _
-           New System.Func(Of Object)(Function() DirectCast(New PresenceModel, IObjectContextAdapter).ObjectContext), _
+           New System.Func(Of Object)(Function() DirectCast(New PresenceModelEntitie, IObjectContextAdapter).ObjectContext), _
           New ContextConfiguration() With {.ScaffoldAllTables = True} _
          )
 
