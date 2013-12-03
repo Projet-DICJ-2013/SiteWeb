@@ -1,62 +1,25 @@
 ﻿Imports System.Web.DynamicData
 Imports System.Windows.Data
+Imports System.Web.Services
+Imports System.Web.UI
 
 Class _Default
     Inherits Page
 
-    Private News As New MesNews
-    Private i As Integer = 0
+    Public Sub On_Load(ByVal Sender As Object, ByVal e As EventArgs) Handles Me.PreLoad
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
+        
+    End Sub
 
-        AfficheActu()
+    Public Sub Page_Load(ByVal Sender As Object, ByVal e As EventArgs) Handles Me.PreLoad
 
     End Sub
 
-    Public Sub btnPrec_Click(ByVal sender As Object, ByVal e As EventArgs)
+    Public Sub btnPrec_Click(ByVal Sender As Object, ByVal e As EventArgs)
 
-        News.lstActu.MoveCurrentToPrevious()
-        AfficheActu()
-
-
-    End Sub
-
-    Public Sub btnNext_Click(ByVal sender As Object, ByVal e As EventArgs)
-
-        News.lstActu.MoveCurrentToNext()
-        AfficheActu()
-
-    End Sub
-
-    Private Sub AfficheActu()
-        lblNew.Text = CType(News.lstActu.CurrentItem, tblActualite).TexteActu
-        Context.Session.
     End Sub
 End Class
 
 
-Class MesNews
-
-    Private MesNews As ListCollectionView
-    Private BD As New PresenceModel
-
-    Public Property lstActu As ListCollectionView
-
-        Get
-            Return MesNews
-        End Get
-        Set(value As ListCollectionView)
-            MesNews = value
-        End Set
-    End Property
-
-    Public Sub New()
-
-        Dim lstNews = (From News In BD.tblActualite
-                    Order By News.IDActualite Descending
-                    Select News).ToList
 
 
-        lstActu = New ListCollectionView(lstNews)
-    End Sub
-End Class

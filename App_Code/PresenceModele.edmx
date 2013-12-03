@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PresenceModele.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PresenceModele.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="PresenceModeleStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="PresenceModele.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tblConstant" EntityType="PresenceModele.Store.tblConstant" store:Type="Tables" Schema="S_Coeur" />
@@ -392,6 +392,7 @@
           <Property Name="Administrateur" Type="bit" Nullable="false" />
           <Property Name="IdMembre" Type="smallint" />
           <Property Name="Hash" Type="char" MaxLength="32" />
+          <Property Name="EstAutorise" Type="bit" />
         </EntityType>
         <EntityType Name="tblMembre">
           <Key>
@@ -1580,8 +1581,7 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PresenceModele" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1828,19 +1828,19 @@
             <End Role="tblModele" EntitySet="tblModele" />
           </AssociationSet>
           <FunctionImport Name="SelOrdreJour" ReturnType="Collection(PresenceModele.SelOrdreJour_Result)" IsComposable="true">
-            <Parameter Name="NoOrdre" Type="Int32" />
+          <Parameter Name="NoOrdre" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelrdJour" ReturnType="Collection(PresenceModele.SelrdJour_Result)" IsComposable="true">
-            <Parameter Name="NoOrdre" Type="Int32" />
+          <Parameter Name="NoOrdre" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetCompoModele" ReturnType="Collection(PresenceModele.GetCompoModele_Result)">
-            <Parameter Name="MonMod" Mode="In" Type="String" />
+          <Parameter Name="MonMod" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SelOrdJour" ReturnType="Collection(PresenceModele.SelOrdJour_Result)">
-            <Parameter Name="NoOrdre" Mode="In" Type="Int32" />
+          <Parameter Name="NoOrdre" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SelPointById" ReturnType="Collection(PresenceModele.SelPointById_Result)">
-            <Parameter Name="NoPoint" Mode="In" Type="Int32" />
+          <Parameter Name="NoPoint" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1980,6 +1980,7 @@
           <Property Name="IdMembre" Type="Int16" />
           <Property Name="Hash" Type="String" MaxLength="32" Unicode="false" FixedLength="true" />
           <NavigationProperty Name="tblMembre" Relationship="PresenceModele.FK_tblLogin_tblMembre" FromRole="tblLogin" ToRole="tblMembre" />
+          <Property Type="Boolean" Name="EstAutorise" />
         </EntityType>
         <EntityType Name="tblMembre">
           <Key>
@@ -3034,6 +3035,7 @@
           <EntitySetMapping Name="tblLogin">
             <EntityTypeMapping TypeName="PresenceModele.tblLogin">
               <MappingFragment StoreEntitySet="tblLogin">
+                <ScalarProperty Name="EstAutorise" ColumnName="EstAutorise" />
                 <ScalarProperty Name="IdLogin" ColumnName="IdLogin" />
                 <ScalarProperty Name="Administrateur" ColumnName="Administrateur" />
                 <ScalarProperty Name="IdMembre" ColumnName="IdMembre" />
