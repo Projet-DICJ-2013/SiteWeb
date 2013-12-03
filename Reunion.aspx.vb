@@ -65,14 +65,15 @@ Partial Class Reunion
         Dim impto = Request.Form("to")
         ListeOrdreDuJour.clear()
         If (impfrom IsNot "" And impto IsNot "") Then
-            ListeOrdreDuJour = foncRech.odjbydate(lstParticipant, impfrom, impto)
+            ListeOrdreDuJour = foncRech.odjbydate(ListeOrdreDuJour, impfrom, impto)
         End If
 
         If (lstParticipant.SelectedValue IsNot "") Then
-            Dim y As Integer
-            y = 2
+            ListeOrdreDuJour = foncRech.odjbyparticipant(ListeOrdreDuJour, lstParticipant.SelectedValue)
         End If
         ListeResultat.ClearSelection()
+        ListeResultat.DataSource = ListeOrdreDuJour
+        ListeResultat.DataBind()
     End Sub
 End Class
 
