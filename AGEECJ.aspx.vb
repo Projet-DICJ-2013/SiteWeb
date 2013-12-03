@@ -2,10 +2,10 @@
 
 Partial Class AGEECJ
     Inherits System.Web.UI.Page
-    Dim BD As PresenceModelEntitie
+    Dim BD As PresenceModEntity
 
     Private Sub ONLoad(ByVal sender As Object, e As EventArgs) Handles Me.Load
-        BD = New PresenceModelEntitie
+        BD = New PresenceModEntity
     End Sub
 
     Protected Sub btnEnvoyer_Click1(sender As Object, e As EventArgs)

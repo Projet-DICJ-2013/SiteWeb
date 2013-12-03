@@ -4,7 +4,7 @@ Partial Class Reunion
     Private foncRech As objRech
     Private Rapport As GenereRapport
     Private _lstmembres As List(Of tblMembre)
-    Private BD As New PresenceModelEntitie
+    Private BD As New PresenceModEntity
     Private ListeOrdreDuJour As List(Of tblOrdreDuJour)
     Private TempsFile As String
     Private MonPdf As New GetPDF

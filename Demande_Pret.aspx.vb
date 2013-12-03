@@ -17,7 +17,7 @@ Partial Class Demande_Pret
     ''  End Property
 
     Sub Page_Load() Handles MyBase.Load
-        Dim BD As New PresenceModelEntitie
+        Dim BD As New PresenceModEntity
         req = (From r In BD.tblExemplaire
                    Join m In BD.tblModele On m.NoModele Equals r.NoModele
         Where r.TypeEtat <> "Supprimé"
