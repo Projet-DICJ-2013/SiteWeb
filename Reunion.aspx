@@ -99,21 +99,26 @@
 
                 </div>
            </div>
+                </div>
             <div id="BoutonReu">
                 <asp:Button  id="boutonNouv" text="Nouvelle Recherche" runat="server" class="ReuRech" OnClick="boutonNouv_Click"/>
                 <asp:Button  id="boutonRech" text="Rechercher" runat="server" class="ReuRech"/>
             </div>        
-        </div>
+        
+           
         <div id="SectionResultats">
            
             <div id="TypeRercherche">
                 <asp:RadioButton ID="RadOdj" runat="server" Text="Ordres du jours" GroupName="TypRech"/>
                 <asp:RadioButton ID="RadPv" runat="server" Text="Procès-verbaux" GroupName="TypRech"/>
             </div>
+             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
 
+                            <ContentTemplate>
             <asp:ListBox ID="ListeResultat" runat="server" OnSelectedIndexChanged="ListeResultat_SelectedIndexChanged" AutoPostBack="true" >
             </asp:ListBox> 
-            
+            </ContentTemplate>
+                                </asp:UpdatePanel>
                         
             <asp:Button ID="btnPDF" text="Ouvrir"  OnClick="GetPdf_Click" runat="server" class="ReuRech"/>          
         </div>
@@ -123,6 +128,7 @@
                                         <asp:AsyncPostBackTrigger ControlID="boutonNouv" EventName="Click" />
                                     </Triggers>
                                 </asp:UpdatePanel>--%>
-    </div>
-    </div>
+
+     </div>
+                </div>
 </asp:Content>
