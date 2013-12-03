@@ -568,25 +568,24 @@ border-color:#028A9E;width:74%;
 }
 
 /*Contenu de la section Reunion*/
-#PrincipalReunion{display:block; font-family:Tahoma;}
+
 #TitreRecherche{margin: 2%;font-size:34px;}
 #CritTypeParticipant {display:inline-block;width:100%;}
-#SectionResultats{margin-left:40%;margin-right:30%;margin-top:250px;display:block; margin:2%;font-family:Tahoma; width:42%;font-size:20px; Padding:1%; position:relative;float:left;border:1px;border-style:solid;
-border-color:#028A9E; height:40%;}
-#ListeResultat {width: 100%; font-size:20px;}
-#BoutonReu{display:block; float:right; width:40%;}
-#CritDate,#CritDate1, #CritDate2, #lstParticipant, #lstTypeParticipant {display:inline-block;position:relative;}
-#btnPDF {margin-top:20px;margin-left:12px;}
-#boutonRech {margin-left:12px;}
+#TypeRecherche {display:block;padding:10px;float:right;position:relative;}
+#ListeResultat {width: 100%; font-size:20px;margin:100px;}
+#BoutonReu{display:block;  width:40%;float:right;}
+#CritDate,#CritDate1, #CritDate2, #lstParticipant, #lstTypeParticipant {display:inline-block;}
+#btnPDF {float: right;}
+#partieRes {float:left;margin-left:15px;width:220px;position:relative;}
 #listepart {float:right; width:40px;}
 #SectionCritere
 {
-    display:inline-block;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:20px;Padding:2%; position:relative;border:2px;border-style:solid;
-border-color:#023550;width:100%;height:100%; 
+    background-color:white;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:20px;Padding:2%; border:2px;border-style:solid;
+border-color:#023550;width:100%;height:800px; 
 }
 #SectionCritGauche
  {
-    display:block; margin:2%;font-family:Tahoma; width:42%;font-size:20px; Padding:1%; position:relative;float:left;border:1px;border-style:solid;
+    background-color:#EFEFEF; display:block; margin:2%;font-family:Tahoma; width:42%;font-size:20px; Padding:1%; position:relative;float:left;border:1px;border-style:solid;
 border-color:#028A9E; height:40%;
 }
 #CritDate1.wrapper, #CritDate2.wrapper 
@@ -597,8 +596,15 @@ border-color:#028A9E; height:40%;
 }
 #SectionCritDroit
 {
-    display:block;  margin:2%;font-family:Tahoma; font-size:20px; Padding:1%; width:42%; float:left; position:relative; border:1px;border-style:solid;
+    background-color:#EFEFEF; display:block;  margin:2%;font-family:Tahoma; font-size:20px; Padding:1%; width:42%; float:left; position:relative; border:1px;border-style:solid;
 border-color:#028A9E; height:40%;
+}
+#SectionRes {border:1px;border-style:solid;
+border-color:#028A9E;height:150px; background-color:#EFEFEF;margin-bottom:20px;display:block;
+}
+#SectionResultats
+{
+    margin-top:400px;display:block; margin:2%;width:850px; Padding:1%; float:left; height:300px;
 }
 .ReuRech
 { 
