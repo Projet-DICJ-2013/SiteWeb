@@ -20,7 +20,7 @@ Partial Class AGEECJ
         ElseIf rbTous.Checked = True Then
             choix = 4
         End If
-        'Envoie du message (voir procedure messageAnnée(choix as int16))
+        'Envoie du message (voir procedure messageAnnée(choix as int16)
         messageAnnée(choix)
     End Sub
 
