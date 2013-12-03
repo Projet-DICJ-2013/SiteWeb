@@ -29,7 +29,7 @@ Class _Default
     End Sub
 
     Private Sub AfficheActu()
-        lblNew.Text = CType(News.lstActu.CurrentItem, tblActualite).TexteActu
+        'lblNew.Text = CType(News.lstActu.CurrentItem, tblActualite).TexteActu
 
     End Sub
 End Class
@@ -38,7 +38,7 @@ End Class
 Class MesNews
 
     Private MesNews As ListCollectionView
-    Private BD As New PresenceModel
+    Private BD As New PresenceModelEntitie
 
     Public Property lstActu As ListCollectionView
 
