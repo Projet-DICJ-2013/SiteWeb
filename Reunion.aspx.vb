@@ -61,15 +61,16 @@ Partial Class Reunion
     End Sub
 
     Protected Sub boutonRech_Click(sender As Object, e As EventArgs) Handles boutonRech.Click
-        Dim from = Request.Form("from")
-        Dim toa = Request.Form("to")
-
-        If ((Request.Form("form") IsNot Nothing) And (Request.Form("to") IsNot Nothing)) Then
-            Dim i As Integer
+        Dim impfrom = Request.Form("from")
+        Dim impto = Request.Form("to")
+        ListeOrdreDuJour.clear()
+        If (impfrom IsNot "" And impto IsNot "") Then
+            ListeOrdreDuJour = foncRech.odjbydate(lstParticipant, impfrom, impto)
         End If
 
-        If (lstParticipant.SelectedValue IsNot Nothing) Then
+        If (lstParticipant.SelectedValue IsNot "") Then
             Dim y As Integer
+            y = 2
         End If
         ListeResultat.ClearSelection()
     End Sub
