@@ -190,6 +190,7 @@ Partial Public Class tblLogin
     Public Property Administrateur As Boolean
     Public Property IdMembre As Nullable(Of Short)
     Public Property Hash As String
+    Public Property EstAutorise As Nullable(Of Boolean)
 
     Public Overridable Property tblMembre As tblMembre
 
@@ -486,6 +487,20 @@ End Class
 Partial Public Class GetCompoModele_Result
     Public Property IdCompo As Short
     Public Property TypeCompo As String
+
+End Class
+Partial Public Class SelLstEtu_Result
+    Public Property AnneeCours As String
+    Public Property CodeCours As String
+    Public Property DescriptionCours As String
+    Public Property NomCours As String
+    Public Property PonderationCours As String
+    Public Property NoGroupe As Short
+    Public Property DaEtudiant As Integer
+    Public Property NomMembre As String
+    Public Property PrenomMembre As String
+    Public Property AdresseMembre As String
+    Public Property CourrielMembre As String
 
 End Class
 Partial Public Class SelOrdJour_Result
