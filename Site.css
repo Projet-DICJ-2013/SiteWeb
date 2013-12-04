@@ -621,7 +621,7 @@ border-color:#028A9E;width:90%; background-color:#EFEFEF;height:35%;
 
 /*Contenu de la section Reunion*/
 
-#TitreRecherche{margin: 2%;font-size:34px;}
+#TitreRecherche{text-align:center;font-size:34px;}
 #CritTypeParticipant {display:inline-block;width:100%;}
 #TypeRecherche {display:block;padding:10px;float:right;position:relative;}
 #ListeResultat {width: 100%; font-size:20px;margin:100px;}
@@ -696,6 +696,8 @@ border-color:#028A9E;height:150px; background-color:#EFEFEF;margin-bottom:20px;d
 }
 
 /*Contenu de la section Demande de Pret*/
+#TitrePret {font-size:34px;text-align:center;
+}
 #DivPret {
      background-color:white;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:20px;Padding:2%; border:2px;border-style:solid;
 border-color:#023550;width:100%;height:650px; 
