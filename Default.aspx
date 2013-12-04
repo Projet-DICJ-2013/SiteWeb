@@ -53,7 +53,7 @@
 
             <div id="BarreTri">
 
-                 <asp:TextBox ID="txtRecherche" runat="server" />
+                 <asp:TextBox ID="txtRecherche" runat="server" Width="25%"  Font-Size="Large"/>
           
                  <asp:Button class="btnTri" ID="btnSearch" Text="Recherche" runat="server" />
 
