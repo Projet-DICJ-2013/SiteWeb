@@ -157,7 +157,10 @@
                                 </asp:UpdatePanel>
                    </div>
                </div>
-                                     <asp:Button ID="btnPDF" text="Ouvrir"  OnClick="GetPdf_Click" runat="server" class="ReuRech"/>         
+            <div id:"BtnOuvrir">
+                 <asp:Button ID="btnPDF" text="Ouvrir"  OnClick="GetPdf_Click" runat="server" class="ReuRech"/>         
+            </div>
+                                    
         </div>
                
         </div>
