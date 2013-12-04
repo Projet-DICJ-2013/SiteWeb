@@ -505,44 +505,86 @@ body {
 
 /*Contenu de la section default*/
 
+#titreActu {
+    margin: 1%;
+    font-size:34px;
+}
+
 #MesNews {
     display:block;
     position:relative;
     width:100%;
-    height:200px;
-    background-color: #028A9E;
+    min-height:300px;
+    padding:30px;
+    background-color: white ;
+    border:2px;border-style:solid;
+border-color:#023550;width:100%; 
+font-family:Tahoma; font-size:20px;
+text-align:justify;
 }
 
 #BarreTri {
-    height:60px;
-    background-color: #023550;
+    /*height:60px;
+    background-color:#EFEFEF; 
+    text-align:center;
+    vertical-align:middle;
+    padding-top:10px;
+    border:1px;border-style:solid;
+    border-color:#028A9E;
+    border-radius:2px;*/
+    display:block; margin:2%; margin-top:6%; margin-bottom:4%; Padding:2%; position:relative;border:1px;border-style:solid;
+border-color:#028A9E;width:90%; background-color:#EFEFEF;height:10%; font-size:20px; 
 }
+
+
 
 #New {
     display:inline;
-    position:relative;
-    height:100%;
+    padding:20px;
+    margin-top:10px;
+    font-size:24px;
+    text-align:justify;
+    width:90%;
+
+    
 }
 
-#txtNew {
-    position:relative;
-    width:100%;
+.btnTri{
+    
+     -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
+    box-shadow:inset 0px 1px 0px 0px #cf866c;
+        
+    background-color:#d0451b;
+        
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+        
+    border:1px solid #942911;
+        
+    display:inline-block;
+    color:#ffffff;
+    font-family:Tahoma;
+    font-size:0.9em;
+    font-weight:normal;
+    margin-left:15px;
+    text-decoration:none;
+     padding:10px 30px;  
+    text-shadow:0px 1px 0px #854629;
 }
 
+.btnTri:hover{
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #cc5f2d), color-stop(1, #d0451b));
+    background:-moz-linear-gradient(top, #cc5f2d 5%, #d0451b 100%);
+    background:-webkit-linear-gradient(top, #cc5f2d 5%, #d0451b 100%);
+    background:-o-linear-gradient(top, #cc5f2d 5%, #d0451b 100%);
+    background:-ms-linear-gradient(top, #cc5f2d 5%, #d0451b 100%);
+    background:linear-gradient(to bottom, #cc5f2d 5%, #d0451b 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc5f2d', endColorstr='#d0451b',GradientType=0);
+    background-color:#cc5f2d;
 
-#btnPrec, #btnSuiv {
-    height:160px;
-    opacity:0.1;
 }
-
-#btnPrec {
-    float:left;
-}
-
-#btnSuiv {
-    float:right;
-}
-
 
 
 
@@ -550,26 +592,36 @@ body {
 
 #TitreAsso
 {
-    display:block; font-family:Tahoma; margin: 2%;font-size:34px;
+    display:block; font-family:Tahoma; margin: 2%;font-size:34px;margin-bottom:5%;
 }
 #divAGEECJ
 {
-    display:block;  margin:2%; font-family:Tahoma; font-size:20px;padding:2%; padding-left:16%; border:2px;border-style:solid;
-border-color:#023550;width:750px; height:360px; 
+    display:block;  background-color:white;margin:2%; font-family:Tahoma; font-size:20px;padding:2%;  border:2px;border-style:solid;
+border-color:#023550;width:100%; height:550px; 
 }
-#CritereMessage, #ContenuMessage
+#CritereMessage
  {
-    display:block; margin:2%; font-family:Tahoma; font-size:20px; Padding:1%; position:relative;border:1px;border-style:solid;
-border-color:#028A9E;width:74%;
+    display:block; margin:2%;  Padding:2%; position:relative;border:1px;border-style:solid;
+border-color:#028A9E;width:90%; background-color:#EFEFEF;height:10%;
 }
-#divObjet #divMessage, .lblMessage{position:relative;
+#ContenuMessage
+ {
+    display:block; margin:2%;  Padding:2%; position:relative;border:1px;border-style:solid;
+border-color:#028A9E;width:90%; background-color:#EFEFEF;height:35%;
 }
-#divEnvoyer{position:relative; margin-top:10px; margin-left:220px;
+#divObjet, #divTexte{position:relative;margin:15px;
+}
+
+#panRadio {margin-top:25px;
+}
+#divMessage {margin-top:20px;margin-left:15px;
+}
+#divEnvoyer{position:relative; float:right; margin-right:75px;
 }
 
 /*Contenu de la section Reunion*/
 
-#TitreRecherche{margin: 2%;font-size:34px;}
+#TitreRecherche{text-align:center;font-size:34px;}
 #CritTypeParticipant {display:inline-block;width:100%;}
 #TypeRecherche {display:block;padding:10px;float:right;position:relative;}
 #ListeResultat {width: 100%; font-size:20px;margin:100px;}
@@ -581,7 +633,7 @@ border-color:#028A9E;width:74%;
 #SectionCritere
 {
     background-color:white;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:20px;Padding:2%; border:2px;border-style:solid;
-border-color:#023550;width:100%;height:800px; 
+border-color:#023550;width:100%;height:650px; 
 }
 #SectionCritGauche
  {
@@ -590,7 +642,7 @@ border-color:#028A9E; height:40%;
 }
 #CritDate1.wrapper, #CritDate2.wrapper 
 {
-  min-width: 50px; /* Minimum width of your wrapper element */
+  min-width: 50px; 
   overflow: hidden;
   display: inline;
 }
@@ -641,4 +693,12 @@ border-color:#028A9E;height:150px; background-color:#EFEFEF;margin-bottom:20px;d
     background:linear-gradient(to bottom, #cc5f2d 5%, #d0451b 100%);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc5f2d', endColorstr='#d0451b',GradientType=0);
     background-color:#cc5f2d;
+}
+
+/*Contenu de la section Demande de Pret*/
+#TitrePret {font-size:34px;text-align:center;
+}
+#DivPret {
+     background-color:white;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:20px;Padding:2%; border:2px;border-style:solid;
+border-color:#023550;width:100%;height:650px; 
 }
