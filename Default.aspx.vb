@@ -30,7 +30,7 @@ Class _Default
 
     Private Sub AfficheActu()
         lblNew.Text = CType(News.lstActu.CurrentItem, tblActualite).TexteActu
-        Context.Session.
+        'Context.Session.
     End Sub
 End Class
 

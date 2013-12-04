@@ -2,6 +2,7 @@
 
 <asp:Content ID="ContenuCorpsDemandePret" ContentPlaceHolderID="ContenuCorps" runat="Server">
     <div id="DivPret">
+        <div id="TitrePret">Demande de prêt</div>
     <asp:Table id="TablePret" runat="server">
         <asp:TableRow runat="server">
             <asp:TableCell ID="TableCell3" runat="server">Type de matériel : </asp:TableCell>
@@ -17,7 +18,7 @@
         <asp:TableRow runat="server">
             <asp:TableCell ID="TableCell1" runat="server">Liste des modèles disponibles</asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow ID="TableRow1" runat="server">
+        <asp:TableRow runat="server">
             <asp:TableCell runat="server">Marque</asp:TableCell>
             <asp:TableCell runat="server">No. Modèle</asp:TableCell>
             <asp:TableCell runat="server">Note</asp:TableCell>
