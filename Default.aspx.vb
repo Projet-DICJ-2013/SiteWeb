@@ -1,41 +1,10 @@
 ﻿Imports System.Web.DynamicData
 Imports System.Windows.Data
+Imports System.Threading.Tasks
 
 Class _Default
     Inherits Page
 
-    Private News As New MesNews
-
-    Protected Sub Page_PreLoad(ByVal sender As Object, ByVal e As EventArgs) Handles Me.PreLoad
-
-
-    End Sub
-
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
-
-        AfficheActu()
-
-    End Sub
-
-    Public Sub btnPrec_Click(ByVal sender As Object, ByVal e As EventArgs)
-
-        News.lstActu.MoveCurrentToPrevious()
-        AfficheActu()
-
-
-    End Sub
-
-    Public Sub btnNext_Click(ByVal sender As Object, ByVal e As EventArgs)
-
-        News.lstActu.MoveCurrentToNext()
-        AfficheActu()
-
-    End Sub
-
-    Private Sub AfficheActu()
-        lblNew.Text = CType(News.lstActu.CurrentItem, tblActualite).TexteActu
-
-    End Sub
 End Class
 
 
@@ -57,7 +26,7 @@ Class MesNews
     Public Sub New()
 
         Dim lstNews = (From News In BD.tblActualite
-                    Order By News.IDActualite Descending
+                    Order By News.IDActualite Ascending
                     Select News).ToList
 
 
