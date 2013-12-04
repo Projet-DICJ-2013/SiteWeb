@@ -151,7 +151,7 @@
              <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
                  <Triggers><asp:AsyncPostBackTrigger ControlID="boutonRech" EventName="Click" /></Triggers>
                             <ContentTemplate>
-            <asp:ListBox ID="ListeResultat" runat="server" OnSelectedIndexChanged="ListeResultat_SelectedIndexChanged" AutoPostBack="true" >
+            <asp:ListBox ID="ListeResultat" runat="server" OnClick="" OnSelectedIndexChanged="ListeResultat_SelectedIndexChanged" AutoPostBack="true" >
             </asp:ListBox> 
             </ContentTemplate>
                                 </asp:UpdatePanel>
