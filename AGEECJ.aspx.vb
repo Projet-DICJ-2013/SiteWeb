@@ -29,7 +29,7 @@ Partial Class AGEECJ
         Dim _nbrMail As Int16
         Dim _adresseEtu = (From adresse In BD.tblMembre Join _membre In BD.tblEtudiant On adresse.IdMembre Equals _membre.IdMembre Where _membre.Annee = choix Select adresse).ToList
         Dim _tblConstante = (From constant In BD.tblConstant Select constant).ToList()
-        Dim _envoieMail = New objSmtp("dicj@cjonquiere.qc.ca", "dicj@cjonquiere.qc.ca", txtObjet.Text, txtArMessage.InnerText, _tblConstante.Item(0).AdresseEmail, _tblConstante.Item(0).MotdePasse)
+        Dim _envoieMail = New objSmtp("dicj@outlook.fr", "dicj@outlook.fr", txtObjet.Text, txtArMessage.InnerText, _tblConstante.Item(0).AdresseEmail, _tblConstante.Item(0).MotdePasse)
 
         'Envoie de message, si il a plus de 10 destinataires envoyés les 10 premier et ensuite renvoyer un autre "Batch" pour contrer le bug du 10 maximum
         Try
