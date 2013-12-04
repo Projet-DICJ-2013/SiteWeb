@@ -4,6 +4,9 @@ Class Site
 
 
     Sub Page_Load(ByVal Src As Object, ByVal e As EventArgs)
+        Dim Bd As PresenceModEntity
+
+
         btnLogin.Text = "Se déconnecter - " + Context.User.Identity.Name
     End Sub
 

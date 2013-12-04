@@ -55,7 +55,7 @@
 
                  <asp:TextBox ID="txtRecherche" runat="server" />
           
-                 <asp:Button class="btnTri" ID="btnSearch" Text="Recherche" runat="server" />
+                 <asp:Button class="btnTri" ID="btnSearch" Text="Recherche" runat="server" OnClick="btnSearch_Click"  />
 
                   <input type="button" class="btnTri" id="btnPrec" value="<"/>
 
@@ -64,6 +64,8 @@
             </div>
 
             <div id="New">
+
+                <asp:Label ID="lblNew" runat="server" />
 
             </div>
 

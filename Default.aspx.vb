@@ -5,6 +5,14 @@ Imports System.Threading.Tasks
 Class _Default
     Inherits Page
 
+    Private News As New MesNews
+
+    Protected Sub btnSearch_Click(sender As Object, e As EventArgs)
+
+
+
+    End Sub
+
 End Class
 
 
@@ -32,4 +40,13 @@ Class MesNews
 
         lstActu = New ListCollectionView(lstNews)
     End Sub
+
+    Public Function GetRech(ByVal rech As String)
+
+        Dim lstNews = (From News In BD.tblActualite
+                    Order By News.IDActualite Ascending
+                    Select News)
+
+    End Function
+
 End Class
