@@ -13,6 +13,16 @@
 
 <body>
  <form id="form1" runat="server">
+      <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+                    <Scripts>
+                        <asp:ScriptReference Name="jquery" />
+                        <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" />
+
+                    </Scripts>
+
+
+                </asp:ScriptManager>
+
     <div id="entete">
             <asp:Button  id="btnLogin" onclick="Signout_Click" text="Se déconnecter" runat="server" /> 
     </div>
@@ -24,10 +34,10 @@
 	    <ul id="mon_menu">
 		
 		    <li id="Accueil"><a href="./Default.aspx">Accueil </a></li>
-		    <li id="Propos"><a href="./Cours.aspx"> Cours </a></li>
+		    <li id="AGEECJ"><a href="./AGEECJ.aspx"> AGEECJ </a></li>
 		    <li id="Produits"><a href="./Prets.aspx"> Emprunts </a></li>
 		    <li id="Nous_Contacter"><a href="./Reunion.aspx"> Réunion </a></li>
-		    <li id="AGEECJ"><a href="./AGEECJ.aspx"> AGEECJ </a></li>
+		    
 
             <li id="Logo"> <img src="./images/logo.png" alt=""/> </li>
 	    </ul>
@@ -41,12 +51,7 @@
 		
 			<div id="TitreTop">		
 
-                <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="false">
-                    <Scripts>
-                        <asp:ScriptReference Name="jquery" />
-                        <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" />
-                    </Scripts>
-                </asp:ScriptManager>
+               
 
                 <asp:ContentPlaceHolder id="ContenuTop" runat="server">
 

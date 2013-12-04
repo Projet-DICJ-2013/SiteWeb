@@ -4,7 +4,7 @@ Partial Class Reunion
     Private foncRech As objRech
     Private Rapport As GenereRapport
     Private _lstmembres As List(Of tblMembre)
-    Private BD As New PresenceModel
+    Private BD As New PresenceModEntity
     Private ListeOrdreDuJour As List(Of tblOrdreDuJour)
     Private TempsFile As String
     Private MonPdf As New GetPDF
@@ -16,7 +16,7 @@ Partial Class Reunion
 
         If Me.IsPostBack = False Then
             ReloadListeResultat()
-            RadOdj.Checked = True
+            TypeRecherche.SelectedIndex = 0
         Else
             foncRech = New objRech
             ListeOrdreDuJour = foncRech.odjtypememb(Me.Context.User.Identity.Name)
@@ -24,32 +24,7 @@ Partial Class Reunion
 
     End Sub
 
-
-    Protected Sub RadOdj_CheckedChanged(sender As Object, e As EventArgs) Handles RadOdj.CheckedChanged
-        If RadOdj.Checked = False Then
-            RadOdj.Checked = True
-        End If
-        RadPv.Checked = False
-    End Sub
-
-    Protected Sub RadPv_CheckedChanged(sender As Object, e As EventArgs) Handles RadPv.CheckedChanged
-        If RadPv.Checked = False Then
-            RadPv.Checked = True
-        End If
-        RadOdj.Checked = False
-    End Sub
-
-    Protected Sub lstTypeParticipant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstTypeParticipant.SelectedIndexChanged
-        If lstTypeParticipant.SelectedIndex <> 0 Then
-            lstParticipant.DataTextField = "PrenomMembre"
-            lstParticipant.DataSource = ChargerParticipant(lstTypeParticipant.SelectedIndex)
-            lstParticipant.DataBind()
-        Else
-            lstParticipant.Items.Clear()
-        End If
-    End Sub
-
-    Sub GetPdf_Click(ByVal sender As Object, ByVal e As EventArgs)
+    Sub GetPdf_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPDF.Click
         TempsFile = GetMyPDF(ListeOrdreDuJour.Item(ListeResultat.SelectedIndex).NoOrdreDuJour)
 
         HttpContext.Current.Session("Rapport") = TempsFile
@@ -67,10 +42,38 @@ Partial Class Reunion
         ListeResultat.DataBind()
     End Sub
 
-    Protected Sub boutonNouv_Click(sender As Object, e As EventArgs)
+    Protected Sub boutonNouv_Click(sender As Object, e As EventArgs) Handles boutonNouv.Click
         ReloadListeResultat()
-        RadOdj.Checked = True
-        Dim sada As Int16 = ListeResultat.SelectedIndex
+        TypeRecherche.SelectedIndex = 0
+        lstParticipant.Items.Clear()
+        lstTypeParticipant.SelectedIndex = 0
+
+    End Sub
+
+    Protected Sub lstTypeParticipant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstTypeParticipant.SelectedIndexChanged
+        If lstTypeParticipant.SelectedIndex <> 0 Then
+            lstParticipant.DataTextField = "PrenomMembre"
+            lstParticipant.DataSource = ChargerParticipant(lstTypeParticipant.SelectedIndex)
+            lstParticipant.DataBind()
+        Else
+            lstParticipant.Items.Clear()
+        End If
+    End Sub
+
+    Protected Sub boutonRech_Click(sender As Object, e As EventArgs) Handles boutonRech.Click
+        Dim impfrom = Request.Form("from")
+        Dim impto = Request.Form("to")
+        ListeOrdreDuJour.clear()
+        If (impfrom IsNot "" And impto IsNot "") Then
+            'ListeOrdreDuJour = foncRech.odjbydate(lstParticipant, impfrom, impto)
+        End If
+
+        If (lstParticipant.SelectedValue IsNot "") Then
+            'ListeOrdreDuJour = foncRech.odjbyparticipant(ListeOrdreDuJour, lstParticipant.SelectedValue)
+        End If
+        ListeResultat.ClearSelection()
+        ListeResultat.DataSource = ListeOrdreDuJour.Distinct
+        ListeResultat.DataBind()
     End Sub
 End Class
 

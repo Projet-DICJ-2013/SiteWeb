@@ -18,43 +18,75 @@
 </asp:Content>
 
 <asp:Content ID="ContenuCorpsReu" ContentPlaceHolderID="ContenuCorps" Runat="Server">
-
+        <div id="PrincipalReunion">
+        
+         <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"> </script>
     
-  <script>
-      $(function () {
-          $("#from").datepicker({
-              dateFormat: "yy-mm-dd",
-              defaultDate: "+1w",
-              changeMonth: true,
-              numberOfMonths: 1,
-              onClose: function (selectedDate) {
-                  $("#to").datepicker("option", "minDate", selectedDate);
-              }
-          });
-          $("#to").datepicker({
-              dateFormat: "yy-mm-dd",
-              defaultDate: "+1w",
-              changeMonth: true,
-              numberOfMonths: 1,
-              onClose: function (selectedDate) {
-                  $("#from").datepicker("option", "maxDate", selectedDate);
-              }
-          });
 
+
+  <script>
+
+      $(document).ready(function () {
+          $(function () {
+              $("#from").datepicker({
+                  dateFormat: "yy-mm-dd",
+                  defaultDate: "+1w",
+                  changeMonth: true,
+                  numberOfMonths: 1,
+                  onClose: function (selectedDate) {
+                      $("#to").datepicker("option", "minDate", selectedDate);
+                  }
+              });
+              $("#to").datepicker({
+                  dateFormat: "yy-mm-dd",
+                  defaultDate: "+1w",
+                  changeMonth: true,
+                  numberOfMonths: 1,
+                  onClose: function (selectedDate) {
+                      $("#from").datepicker("option", "maxDate", selectedDate);
+                  }
+              });
+
+          });
       });
+
+      var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+      prm.add_endRequest(function () {
+          $(function () {
+              $("#from").datepicker({
+                  dateFormat: "yy-mm-dd",
+                  defaultDate: "+1w",
+                  changeMonth: true,
+                  numberOfMonths: 1,
+                  onClose: function (selectedDate) {
+                      $("#to").datepicker("option", "minDate", selectedDate);
+                  }
+              });
+              $("#to").datepicker({
+                  dateFormat: "yy-mm-dd",
+                  defaultDate: "+1w",
+                  changeMonth: true,
+                  numberOfMonths: 1,
+                  onClose: function (selectedDate) {
+                      $("#from").datepicker("option", "maxDate", selectedDate);
+                  }
+              });
+
+          });
+      });
+
      
   </script>
   
     
-    <div id="PrincipalReunion">
-        <div id="TitreRecherche">Consultation des ordres du jour et des procès-verbaux</div>
-         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
-                            <ContentTemplate>
+
         <div id="SectionCritere">
-            
+            <div id="TitreRecherche">Consultation des ordres du jour et des procès-verbaux</div>
 
             <div id="SectionCritereLigne">        
                 <div id="SectionCritGauche">
@@ -77,51 +109,60 @@
                 <div id="SectionCritDroit">
                     <p>Par Participant</p>
                     <div id="CritTypeParticipant">
-                        
-                        
-                            <asp:DropDownList ID="lstTypeParticipant" runat="server" OnSelectedIndexChanged="lstTypeParticipant_SelectedIndexChanged" AutoPostBack="true">
+                                                 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+
+                            <ContentTemplate>
+                        <asp:DropDownList ID="lstTypeParticipant" runat="server" OnSelectedIndexChanged="lstTypeParticipant_SelectedIndexChanged" AutoPostBack="true">
                             <asp:ListItem>Aucun</asp:ListItem>
                             <asp:ListItem>Professeur</asp:ListItem>
                             <asp:ListItem>Etudiant - 1er</asp:ListItem>
                             <asp:ListItem>Etudiant - 2e</asp:ListItem>
                             <asp:ListItem>Etudiant - 3e</asp:ListItem>            
-                        </asp:DropDownList>
-                             <div id="listepart">  
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-                            <ContentTemplate>
-                        <asp:DropDownList ID="lstParticipant" runat="server" Enabled="True"/>
-                                 </ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="lstTypeParticipant" EventName="SelectedIndexChanged" />
-                                    </Triggers>
+                            </asp:DropDownList>
+
+                            
+                              
+                                                   
+                                 <asp:DropDownList ID="lstParticipant" runat="server"/>
+                                 
+                             </ContentTemplate>
                                 </asp:UpdatePanel>
-                                 </div>
-                    </div> 
+                                 
+
                 </div>
            </div>
+                </div>
             <div id="BoutonReu">
-                <asp:Button  id="boutonNouv" text="Nouvelle Recherche" runat="server" class="ReuRech" OnClick="boutonNouv_Click"/>
-                <asp:Button  id="boutonRech" text="Rechercher" runat="server" class="ReuRech"/>
+                <asp:Button  id="boutonNouv" text="Nouvelle Recherche" runat="server" class="ReuRech" OnClick="boutonNouv_Click" autopostback="true"/>
+                <asp:Button  id="boutonRech" text="Rechercher" runat="server" class="ReuRech" OnClick="boutonRech_Click"/>
             </div>        
-        </div>
-        <div id="SectionResultats">
+        
            
-            <div id="TypeRercherche">
-                <asp:RadioButton ID="RadOdj" runat="server" Text="Ordres du jours" GroupName="TypRech"/>
-                <asp:RadioButton ID="RadPv" runat="server" Text="Procès-verbaux" GroupName="TypRech"/>
-            </div>
-
+        <div id="SectionResultats">
+           <div id="SectionRes">
+            
+                <asp:RadioButtonList ID="TypeRecherche" runat="server">
+                    <asp:ListItem Text="Ordres du jours"></asp:ListItem>
+                    <asp:ListItem Text="Procès-verbaux"></asp:ListItem>
+                </asp:RadioButtonList>
+                
+           
+               <div id="partieRes">
+             <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+                 <Triggers><asp:AsyncPostBackTrigger ControlID="boutonRech" EventName="Click" /></Triggers>
+                            <ContentTemplate>
             <asp:ListBox ID="ListeResultat" runat="server" OnSelectedIndexChanged="ListeResultat_SelectedIndexChanged" AutoPostBack="true" >
             </asp:ListBox> 
-            
-                        
-            <asp:Button ID="btnPDF" text="Ouvrir"  OnClick="GetPdf_Click" runat="server" class="ReuRech"/>          
-        </div>
-                                </ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="ListeResultat" EventName="SelectedIndexChanged" />
-                                        <asp:AsyncPostBackTrigger ControlID="boutonNouv" EventName="Click" />
-                                    </Triggers>
+            </ContentTemplate>
                                 </asp:UpdatePanel>
-    </div>
+                   </div>
+               </div>
+                                              
+        </div>
+               
+        </div>
+                </ContentTemplate>
+             </asp:UpdatePanel>
+        <asp:Button ID="btnPDF" text="Ouvrir"  OnClick="GetPdf_Click" runat="server" class="ReuRech" OnClientClick="aspnetForm.target ='_blank'"/>
+                </div>
 </asp:Content>

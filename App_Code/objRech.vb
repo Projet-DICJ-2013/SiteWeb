@@ -1,11 +1,11 @@
 ﻿Public Class objRech
 
-    Private entBd As PresenceModel
+    Private entBd As PresenceModEntity
     Private typemembre As Int16
 
     Public Sub New()
 
-        entBd = New PresenceModel
+        entBd = New PresenceModEntity
 
     End Sub
 

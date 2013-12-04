@@ -3,7 +3,7 @@
     Public Class ModeleStyle
 
         Private IdStyle As String
-        Private Bd_Gest_Film As New PresenceModel
+        Private Bd_Gest_Film As New PresenceModEntity
 
         Public Sub New(ByVal _MonId As String)
 

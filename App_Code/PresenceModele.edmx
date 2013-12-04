@@ -392,6 +392,7 @@
           <Property Name="Administrateur" Type="bit" Nullable="false" />
           <Property Name="IdMembre" Type="smallint" />
           <Property Name="Hash" Type="char" MaxLength="32" />
+          <Property Name="EstAutorise" Type="bit" />
         </EntityType>
         <EntityType Name="tblMembre">
           <Key>
@@ -1520,6 +1521,9 @@
         <Function Name="GetCompoModele" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MonMod" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="SelLstEtu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdGroupe" Type="smallint" Mode="In" />
+        </Function>
         <Function Name="SelOrdJour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NoOrdre" Type="int" Mode="In" />
         </Function>
@@ -1585,7 +1589,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PresenceModele" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="PresenceModel" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="PresenceModEntity" p1:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="PresenceModele.sysdiagrams" />
           <EntitySet Name="tblConstant" EntityType="PresenceModele.tblConstant" />
           <EntitySet Name="tblCours" EntityType="PresenceModele.tblCours" />
@@ -1836,6 +1840,9 @@
           <FunctionImport Name="GetCompoModele" ReturnType="Collection(PresenceModele.GetCompoModele_Result)">
             <Parameter Name="MonMod" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SelLstEtu" ReturnType="Collection(PresenceModele.SelLstEtu_Result)">
+            <Parameter Name="IdGroupe" Mode="In" Type="Int16" />
+          </FunctionImport>
           <FunctionImport Name="SelOrdJour" ReturnType="Collection(PresenceModele.SelOrdJour_Result)">
             <Parameter Name="NoOrdre" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1979,6 +1986,7 @@
           <Property Name="Administrateur" Type="Boolean" Nullable="false" />
           <Property Name="IdMembre" Type="Int16" />
           <Property Name="Hash" Type="String" MaxLength="32" Unicode="false" FixedLength="true" />
+          <Property Name="EstAutorise" Type="Boolean" />
           <NavigationProperty Name="tblMembre" Relationship="PresenceModele.FK_tblLogin_tblMembre" FromRole="tblLogin" ToRole="tblMembre" />
         </EntityType>
         <EntityType Name="tblMembre">
@@ -2921,6 +2929,19 @@
           <Property Type="Int16" Name="IdCompo" Nullable="false" />
           <Property Type="String" Name="TypeCompo" Nullable="false" MaxLength="20" />
         </ComplexType>
+        <ComplexType Name="SelLstEtu_Result">
+          <Property Type="String" Name="AnneeCours" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="CodeCours" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="DescriptionCours" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="NomCours" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="PonderationCours" Nullable="false" MaxLength="8" />
+          <Property Type="Int16" Name="NoGroupe" Nullable="false" />
+          <Property Type="Int32" Name="DaEtudiant" Nullable="false" />
+          <Property Type="String" Name="NomMembre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PrenomMembre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="AdresseMembre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CourrielMembre" Nullable="false" MaxLength="100" />
+        </ComplexType>
         <ComplexType Name="SelOrdJour_Result">
           <Property Type="Double" Name="NumeroPoint" Nullable="true" />
           <Property Type="String" Name="TitrePoint" Nullable="true" MaxLength="50" />
@@ -2955,7 +2976,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PresenceModeleStoreContainer" CdmEntityContainer="PresenceModel">
+        <EntityContainerMapping StorageEntityContainer="PresenceModeleStoreContainer" CdmEntityContainer="PresenceModEntity">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="PresenceModele.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -3038,6 +3059,7 @@
                 <ScalarProperty Name="Administrateur" ColumnName="Administrateur" />
                 <ScalarProperty Name="IdMembre" ColumnName="IdMembre" />
                 <ScalarProperty Name="Hash" ColumnName="Hash" />
+                <ScalarProperty Name="EstAutorise" ColumnName="EstAutorise" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3538,6 +3560,23 @@
               <ComplexTypeMapping TypeName="PresenceModele.GetCompoModele_Result">
                 <ScalarProperty Name="IdCompo" ColumnName="IdCompo" />
                 <ScalarProperty Name="TypeCompo" ColumnName="TypeCompo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelLstEtu" FunctionName="PresenceModele.Store.SelLstEtu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PresenceModele.SelLstEtu_Result">
+                <ScalarProperty Name="AnneeCours" ColumnName="AnneeCours" />
+                <ScalarProperty Name="CodeCours" ColumnName="CodeCours" />
+                <ScalarProperty Name="DescriptionCours" ColumnName="DescriptionCours" />
+                <ScalarProperty Name="NomCours" ColumnName="NomCours" />
+                <ScalarProperty Name="PonderationCours" ColumnName="PonderationCours" />
+                <ScalarProperty Name="NoGroupe" ColumnName="NoGroupe" />
+                <ScalarProperty Name="DaEtudiant" ColumnName="DaEtudiant" />
+                <ScalarProperty Name="NomMembre" ColumnName="NomMembre" />
+                <ScalarProperty Name="PrenomMembre" ColumnName="PrenomMembre" />
+                <ScalarProperty Name="AdresseMembre" ColumnName="AdresseMembre" />
+                <ScalarProperty Name="CourrielMembre" ColumnName="CourrielMembre" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

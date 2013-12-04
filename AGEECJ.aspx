@@ -17,24 +17,23 @@
 </asp:Content>
 
 <asp:Content ID="ContenuCorpsAGEECJ" ContentPlaceHolderID="ContenuCorps" Runat="Server">  
-    <div id="TitreAsso">Envoi de messages aux membres de l'association étudiante</div>
+    
     <div id="divAGEECJ">
+        <div id="TitreAsso">Envoi de messages aux membres de l'association étudiante</div>
         <div id="CritereMessage">
-            <asp:Panel ID="panRadio" runat="server" GroupingText="Destinataires: ">
+            <asp:label id="lblDest" runat="server">Destinataires:</asp:label>
+            <asp:Panel ID="panRadio" runat="server" >
                 <Table runat="server">
+                    
                     <tr>
+
                         <td>
-                            <asp:RadioButton ID="rbPremier" runat="server" GroupName="rads" Checked="true" Text="Première année  " />
-                            <asp:RadioButton ID="rbTroisieme" runat="server" GroupName="rads" Text="Troisième année" />
-
+                            <asp:RadioButton ID="rbPremier" runat="server" GroupName="rads" Checked="true" Text="Première année" /> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:RadioButton ID="rbDeuxieme" runat="server" GroupName="rads" Text="Deuxième année" />&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:RadioButton ID="rbTroisieme" runat="server" GroupName="rads" Text="Troisième année" />&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:RadioButton ID="rbTous" runat="server" GroupName="rads" Text="Tous les années" />&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
-                    </tr>
 
-                    <tr>
-                    <td>
-                        <asp:RadioButton ID="rbDeuxieme" runat="server" GroupName="rads" Text="Deuxième année" />
-                        <asp:RadioButton ID="rbTous" runat="server" GroupName="rads" Text="Tous les années" />
-                    </td>
                     </tr>
                 </Table>
             </asp:Panel>
@@ -42,19 +41,20 @@
         <div id="ContenuMessage">
             <div id="divObjet">
             <asp:label id="lblObjet" runat="server">Objet:</asp:label>
-            <asp:TextBox ID="txtObjet" runat="server"></asp:TextBox>  
+            <asp:TextBox ID="txtObjet" runat="server" Width="88%"></asp:TextBox>  
             </div>
             <div id="divMessage">
             <asp:label id="lblMessage" runat="server">Message:</asp:label>
             </div>
             <div id="divTexte">
-            <textarea ID="txtArMessage" runat="server" rows="5" cols ="60">Votre Message Ici!</textarea><br />
+            <textarea ID="txtArMessage" runat="server" rows="5" cols ="100">Votre Message Ici!</textarea><br />
             </div>
-            <div id="divEnvoyer">
+             
+        </div>
+        <div id="divEnvoyer">
             <asp:Button ID="btnEnvoyer" class="ReuRech" runat="server" Text="Envoyer" OnClick="btnEnvoyer_Click1"/>
             <asp:Label ID="lblCommentaire" runat="server" Visible="false"/>
             </div>
         </div>
-        
-        </div>
+       
 </asp:Content>

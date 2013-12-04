@@ -14,11 +14,11 @@ Imports System.Data.Objects
 Imports System.Data.Objects.DataClasses
 Imports System.Linq
 
-Partial Public Class PresenceModel
+Partial Public Class PresenceModEntity
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=PresenceModel")
+        MyBase.New("name=PresenceModEntity")
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
@@ -75,24 +75,30 @@ Partial Public Class PresenceModel
     Public Property tblElement() As DbSet(Of tblElement)
     Public Property tblTypeRapport() As DbSet(Of tblTypeRapport)
 
-    <EdmFunction("PresenceModel", "SelOrdreJour")>
+    <EdmFunction("PresenceModEntity", "SelOrdreJour")>
     Public Overridable Function SelOrdreJour(noOrdre As Nullable(Of Integer)) As IQueryable(Of SelOrdreJour_Result)
         Dim noOrdreParameter As ObjectParameter = If(noOrdre.HasValue, New ObjectParameter("NoOrdre", noOrdre), New ObjectParameter("NoOrdre", GetType(Integer)))
 
-         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelOrdreJour_Result)("[PresenceModel].[SelOrdreJour](@NoOrdre)", noOrdreParameter)
+         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelOrdreJour_Result)("[PresenceModEntity].[SelOrdreJour](@NoOrdre)", noOrdreParameter)
     End Function
 
-    <EdmFunction("PresenceModel", "SelrdJour")>
+    <EdmFunction("PresenceModEntity", "SelrdJour")>
     Public Overridable Function SelrdJour(noOrdre As Nullable(Of Integer)) As IQueryable(Of SelrdJour_Result)
         Dim noOrdreParameter As ObjectParameter = If(noOrdre.HasValue, New ObjectParameter("NoOrdre", noOrdre), New ObjectParameter("NoOrdre", GetType(Integer)))
 
-         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelrdJour_Result)("[PresenceModel].[SelrdJour](@NoOrdre)", noOrdreParameter)
+         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelrdJour_Result)("[PresenceModEntity].[SelrdJour](@NoOrdre)", noOrdreParameter)
     End Function
 
     Public Overridable Function GetCompoModele(monMod As String) As ObjectResult(Of GetCompoModele_Result)
         Dim monModParameter As ObjectParameter = If(monMod IsNot Nothing, New ObjectParameter("MonMod", monMod), New ObjectParameter("MonMod", GetType(String)))
 
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetCompoModele_Result)("GetCompoModele", monModParameter)
+    End Function
+
+    Public Overridable Function SelLstEtu(idGroupe As Nullable(Of Short)) As ObjectResult(Of SelLstEtu_Result)
+        Dim idGroupeParameter As ObjectParameter = If(idGroupe.HasValue, New ObjectParameter("IdGroupe", idGroupe), New ObjectParameter("IdGroupe", GetType(Short)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelLstEtu_Result)("SelLstEtu", idGroupeParameter)
     End Function
 
     Public Overridable Function SelOrdJour(noOrdre As Nullable(Of Integer)) As ObjectResult(Of SelOrdJour_Result)
