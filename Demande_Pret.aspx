@@ -26,6 +26,6 @@
         </asp:TableRow>
         
     </asp:Table>
-        <asp:Button runat="server" text="Envoyer la demande" OnClick="BoutonEnvoyer_Click" />
+        <asp:Button runat="server" text="Envoyer la demande" OnClick="BoutonEnvoyer_Click" class="ReuRech"/>
         </div>
 </asp:Content>

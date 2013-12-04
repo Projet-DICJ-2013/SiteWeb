@@ -5,7 +5,7 @@ Imports System.Linq
 Partial Class Demande_Pret
     Inherits System.Web.UI.Page
     Dim req As IQueryable(Of ModeleExemplaire)
-    Dim BD As New PresenceModel
+    Dim BD As New PresenceModEntity
 
     Class ModeleExemplaire
         Property modele As tblModele
