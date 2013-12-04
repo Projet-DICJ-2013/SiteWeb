@@ -656,7 +656,7 @@ border-color:#028A9E;height:150px; background-color:#EFEFEF;margin-bottom:20px;d
 }
 #SectionResultats
 {
-    margin-top:400px;display:block; margin:2%;width:850px; Padding:1%; float:left; height:300px;
+    margin-top:400px;display:block; margin:2%;width:850px; Padding:1%; margin-top :25% ;height:300px;margin-left:5%;
 }
 .ReuRech
 { 
@@ -681,6 +681,7 @@ border-color:#028A9E;height:150px; background-color:#EFEFEF;margin-bottom:20px;d
     text-decoration:none;
      padding:10px 30px;  
     text-shadow:0px 1px 0px #854629;
+    margin-bottom:4px;
 }
 .ReuRech:hover
 {
@@ -709,4 +710,9 @@ border-color:#028A9E;width:90%; background-color:#EFEFEF;height:10%;
 border-color:#028A9E;width:90%; background-color:#EFEFEF;height:35%;
 }
 #divEnvDem{position:relative; float:right; margin-right:75px;
+}
+#btnOuvrir {
+    float:right;
+    margin-left:15%;
+    display:block;
 }

@@ -157,12 +157,14 @@
                                 </asp:UpdatePanel>
                    </div>
                </div>
-                                              
-        </div>
-               
-        </div>
+
+              </div>          
+ 
+  </div> 
                 </ContentTemplate>
              </asp:UpdatePanel>
-        <asp:Button ID="btnPDF" text="Ouvrir"  OnClick="GetPdf_Click" runat="server" class="ReuRech" OnClientClick="aspnetForm.target ='_blank'"/>
-                </div>
+            <div id="btnOuvrir">
+                  <asp:Button ID="btnPDF" text="Ouvrir"  OnClick="GetPdf_Click" runat="server" class="ReuRech" OnClientClick="aspnetForm.target ='_blank'"/>
+            </div>
+</div>
 </asp:Content>
