@@ -20,8 +20,7 @@
 <asp:Content ID="ContenuCorpsReu" ContentPlaceHolderID="ContenuCorps" Runat="Server">
         <div id="PrincipalReunion">
         
-         <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
-                            <ContentTemplate>
+         
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"> </script>
@@ -86,6 +85,10 @@
     
 
         <div id="SectionCritere">
+            <div id="placerOuvrir">
+            <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+            
             <div id="TitreRecherche">Consultation des ordres du jour et des procès-verbaux</div>
 
             <div id="SectionCritereLigne">        
@@ -159,12 +162,14 @@
                </div>
 
               </div>          
- 
-  </div> 
-                </ContentTemplate>
+ </ContentTemplate>
              </asp:UpdatePanel>
+                </div>
             <div id="btnOuvrir">
                   <asp:Button ID="btnPDF" text="Ouvrir"  OnClick="GetPdf_Click" runat="server" class="ReuRech" OnClientClick="aspnetForm.target ='_blank'"/>
             </div>
+  </div> 
+                
+            
 </div>
 </asp:Content>
