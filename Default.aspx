@@ -1,13 +1,25 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" CodeFile="Default.aspx.vb" Inherits="_Default" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/Site.master" CodeFile="Default.aspx.vb" Inherits="_Default"  %>
 
 
 
 <script runat="server" >
 
     <System.Web.Services.WebMethod()> _
-    Public Shared Function GetNews(ByVal index As Integer) As String
-        Return "Hello World"
+    Public Shared Function GetNews(index As Integer) As String
+    
+        Dim News As New MesNews
+        Dim Var As String
+        Try
+            News.lstActu.MoveCurrentToPosition(index)
+            Var = CType(News.lstActu.CurrentItem, tblActualite).TexteActu
+        Catch ex As Exception
+            Return Nothing
+        End Try
+        
+        Return Var
     End Function
+    
+
 
 </script>
 
@@ -33,69 +45,73 @@
 
 <asp:Content ID="ContenuCorpsAcc" ContentPlaceHolderID="ContenuCorps" Runat="Server">
 
-    <div id="MesNews">
+    <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Always">
+    <ContentTemplate>
+        <div id="MesNews" onload="GetPDF();">
 
-        <div id="BarreTri">
+            <div id="titreActu"> Liste des actualités </div>
 
+            <div id="BarreTri">
 
-             <asp:TextBox ID="txtRecherche" runat="server" />
+                 <asp:TextBox ID="txtRecherche" runat="server" />
           
-             <asp:Button ID="btnSearch" Text="Recherche" runat="server" />
+                 <asp:Button class="btnTri" ID="btnSearch" Text="Recherche" runat="server" />
 
-           
+                  <input type="button" class="btnTri" id="btnPrec" value="<"/>
 
-        </div>
-
-        <div id="New">
-
-            <asp:Button  id="btnPrec" runat="server" OnClick="btnPrec_Click" />
-                
-            <div id="txtNew">
-
-                <asp:Label id="txtMail" runat="server" />
+                 <input class="btnTri" type="button" id="btnNext" value=">"/>
 
             </div>
 
-            <asp:Button  id="btnNext" runat="server" />
+            <div id="New">
+
+            </div>
 
         </div>
-
-    </div>
  
-    <script src="scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
+    </ContentTemplate>
+    </asp:UpdatePanel> 
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"> </script>
     <script type="text/javascript">
 
         $(function () {
 
-            var ActuIndex = 0;
+            var ActuIndex;
 
-            function GetPDF() {
+            function GetInfNews() {
+                $("#New").empty()
                 $.ajax({
                     type: 'POST',
                     url: 'Default.aspx/GetNews',
-                    data: "index=" + ActuIndex,
+                    data: JSON.stringify({ index: ActuIndex }),
                     contentType: "application/json; charset=utf-8",
                     dataType: 'json',
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
                     },
                     success: function (resp) {
-                        $("#txtNew").append(resp);
+                        $("#New").append(resp.d)
                     }
                 });
             };
 
-
             $("#btnPrec").click(function () {
-
+                if (ActuIndex > 0) {
+                    ActuIndex = ActuIndex - 1;
+                }
+                GetInfNews();
             });
 
             $("#btnNext").click(function () {
-
+                ActuIndex = ActuIndex + 1;
+                GetInfNews();
             });
 
             $(document).ready(function () {
-                GetPDF();
+                ActuIndex = 0;
+                GetInfNews();
             });
 
 

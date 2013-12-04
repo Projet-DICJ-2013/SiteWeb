@@ -505,44 +505,65 @@ body {
 
 /*Contenu de la section default*/
 
+#titreActu {
+    margin: 1%;
+    font-size:34px;
+}
+
 #MesNews {
     display:block;
     position:relative;
     width:100%;
-    height:200px;
-    background-color: #028A9E;
+    min-height:300px;
+    padding:30px;
+    background-color: white ;
+    border:1px;border-style:solid;
+    border-color:#023550;
+    border-radius:2px;
 }
 
 #BarreTri {
     height:60px;
-    background-color: #023550;
+    background-color:#EFEFEF; 
+    text-align:center;
+    vertical-align:middle;
+    padding-top:10px;
+    border:1px;border-style:solid;
+    border-color:#028A9E;
+    border-radius:2px;
 }
+
+
 
 #New {
     display:inline;
-    position:relative;
-    height:100%;
+    padding:20px;
+    margin-top:10px;
+    font-size:1.4em;
+    
 }
 
-#txtNew {
-    position:relative;
-    width:100%;
+.btnTri{
+    border:1px solid #15aeec; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+     background-color: #49c0f0; background-image: -webkit-gradient(linear, left top, left bottom, from(#49c0f0), to(#2CAFE3));
+     background-image: -webkit-linear-gradient(top, #49c0f0, #2CAFE3);
+     background-image: -moz-linear-gradient(top, #49c0f0, #2CAFE3);
+     background-image: -ms-linear-gradient(top, #49c0f0, #2CAFE3);
+     background-image: -o-linear-gradient(top, #49c0f0, #2CAFE3);
+     background-image: linear-gradient(to bottom, #49c0f0, #2CAFE3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#49c0f0, endColorstr=#2CAFE3);
+     margin-left:15px;
+     margin-right:15px;
 }
 
-
-#btnPrec, #btnSuiv {
-    height:160px;
-    opacity:0.1;
+.btnTri:hover{
+     border:1px solid #1090c3;
+     background-color: #1ab0ec; background-image: -webkit-gradient(linear, left top, left bottom, from(#1ab0ec), to(#1a92c2));
+     background-image: -webkit-linear-gradient(top, #1ab0ec, #1a92c2);
+     background-image: -moz-linear-gradient(top, #1ab0ec, #1a92c2);
+     background-image: -ms-linear-gradient(top, #1ab0ec, #1a92c2);
+     background-image: -o-linear-gradient(top, #1ab0ec, #1a92c2);
+     background-image: linear-gradient(to bottom, #1ab0ec, #1a92c2);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#1ab0ec, endColorstr=#1a92c2);
 }
-
-#btnPrec {
-    float:left;
-}
-
-#btnSuiv {
-    float:right;
-}
-
 
 
 
@@ -550,21 +571,31 @@ body {
 
 #TitreAsso
 {
-    display:block; font-family:Tahoma; margin: 2%;font-size:34px;
+    display:block; font-family:Tahoma; margin: 2%;font-size:34px;margin-bottom:5%;
 }
 #divAGEECJ
 {
-    display:block;  margin:2%; font-family:Tahoma; font-size:20px;padding:2%; padding-left:16%; border:2px;border-style:solid;
-border-color:#023550;width:750px; height:360px; 
+    display:block;  background-color:white;margin:2%; font-family:Tahoma; font-size:20px;padding:2%;  border:2px;border-style:solid;
+border-color:#023550;width:100%; height:550px; 
 }
-#CritereMessage, #ContenuMessage
+#CritereMessage
  {
-    display:block; margin:2%; font-family:Tahoma; font-size:20px; Padding:1%; position:relative;border:1px;border-style:solid;
-border-color:#028A9E;width:74%;
+    display:block; margin:2%;  Padding:2%; position:relative;border:1px;border-style:solid;
+border-color:#028A9E;width:90%; background-color:#EFEFEF;height:10%;
 }
-#divObjet #divMessage, .lblMessage{position:relative;
+#ContenuMessage
+ {
+    display:block; margin:2%;  Padding:2%; position:relative;border:1px;border-style:solid;
+border-color:#028A9E;width:90%; background-color:#EFEFEF;height:35%;
 }
-#divEnvoyer{position:relative; margin-top:10px; margin-left:220px;
+#divObjet, #divTexte{position:relative;margin:15px;
+}
+
+#panRadio {margin-top:25px;
+}
+#divMessage {margin-top:20px;margin-left:15px;
+}
+#divEnvoyer{position:relative; float:right; margin-right:75px;
 }
 
 /*Contenu de la section Reunion*/
@@ -581,7 +612,7 @@ border-color:#028A9E;width:74%;
 #SectionCritere
 {
     background-color:white;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:20px;Padding:2%; border:2px;border-style:solid;
-border-color:#023550;width:100%;height:800px; 
+border-color:#023550;width:100%;height:650px; 
 }
 #SectionCritGauche
  {

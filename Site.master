@@ -17,8 +17,12 @@
                     <Scripts>
                         <asp:ScriptReference Name="jquery" />
                         <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" />
+
                     </Scripts>
+
+
                 </asp:ScriptManager>
+
     <div id="entete">
             <asp:Button  id="btnLogin" onclick="Signout_Click" text="Se déconnecter" runat="server" /> 
     </div>

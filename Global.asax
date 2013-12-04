@@ -73,7 +73,6 @@ End Sub
     
     Public Sub Session_OnEnd()
         Application.Lock()
-        MsgBox("Session expiré")
         Application.UnLock()
     End Sub
     
