@@ -3,6 +3,11 @@
 <asp:Content ID="ContenuCorpsDemandePret" ContentPlaceHolderID="ContenuCorps" runat="Server">
     <div id="DivPret">
         <div id="TitrePret">Demande de prêt</div>
+        <asp:UpdatePanel ID="UpdatePanelPret" runat="server" UpdateMode="Conditional">
+            <Triggers>
+                <asp:AsyncPostBackTrigger controlid="btnEnvDem" EventName="Click"/>
+            </Triggers>
+            <ContentTemplate>
         <div id="TypeMat">
         Type de matériel : 
             
@@ -26,6 +31,8 @@
         
     </asp:Table>
             </div>
-        <div id="divEnvDem"><asp:Button runat="server" text="Envoyer la demande" OnClick="BoutonEnvoyer_Click" class="ReuRech"/></div>
+                </contenttemplate>
+            </asp:UpdatePanel>
+        <div id="divEnvDem"><asp:Button id="btnEnvDem" OnClick="BoutonEnvoyer_Click" runat="server" text="Envoyer la demande" class="ReuRech" autopostback="true"/></div>
         </div>
 </asp:Content>
