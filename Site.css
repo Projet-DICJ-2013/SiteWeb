@@ -532,8 +532,8 @@ text-align:justify;
     border:1px;border-style:solid;
     border-color:#028A9E;
     border-radius:2px;*/
-    display:block; margin:2%;  Padding:2%; position:relative;border:1px;border-style:solid;
-border-color:#028A9E;width:90%; background-color:#EFEFEF;height:10%; font-size:20px;
+    display:block; margin:2%; margin-top:6%; margin-bottom:4%; Padding:2%; position:relative;border:1px;border-style:solid;
+border-color:#028A9E;width:90%; background-color:#EFEFEF;height:10%; font-size:20px; 
 }
 
 
@@ -642,7 +642,7 @@ border-color:#028A9E; height:40%;
 }
 #CritDate1.wrapper, #CritDate2.wrapper 
 {
-  min-width: 50px; /* Minimum width of your wrapper element */
+  min-width: 50px; 
   overflow: hidden;
   display: inline;
 }
@@ -693,4 +693,10 @@ border-color:#028A9E;height:150px; background-color:#EFEFEF;margin-bottom:20px;d
     background:linear-gradient(to bottom, #cc5f2d 5%, #d0451b 100%);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc5f2d', endColorstr='#d0451b',GradientType=0);
     background-color:#cc5f2d;
+}
+
+/*Contenu de la section Demande de Pret*/
+#DivPret {
+     background-color:white;  margin:2%; margin-bottom:5%;font-family:Tahoma; font-size:20px;Padding:2%; border:2px;border-style:solid;
+border-color:#023550;width:100%;height:650px; 
 }
