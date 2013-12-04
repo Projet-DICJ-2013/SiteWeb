@@ -5,9 +5,13 @@ Class _Default
     Inherits Page
 
     Private News As New MesNews
-    Private i As Integer = 0
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
+    Protected Sub Page_PreLoad(ByVal sender As Object, ByVal e As EventArgs) Handles Me.PreLoad
+
+
+    End Sub
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         AfficheActu()
 
@@ -29,7 +33,7 @@ Class _Default
     End Sub
 
     Private Sub AfficheActu()
-        'lblNew.Text = CType(News.lstActu.CurrentItem, tblActualite).TexteActu
+        lblNew.Text = CType(News.lstActu.CurrentItem, tblActualite).TexteActu
 
     End Sub
 End Class

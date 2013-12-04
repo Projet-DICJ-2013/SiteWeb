@@ -11,11 +11,16 @@ Partial Class _Logon
 
     Sub Logon_Click(ByVal sender As Object, ByVal e As EventArgs)
 
-        Dim Authentificate As New Provider
+        Dim Authentificate As New Provider(UserID.Text, StringToMd5(UserPass.Text))
 
-        If Authentificate.ValidateUser(UserID.Text, StringToMd5(UserPass.Text)) Then
-            FormsAuthentication.RedirectFromLoginPage _
-                 (UserID.Text, Persist.Checked)
+        If Authentificate.ValidateUser() Then
+            If Authentificate.IsAuthentifiate() = True Then
+                FormsAuthentication.RedirectFromLoginPage _
+                     (UserID.Text, Persist.Checked)
+            Else
+                Session("UserName") = UserID.Text
+                Response.Redirect("./ChangePassword.aspx")
+            End If
         Else
             Msg.Text = "L'usager ou le mot de passe sont incorrects!"
         End If

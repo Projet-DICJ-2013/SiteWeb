@@ -33,35 +33,40 @@
 
 <asp:Content ID="ContenuCorpsAcc" ContentPlaceHolderID="ContenuCorps" Runat="Server">
 
-    <div id="MesNews">
+    <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
+    <ContentTemplate>
+        <div id="MesNews">
 
-        <div id="BarreTri">
+            <div id="BarreTri">
 
 
-             <asp:TextBox ID="txtRecherche" runat="server" />
+                 <asp:TextBox ID="txtRecherche" runat="server" />
           
-             <asp:Button ID="btnSearch" Text="Recherche" runat="server" />
+                 <asp:Button ID="btnSearch" Text="Recherche" runat="server" />
 
            
 
-        </div>
+            </div>
 
-        <div id="New">
+            <div id="New">
 
-            <asp:Button  id="btnPrec" runat="server" OnClick="btnPrec_Click" />
+                <asp:Button  id="btnPrec" runat="server" OnClick="btnPrec_Click" />
                 
-            <div id="txtNew">
+                <div id="txtNew">
 
-                <asp:Label id="txtMail" runat="server" />
+                    <asp:Label id="lblNew" runat="server" />
+
+                </div>
+
+                <asp:Button  id="btnNext" runat="server" />
 
             </div>
 
-            <asp:Button  id="btnNext" runat="server" />
-
         </div>
-
-    </div>
  
+    </ContentTemplate>
+    </asp:UpdatePanel> 
+
     <script src="scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
     <script type="text/javascript">
 
