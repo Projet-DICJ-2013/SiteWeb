@@ -2,10 +2,10 @@
 
 <asp:Content ID="ContenuCorpsDemandePret" ContentPlaceHolderID="ContenuCorps" runat="Server">
     <div id="DivPret">
+        <div id="TitrePret">Demande de prêt</div>
         <div id="TypeMat">
         Type de matériel : 
-            </div> 
-        <div id="ListeMat">
+            
                  <asp:DropDownList AutoPostBack="true" ID="DropDownList1" runat="server">
                     <asp:ListItem Text="Choisir un type de matériel" Value="0" />
                     <asp:ListItem Text="Portable" Value="1" />
@@ -26,6 +26,6 @@
         
     </asp:Table>
             </div>
-        <asp:Button runat="server" text="Envoyer la demande" OnClick="BoutonEnvoyer_Click" />
+        <div id="divEnvDem"><asp:Button runat="server" text="Envoyer la demande" OnClick="BoutonEnvoyer_Click" class="ReuRech"/></div>
         </div>
 </asp:Content>
