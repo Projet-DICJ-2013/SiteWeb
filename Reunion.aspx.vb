@@ -24,7 +24,7 @@ Partial Class Reunion
 
     End Sub
 
-    Sub GetPdf_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnPDF.Click
+    Sub GetPdf_Click(ByVal sender As Object, ByVal e As EventArgs)
         TempsFile = GetMyPDF(ListeOrdreDuJour.Item(ListeResultat.SelectedIndex).NoOrdreDuJour)
 
         HttpContext.Current.Session("Rapport") = TempsFile
@@ -63,16 +63,17 @@ Partial Class Reunion
     Protected Sub boutonRech_Click(sender As Object, e As EventArgs) Handles boutonRech.Click
         Dim impfrom = Request.Form("from")
         Dim impto = Request.Form("to")
-        ListeOrdreDuJour.Clear()
+
         If (impfrom IsNot "" And impto IsNot "") Then
-            ' ListeOrdreDuJour = foncRech.odjbydate(lstParticipant, impfrom, impto)
+            ListeOrdreDuJour = foncRech.odjbydate(ListeOrdreDuJour, impfrom, impto)
         End If
 
         If (lstParticipant.SelectedValue IsNot "") Then
-            Dim y As Integer
-            y = 2
+            ListeOrdreDuJour = foncRech.odjbyparticipant(ListeOrdreDuJour, lstParticipant.SelectedValue)
         End If
         ListeResultat.ClearSelection()
+        ListeResultat.DataSource = ListeOrdreDuJour.Distinct
+        ListeResultat.DataBind()
     End Sub
 End Class
 
