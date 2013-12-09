@@ -14,11 +14,11 @@ Imports System.Data.Objects
 Imports System.Data.Objects.DataClasses
 Imports System.Linq
 
-Partial Public Class PresenceModelEntities
+Partial Public Class PresenceModEntity
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=PresenceModelEntities")
+        MyBase.New("name=PresenceModEntity")
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
@@ -71,21 +71,22 @@ Partial Public Class PresenceModelEntities
     Public Property tblPretExemplaire() As DbSet(Of tblPretExemplaire)
     Public Property tblReparation() As DbSet(Of tblReparation)
     Public Property tblSysteme() As DbSet(Of tblSysteme)
+    Public Property tblActualite() As DbSet(Of tblActualite)
     Public Property tblElement() As DbSet(Of tblElement)
     Public Property tblTypeRapport() As DbSet(Of tblTypeRapport)
 
-    <EdmFunction("PresenceModelEntities", "SelOrdreJour")>
+    <EdmFunction("PresenceModEntity", "SelOrdreJour")>
     Public Overridable Function SelOrdreJour(noOrdre As Nullable(Of Integer)) As IQueryable(Of SelOrdreJour_Result)
         Dim noOrdreParameter As ObjectParameter = If(noOrdre.HasValue, New ObjectParameter("NoOrdre", noOrdre), New ObjectParameter("NoOrdre", GetType(Integer)))
 
-         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelOrdreJour_Result)("[PresenceModelEntities].[SelOrdreJour](@NoOrdre)", noOrdreParameter)
+         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelOrdreJour_Result)("[PresenceModEntity].[SelOrdreJour](@NoOrdre)", noOrdreParameter)
     End Function
 
-    <EdmFunction("PresenceModelEntities", "SelrdJour")>
+    <EdmFunction("PresenceModEntity", "SelrdJour")>
     Public Overridable Function SelrdJour(noOrdre As Nullable(Of Integer)) As IQueryable(Of SelrdJour_Result)
         Dim noOrdreParameter As ObjectParameter = If(noOrdre.HasValue, New ObjectParameter("NoOrdre", noOrdre), New ObjectParameter("NoOrdre", GetType(Integer)))
 
-         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelrdJour_Result)("[PresenceModelEntities].[SelrdJour](@NoOrdre)", noOrdreParameter)
+         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.CreateQuery(Of SelrdJour_Result)("[PresenceModEntity].[SelrdJour](@NoOrdre)", noOrdreParameter)
     End Function
 
     Public Overridable Function GetCompoModele(monMod As String) As ObjectResult(Of GetCompoModele_Result)
@@ -94,10 +95,22 @@ Partial Public Class PresenceModelEntities
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of GetCompoModele_Result)("GetCompoModele", monModParameter)
     End Function
 
+    Public Overridable Function SelLstEtu(idGroupe As Nullable(Of Short)) As ObjectResult(Of SelLstEtu_Result)
+        Dim idGroupeParameter As ObjectParameter = If(idGroupe.HasValue, New ObjectParameter("IdGroupe", idGroupe), New ObjectParameter("IdGroupe", GetType(Short)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelLstEtu_Result)("SelLstEtu", idGroupeParameter)
+    End Function
+
     Public Overridable Function SelOrdJour(noOrdre As Nullable(Of Integer)) As ObjectResult(Of SelOrdJour_Result)
         Dim noOrdreParameter As ObjectParameter = If(noOrdre.HasValue, New ObjectParameter("NoOrdre", noOrdre), New ObjectParameter("NoOrdre", GetType(Integer)))
 
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelOrdJour_Result)("SelOrdJour", noOrdreParameter)
+    End Function
+
+    Public Overridable Function SelPointById(noPoint As Nullable(Of Integer)) As ObjectResult(Of SelPointById_Result)
+        Dim noPointParameter As ObjectParameter = If(noPoint.HasValue, New ObjectParameter("NoPoint", noPoint), New ObjectParameter("NoPoint", GetType(Integer)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of SelPointById_Result)("SelPointById", noPointParameter)
     End Function
 
     Public Overridable Function sp_alterdiagram(diagramname As String, owner_id As Nullable(Of Integer), version As Nullable(Of Integer), definition As Byte()) As Integer

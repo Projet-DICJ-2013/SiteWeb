@@ -1,25 +1,34 @@
 ﻿Public Class objRech
 
-    Private entBd As PresenceEntities
+    Private entBd As PresenceModEntity
     Private typemembre As Int16
 
     Public Sub New()
 
-        entBd = New PresenceEntities
+        entBd = New PresenceModEntity
 
     End Sub
 
-    Public Function odjtypememb(idmembre As Integer)
+    Public Function odjtypememb(namelogin As String)
 
         Dim listeOdjMem = (From tblodj In entBd.tblOrdreDuJour Select tblodj).ToList
         Dim Odj As IList(Of tblOrdreDuJour) = New List(Of tblOrdreDuJour)
         Dim indexOdj As Integer = 0
+        Dim idmembre As Integer = 0
+
+        Dim listeMembre = (From tblmembre In entBd.tblMembre Join tbllogin In entBd.tblLogin On tbllogin.IdMembre Equals tblmembre.IdMembre Where namelogin = tbllogin.IdLogin Select tblmembre).ToList
+
+        idmembre = listeMembre.Item(0).IdMembre
+
         Dim typembconnect As Integer = trouverTypeMembre(idmembre)
+
+
+
 
         For Each elmodj In listeOdjMem.ToList
 
-            typeMembre = trouverRedac(elmodj.NoOrdreDuJour)
-            If (typeMembre = typembconnect) Then
+            typemembre = trouverRedac(elmodj.NoOrdreDuJour)
+            If (typemembre = typembconnect) Then
                 Odj.Add(elmodj)
             End If
         Next
@@ -27,14 +36,17 @@
         Return Odj
 
     End Function
-
     Private Function trouverRedac(idordrejour As Integer)
 
         Dim idmembre As Integer
 
-        Dim listeMembreOdj = (From tblRenPar In entBd.tblMembreParticipantReunion Where tblRenPar.tblReunion.NoOrdreDuJour = idordrejour And tblRenPar.tblParticipant.DescriptionTypeMembre = "Redacteur" Select tblRenPar)
+        Dim listeMembreOdj = (From tblRenPar In entBd.tblMembreParticipantReunion Where tblRenPar.tblReunion.NoOrdreDuJour = idordrejour And tblRenPar.tblParticipant.IdTypeMembre = "Rédacteur" Select tblRenPar).ToList
+        If (listeMembreOdj.Count = 0) Then
+            Return 3
+        Else
+            idmembre = listeMembreOdj.First.IdMembre
+        End If
 
-        idmembre = listeMembreOdj.First.IdMembre
 
         Return trouverTypeMembre(idmembre)
 
@@ -59,12 +71,15 @@
         Return listbydate
 
     End Function
-    Public Function odjbyparticipant(listOdj As IList(Of tblOrdreDuJour), idmembre As Integer)
+    Public Function odjbyparticipant(listOdj As IList(Of tblOrdreDuJour), nommembre As String)
 
-        Dim listbypart = (From tblodj In listOdj Join tblren In entBd.tblReunion On tblren.NoOrdreDuJour Equals tblodj.NoOrdreDuJour Join tblpart In entBd.tblMembreParticipantReunion On tblren.NoReunion Equals tblpart.NoReunion Where idmembre = tblpart.IdMembre Select tblodj).ToList
+        Dim idmem = (From tblmem In entBd.tblMembre Where tblmem.PrenomMembre = nommembre Select tblmem.IdMembre).First
+
+        Dim listbypart = (From tblodj In listOdj Join tblren In entBd.tblReunion On tblren.NoOrdreDuJour Equals tblodj.NoOrdreDuJour Join tblpart In entBd.tblMembreParticipantReunion On tblren.NoReunion Equals tblpart.NoReunion Where idmem = tblpart.IdMembre Select tblodj).ToList
 
         Return listbypart
 
     End Function
+
 
 End Class

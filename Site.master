@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="VB" CodeFile="Site.master.vb" Inherits="Site" %>
-
+<%@ Import Namespace="System.Data.Entity.Infrastructure" %>
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -10,21 +10,34 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
+
 <body>
+ <form id="form1" runat="server">
+      <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+                    <Scripts>
+                        <asp:ScriptReference Name="jquery" />
+                        <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" />
+
+                    </Scripts>
+
+
+                </asp:ScriptManager>
+
     <div id="entete">
-        <input type="button"  id="btnLogin"  value="Se Connecter"/> 
+            <asp:Button  id="btnLogin" onclick="Signout_Click" text="Se déconnecter" runat="server" /> 
     </div>
 
-<div id ="top">
+    <div id ="top">
 	
 	<div id="menu_top">
 	
 	    <ul id="mon_menu">
 		
 		    <li id="Accueil"><a href="./Default.aspx">Accueil </a></li>
-		    <li id="Propos"><a href="./Cours.aspx"> Cours </a></li>
+		    <li id="AGEECJ"><a href="./AGEECJ.aspx"> AGEECJ </a></li>
 		    <li id="Produits"><a href="./Prets.aspx"> Emprunts </a></li>
 		    <li id="Nous_Contacter"><a href="./Reunion.aspx"> Réunion </a></li>
+		    
 
             <li id="Logo"> <img src="./images/logo.png" alt=""/> </li>
 	    </ul>
@@ -38,12 +51,7 @@
 		
 			<div id="TitreTop">		
 
-                <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="false">
-                    <Scripts>
-                        <asp:ScriptReference Name="jquery" />
-                        <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" />
-                    </Scripts>
-                </asp:ScriptManager>
+               
 
                 <asp:ContentPlaceHolder id="ContenuTop" runat="server">
 
@@ -61,7 +69,7 @@
 		
 			<div id="Mes-News">
 				
-				<form id="form1" runat="server">
+				
                 <div>
 
                     <asp:ContentPlaceHolder id="ContenuCorps" runat="server">
@@ -69,7 +77,7 @@
                      </asp:ContentPlaceHolder>
       
                 </div>
-                </form>
+               
 		
 			</div>
 		
@@ -80,7 +88,11 @@
     <div id="pied">
 		
     </div>
-
+     </form>
 </body>
+
+
+
+
 </html>
 

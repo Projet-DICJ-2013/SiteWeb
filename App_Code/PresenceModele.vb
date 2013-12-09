@@ -18,6 +18,14 @@ Partial Public Class sysdiagrams
     Public Property definition As Byte()
 
 End Class
+Partial Public Class tblActualite
+    Public Property IDActualite As Integer
+    Public Property TexteActu As String
+    Public Property TitreActu As String
+    Public Property AuteurActu As String
+    Public Property ImangeActu As String
+
+End Class
 Partial Public Class tblBesoin
     Public Property IdBesoin As Short
     Public Property IdGroupe As Nullable(Of Short)
@@ -179,8 +187,12 @@ Partial Public Class tblLocal
 End Class
 Partial Public Class tblLogin
     Public Property IdLogin As String
-    Public Property MotDePasseLogin As String
-    Public Property EstAutorise As Boolean
+    Public Property Administrateur As Boolean
+    Public Property IdMembre As Nullable(Of Short)
+    Public Property Hash As String
+    Public Property EstAutorise As Nullable(Of Boolean)
+
+    Public Overridable Property tblMembre As tblMembre
 
 End Class
 Partial Public Class tblMembre
@@ -194,6 +206,7 @@ Partial Public Class tblMembre
     Public Property VilleMembre As String
 
     Public Overridable Property tblEtudiant As ICollection(Of tblEtudiant) = New HashSet(Of tblEtudiant)
+    Public Overridable Property tblLogin As ICollection(Of tblLogin) = New HashSet(Of tblLogin)
     Public Overridable Property tblDemande As ICollection(Of tblDemande) = New HashSet(Of tblDemande)
     Public Overridable Property tblMembreParticipantReunion As ICollection(Of tblMembreParticipantReunion) = New HashSet(Of tblMembreParticipantReunion)
     Public Overridable Property tblMembreStatutMembre As ICollection(Of tblMembreStatutMembre) = New HashSet(Of tblMembreStatutMembre)
@@ -256,6 +269,7 @@ Partial Public Class tblModele
     Public Property TypeMachine As String
     Public Property NoteModele As String
     Public Property PhotoModele As Byte()
+    Public Property PrixModele As Nullable(Of Decimal)
 
     Public Overridable Property tblExemplaire As ICollection(Of tblExemplaire) = New HashSet(Of tblExemplaire)
     Public Overridable Property tblCompoModele As ICollection(Of tblCompoModele) = New HashSet(Of tblCompoModele)
@@ -305,6 +319,7 @@ Partial Public Class tblPoints
     Public Property InformationPoint As String
     Public Property PieceJointeOrdre As Nullable(Of Integer)
     Public Property NomPoint As String
+    Public Property ChiffrePoint As String
 
     Public Overridable Property tblListePoint As tblListePoint
     Public Overridable Property tblTypePoint As tblTypePoint
@@ -474,18 +489,44 @@ Partial Public Class GetCompoModele_Result
     Public Property TypeCompo As String
 
 End Class
+Partial Public Class SelLstEtu_Result
+    Public Property AnneeCours As String
+    Public Property CodeCours As String
+    Public Property DescriptionCours As String
+    Public Property NomCours As String
+    Public Property PonderationCours As String
+    Public Property NoGroupe As Short
+    Public Property DaEtudiant As Integer
+    Public Property NomMembre As String
+    Public Property PrenomMembre As String
+    Public Property AdresseMembre As String
+    Public Property CourrielMembre As String
+
+End Class
 Partial Public Class SelOrdJour_Result
     Public Property NumeroPoint As Nullable(Of Double)
     Public Property TitrePoint As String
     Public Property NomPoint As String
     Public Property TitreOrdreJour As String
     Public Property Notes As String
+    Public Property ChiffrePoint As String
 
 End Class
 Partial Public Class SelOrdreJour_Result
     Public Property NoPoint As Nullable(Of Double)
     Public Property TitPoint As String
     Public Property Infos As String
+
+End Class
+Partial Public Class SelPointById_Result
+    Public Property IDPoint As Integer
+    Public Property InformationPoint As String
+    Public Property ListeEnfants As Nullable(Of Integer)
+    Public Property NomPoint As String
+    Public Property NumeroPoint As Nullable(Of Double)
+    Public Property PieceJointeOrdre As Nullable(Of Integer)
+    Public Property TitrePoint As String
+    Public Property ChiffrePoint As String
 
 End Class
 Partial Public Class SelrdJour_Result

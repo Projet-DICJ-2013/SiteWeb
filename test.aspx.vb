@@ -1,5 +1,5 @@
 ﻿
-Partial Class Cours
+Partial Class test
     Inherits System.Web.UI.Page
 
 End Class
