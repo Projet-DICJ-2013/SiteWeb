@@ -629,7 +629,7 @@ border-color:#028A9E;width:90%; background-color:#EFEFEF;height:35%;
 #BoutonReu{display:block;  width:40%;float:right;}
 #CritDate,#CritDate1, #CritDate2, #lstParticipant, #lstTypeParticipant {display:inline-block;}
 #btnPDF {float: right;}
-#partieRes {float:left;margin-left:15px;width:220px;position:relative;}
+#partieRes {margin-left:15px;width:220px;position:relative;}
 #listepart {float:right; width:40px;}
 #placerOuvrir {height:500px;
 }
@@ -654,12 +654,14 @@ border-color:#028A9E; height:40%;
     background-color:#EFEFEF; display:block;  margin:2%;font-family:Tahoma; font-size:20px; Padding:1%; width:42%; float:left; position:relative; border:1px;border-style:solid;
 border-color:#028A9E; height:40%;
 }
-#SectionRes {border:1px;border-style:solid;
-border-color:#028A9E;height:150px; background-color:#EFEFEF;margin-bottom:20px;display:block;
+#SectionRes 
+{
+border:1px;border-style:solid;
+border-color:#028A9E;height:150px; background-color:#EFEFEF;margin-bottom:20px;
 }
 #SectionResultats
 {
-    margin-top:400px;display:block; margin:2%;width:92%; Padding:1%; margin-top :25% ;height:300px;
+    margin-top:400px; margin:2%;width:92%; Padding:1%; margin-top :25% ;height:300px;
 }
 .ReuRech
 { 
@@ -703,6 +705,15 @@ border-color:#028A9E;height:150px; background-color:#EFEFEF;margin-bottom:20px;d
     margin-right:80px;
     display:block;
 }
+#ContenuCorps_ListeResultat {
+    margin-left:80%;
+    width:155%;
+    margin-top:14%;
+}
+#ContenuCorps_TypeRecherche {
+    position:absolute;
+    top:65%;
+}
 
 /*Contenu de la section Demande de Pret*/
 #TitrePret {font-size:34px;text-align:center;
@@ -719,3 +730,4 @@ border-color:#028A9E;width:90%; background-color:#EFEFEF;height:45%;
 }
 #divEnvDem{position:relative; float:right; margin-right:75px;
 }
+
