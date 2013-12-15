@@ -5,13 +5,13 @@
 <script runat="server" >
 
     <System.Web.Services.WebMethod()> _
-    Public Shared Function GetNews(index As Integer) As String
+    Public Shared Function GetNews(index As Integer) As XDocument
     
         Dim News As New MesNews
-        Dim Var As String
+        Dim Var As XDocument
         Try
             News.lstActu.MoveCurrentToPosition(index)
-            Var = CType(News.lstActu.CurrentItem, tblActualite).TexteActu
+            Var = New XDocument("Root", New XElement("Contenu", CType(News.lstActu.CurrentItem, tblActualite).TexteActu))
         Catch ex As Exception
             Return Nothing
         End Try
@@ -89,12 +89,20 @@
                     url: 'Default.aspx/GetNews',
                     data: JSON.stringify({ index: ActuIndex }),
                     contentType: "application/json; charset=utf-8",
-                    dataType: 'json',
+                    dataType: 'xml',
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
                     },
-                    success: function (resp) {
-                        $("#New").append(resp.d)
+                    success: function (xml) {
+                        $(xml).find("Contenu").each(function () {
+                        if (resp.d != null) {
+                            $("#New").append(this);
+                            $("#btnNext").show();
+                        }
+                        else {
+                            $("#btnNext").hide();
+                        }
+                    });
                     }
                 });
             };
@@ -102,12 +110,22 @@
             $("#btnPrec").click(function () {
                 if (ActuIndex > 0) {
                     ActuIndex = ActuIndex - 1;
+
+                    if (ActuIndex == 1) {
+                        $("#btnPrec").hide();
+                    }
                 }
+                
                 GetInfNews();
             });
 
             $("#btnNext").click(function () {
                 ActuIndex = ActuIndex + 1;
+
+                if (ActuIndex > 1) {
+                    $("#btnPrec").hide();
+                }
+
                 GetInfNews();
             });
 
