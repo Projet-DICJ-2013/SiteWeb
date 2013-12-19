@@ -10,7 +10,7 @@ Partial Class _Logon
 
 
     Sub Logon_Click(ByVal sender As Object, ByVal e As EventArgs)
-
+        'Cette procédure envoie les informations du client vers l'objet d'authentification de l'usager
         Dim Authentificate As New Provider(UserID.Text, StringToMd5(UserPass.Text))
 
         If Authentificate.ValidateUser() Then

@@ -3,15 +3,16 @@
 
 
 <script runat="server" >
-
+    
+    'Service web permettant d'obtenir l'actualité à l'index envoyé par le client
     <System.Web.Services.WebMethod()> _
-    Public Shared Function GetNews(index As Integer) As XDocument
+    Public Shared Function GetNews(index As Integer) As String
     
         Dim News As New MesNews
-        Dim Var As XDocument
+        Dim Var As String
         Try
             News.lstActu.MoveCurrentToPosition(index)
-            Var = New XDocument("Root", New XElement("Contenu", CType(News.lstActu.CurrentItem, tblActualite).TexteActu))
+            Var = CType(News.lstActu.CurrentItem, tblActualite).TexteActu
         Catch ex As Exception
             Return Nothing
         End Try
@@ -77,11 +78,11 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"> </script>
     <script type="text/javascript">
-
+        
         $(function () {
 
             var ActuIndex;
-
+            /* Fonction asynchrone permattant d'envoyer l'index de l'actualité et de récupérer le contenu de celle-ci  */
             function GetInfNews() {
                 $("#New").empty()
                 $.ajax({
@@ -89,20 +90,18 @@
                     url: 'Default.aspx/GetNews',
                     data: JSON.stringify({ index: ActuIndex }),
                     contentType: "application/json; charset=utf-8",
-                    dataType: 'xml',
+                    dataType: 'json',
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
                     },
-                    success: function (xml) {
-                        $(xml).find("Contenu").each(function () {
+                    success: function (resp) {
                         if (resp.d != null) {
-                            $("#New").append(this);
+                            $("#New").append(resp.d);
                             $("#btnNext").show();
                         }
                         else {
                             $("#btnNext").hide();
                         }
-                    });
                     }
                 });
             };
@@ -123,7 +122,7 @@
                 ActuIndex = ActuIndex + 1;
 
                 if (ActuIndex > 1) {
-                    $("#btnPrec").hide();
+                    $("#btnPrec").show();
                 }
 
                 GetInfNews();

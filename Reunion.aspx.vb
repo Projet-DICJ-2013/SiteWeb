@@ -89,7 +89,7 @@ Public Class Reunion
     Public Function GetMyPDF(ByVal PdfId As Integer) As String
 
         Rapport = New GenereRapport
-        Rapport.CreerRapportOrd(PdfId)
+        Rapport.CreerRapportOrd(PdfId, True)
 
         Return Rapport.TempFilePDF
 

@@ -13,11 +13,6 @@ Imports System.Web.UI
 Public Class GetActualite
      Inherits System.Web.Services.WebService
 
-    <WebMethod()> _
-    Public Shared Function GetNews(ByVal index As Integer) As String
-        Return "Hello World"
-    End Function
-
 End Class
 
 Class MesNews
